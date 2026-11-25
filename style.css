@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --navy: #002147;
+    --navy-light: #173e68;
+    --gold: #c5a059;
+    --gold-light: #f6efdf;
+    --background: #f7f8fa;
+    --white: #ffffff;
+    --text: #243449;
+    --muted: #66758a;
+    --border: #e0e6ed;
+    --green: #16734a;
+    --shadow: 0 8px 30px rgba(0,33,71,.07);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.65;
+}
+
+/* SCHOOL HEADER */
+
+.bos-header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.bos-header-inner {
+    max-width: 1480px;
+    margin: auto;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.bos-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+}
+
+.bos-logo {
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+}
+
+.bos-school-name {
+    color: #92702f;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.bos-hub-name {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+.bos-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.bos-nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 0;
+    border-bottom: 2px solid transparent;
+    transition: .2s;
+}
+
+.bos-nav a:hover,
+.bos-nav a.active {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+}
+
+/* HERO SECTION */
+
+.bos-hero {
+    color: white;
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            #244c75,
+            transparent 45%
+        ),
+        linear-gradient(
+            120deg,
+            #002147,
+            #10365a
+        );
+    border-bottom: 4px solid var(--gold);
+}
+
+.bos-hero-inner {
+    max-width: 1480px;
+    margin: auto;
+    padding: 75px 6%;
+}
+
+.bos-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin: 20px 0;
+}
+
+.bos-hero p {
+    color: #d9e3ee;
+    font-size: 18px;
+    max-width: 760px;
+}
+
+.bos-eyebrow {
+    color: #dfbf7d;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* PAGE CONTAINER */
+
+.bos-container {
+    max-width: 1480px;
+    margin: auto;
+    padding: 50px 6% 70px;
+}
+
+.bos-section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--navy);
+    font-size: 34px;
+    margin: 10px 0;
+}
+
+.bos-section-label {
+    color: #92702f;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* CARDS */
+
+.bos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.bos-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: .25s ease;
+}
+
+.bos-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 15px 35px rgba(0,33,71,.12);
+}
+
+.bos-card h3 {
+    color: var(--navy);
+    font-size: 21px;
+    margin: 12px 0;
+}
+
+.bos-card p {
+    color: var(--muted);
+    font-size: 14px;
+    flex-grow: 1;
+}
+
+.bos-icon {
+    width: 58px;
+    height: 58px;
+    background: #edf2f8;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: var(--navy);
+}
+
+.bos-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.7;
+}
+
+/* BUTTONS */
+
+.bos-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border: 0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.bos-button:hover {
+    background: var(--navy-light);
+}
+
+.bos-button.gold {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.bos-button.gold:hover {
+    background: #dfbf7d;
+}
+
+.bos-button.outline {
+    background: transparent;
+    color: white;
+    border: 1px solid #ffffff66;
+}
+
+.bos-button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+/* PROGRESS */
+
+.bos-progress {
+    border: 1px solid var(--border);
+    background: white;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.bos-progress-track {
+    height: 10px;
+    background: #e7edf4;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bos-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        var(--navy),
+        var(--gold)
+    );
+    transition: .4s;
+}
+
+/* FOOTER */
+
+.bos-footer {
+    background: var(--navy);
+    border-top: 4px solid var(--gold);
+    color: #dce5ef;
+    padding: 35px 6%;
+}
+
+.bos-footer strong {
+    color: white;
+}
+
+.bos-footer a {
+    color: #dce5ef;
+}
+
+.bos-footer-inner {
+    max-width: 1480px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 1000px) {
+    .bos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bos-header-inner {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .bos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bos-logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .bos-hub-name {
+        font-size: 19px;
+    }
+
+    .bos-nav {
+        gap: 15px;
+    }
+
+    .bos-nav a {
+        font-size: 12px;
+    }
+
+    .bos-hero-inner {
+        padding: 45px 6%;
+    }
+
+    .bos-card {
+        padding: 22px;
+    }
+
+    .bos-section-title {
+        font-size: 27px;
+    }
+}
