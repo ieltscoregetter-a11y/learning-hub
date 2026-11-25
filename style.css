@@ -468,3 +468,68 @@ body {
         background-position: 65% center;
     }
 }
+/* Move learning progress below the hero */
+
+.home-hero {
+    display: block;
+    min-height: 540px;
+    position: relative;
+    padding-bottom: 130px;
+}
+
+.home-hero > div:first-child {
+    max-width: 680px;
+}
+
+.home-hero .hero-progress {
+    position: absolute;
+    bottom: -65px;
+    right: 6%;
+    width: 320px;
+    max-width: 88%;
+    background: #ffffff;
+    color: #002147;
+    border: 1px solid #e0e6ed;
+    box-shadow: 0 8px 30px #00214715;
+    padding: 18px 22px;
+    backdrop-filter: none;
+    z-index: 2;
+}
+
+.hero-progress .bos-eyebrow {
+    display: none;
+}
+
+.hero-progress h3 {
+    font-size: 16px;
+}
+
+.hero-progress .progress-number {
+    font-size: 28px;
+    color: #002147;
+}
+
+.hero-progress p,
+.hero-progress a {
+    color: #66758a;
+    font-size: 12px;
+}
+
+.hero-progress .bos-progress-track {
+    background: #e7edf4;
+}
+
+main.bos-container {
+    padding-top: 100px;
+}
+
+@media (max-width: 1000px) {
+    .home-hero .hero-progress {
+        position: static;
+        margin-top: 30px;
+    }
+
+    .home-hero {
+        padding-bottom: 45px;
+    }
+}
