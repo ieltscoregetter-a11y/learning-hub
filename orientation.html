@@ -3,451 +3,518 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOS | Orientation Hub</title>
+
+<title>BOS | Staff Orientation</title>
+
+<link rel="stylesheet" href="./style.css">
 
 <style>
-* { box-sizing: border-box; }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
-    color: #18263b;
+.orientation-hero {
+    background:
+        linear-gradient(
+            90deg,
+            #002147 0%,
+            rgba(0,33,71,.92) 30%,
+            rgba(0,33,71,.45) 60%,
+            rgba(0,33,71,.05) 100%
+        ),
+        url("./bos-campus.jpg");
+
+    background-color: #002147;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-header {
-    background: white;
-    padding: 24px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    border-bottom: 1px solid #e0e5ed;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: bold;
-    color: #17365d;
-}
-
-nav a {
-    text-decoration: none;
-    color: #17365d;
-    margin-right: 20px;
-    font-weight: bold;
-}
-
-.hero {
-    background: linear-gradient(120deg, #142b49, #274e78);
-    color: white;
-    padding: 65px 8%;
-}
-
-.hero h1 {
-    font-size: clamp(32px, 5vw, 55px);
-    margin: 20px 0;
-}
-
-.hero p {
-    max-width: 780px;
-    font-size: 20px;
-    line-height: 1.7;
-    color: #e0e8f1;
-}
-
-.eyebrow {
-    color: #e5c477;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-main {
-    padding: 45px 8%;
-    max-width: 1600px;
-    margin: auto;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-    gap: 24px;
-    margin-top: 30px;
-}
-
-.card {
-    background: white;
-    border: 1px solid #dce2eb;
-    border-radius: 16px;
-    padding: 30px;
+.orientation-hero .bos-hero-inner {
+    min-height: 470px;
     display: flex;
     flex-direction: column;
-    transition: 0.2s;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px #142b4915;
-    border-color: #a7b8ce;
+.orientation-hero h1 {
+    max-width: 650px;
 }
 
-.icon {
-    background: #edf1f8;
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 26px;
-    width: fit-content;
+.orientation-hero p {
+    max-width: 570px;
 }
 
-.card h3 {
-    font-size: 21px;
-    margin: 20px 0 8px;
+.motto {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #dfbf7d;
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 10px;
 }
 
-.card p {
-    color: #647083;
-    line-height: 1.7;
-    flex-grow: 1;
+.breadcrumb {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 25px;
 }
 
-.card button, .card a {
-    background: none;
-    color: #244f81;
-    border: none;
-    font-size: 16px;
-    text-align: left;
+.breadcrumb a {
+    color: var(--navy);
     text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 12px 0;
+}
+
+.journey-description {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.orientation-grid .bos-card {
+    min-height: 290px;
+}
+
+.orientation-grid .bos-button {
+    margin-top: 18px;
+}
+
+.chapter-number {
+    color: #92702f;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.coming-soon {
+    background: #edf1f5;
+    color: #64748b;
+    border-radius: 8px;
+    padding: 13px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 18px;
 }
 
 .handbook {
-    background: #17365d;
-    color: white;
-    border-radius: 18px;
-    padding: 35px;
     margin-top: 40px;
-}
-
-.handbook button {
-    background: #d4af65;
-    color: #142b49;
-    border: 0;
-    border-radius: 8px;
-    padding: 14px 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-dialog {
-    max-width: 700px;
-    width: 90%;
-    border: 1px solid #dce2eb;
-    border-radius: 18px;
-    padding: 30px;
-    color: #18263b;
-    line-height: 1.7;
-}
-
-dialog::backdrop {
-    background: #142b4980;
-}
-
-.close {
-    background: #17365d;
+    background: var(--navy);
     color: white;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 14px;
+    border-left: 5px solid var(--gold);
+    padding: 32px;
 }
 
-footer {
-    text-align: center;
-    padding: 25px;
-    background: #142b49;
-    color: white;
+.handbook h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    margin-top: 0;
 }
+
+.handbook p {
+    color: #dbe5ef;
+}
+
+@media(max-width:600px) {
+
+    .orientation-hero {
+        background-position: 65% center;
+    }
+
+    .orientation-hero .bos-hero-inner {
+        min-height: 380px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-    <div class="logo">BOS Learning Hub</div>
+<header class="bos-header">
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="orientation.html">Orientation</a>
-    </nav>
+    <div class="bos-header-inner">
+
+        <a href="./index.html" class="bos-brand">
+
+            <img
+                class="bos-logo"
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Baku-oxford-school-Logo.png"
+                alt="Baku Oxford School logo">
+
+            <div>
+
+                <div class="bos-school-name">
+                    BAKU OXFORD SCHOOL
+                </div>
+
+                <div class="bos-hub-name">
+                    Learning Hub
+                </div>
+
+            </div>
+
+        </a>
+
+        <nav class="bos-nav">
+
+            <a href="./index.html">Home</a>
+
+            <a class="active" href="./orientation.html">
+                Staff Orientation
+            </a>
+
+            <a href="./pd.html">PD Modules</a>
+
+            <a href="./teaching.html">
+                Teaching &amp; Learning
+            </a>
+
+            <a href="./work-matters.html">
+                Staff Essentials
+            </a>
+
+        </nav>
+
+    </div>
+
 </header>
 
-<section class="hero">
+<section class="bos-hero orientation-hero">
 
-    <div class="eyebrow">STAFF ORIENTATION</div>
+    <div class="bos-hero-inner">
 
-    <h1>Welcome to Baku Oxford School</h1>
+        <div class="motto">
+            Cogito, ergo sum
+        </div>
 
-    <p>
-        Discover our school community, explore our educational
-        approach and prepare for your professional journey in Baku.
-    </p>
+        <div class="bos-eyebrow">
+            YOUR JOURNEY STARTS HERE
+        </div>
+
+        <h1>
+            Welcome to<br>
+            Baku Oxford School
+        </h1>
+
+        <p>
+            Discover our school community, understand our
+            educational philosophy and prepare for a
+            successful professional journey at BOS.
+        </p>
+
+        <a class="bos-button gold" href="#journey">
+            Begin Your Orientation →
+        </a>
+
+    </div>
 
 </section>
 
-<main>
+<main class="bos-container" id="journey">
 
-<h2>Your Orientation Journey</h2>
+    <div class="breadcrumb">
 
-<p>Explore each section at your own pace.</p>
+        <a href="./index.html">Home</a>
+        &nbsp; / &nbsp;
+        Staff Orientation
 
-<div class="cards">
+    </div>
 
-    <article class="card">
+    <div class="bos-section-label">
+        STAFF INDUCTION
+    </div>
 
-        <div class="icon">🏛️</div>
+    <h2 class="bos-section-title">
+        Your Orientation Journey
+    </h2>
 
-        <h3>BOS History & Identity</h3>
-
-        <p>
-            Discover our school's history, mission,
-            vision and educational philosophy.
-        </p>
-
-        <a href="history.html">
-            Discover our story →
-        </a>
-
-    </article>
-
-    <article class="card">
-
-        <div class="icon">🎓</div>
-
-        <h3>Teaching & Learning Foundations</h3>
-
-        <p>
-            Explore effective teaching, higher-order thinking,
-            Bloom's Taxonomy and practical classroom strategies.
-        </p>
-
-        <a href="teaching.html">
-            Explore teaching practices →
-        </a>
-
-    </article>
-
-    <article class="card">
-
-        <div class="icon">👥</div>
-
-        <h3>Meet the BOS Team</h3>
-
-        <p>
-            Get to know school leadership, coordinators,
-            department leaders and support teams.
-        </p>
-
-        <button onclick="openSection('team')">
-            Meet our team →
-        </button>
-
-    </article>
-
-    <article class="card">
-
-        <div class="icon">📚</div>
-
-        <h3>Curriculum & Academic Programmes</h3>
-
-        <p>
-            Discover curriculum pathways, academic
-            expectations and assessment practices.
-        </p>
-
-        <button onclick="openSection('curriculum')">
-            Explore the curriculum →
-        </button>
-
-    </article>
-
-    <article class="card">
-
-        <div class="icon">📋</div>
-
-        <h3>Staff Policies & Procedures</h3>
-
-        <p>
-            Explore essential policies, professional
-            expectations and staff procedures.
-        </p>
-
-        <button onclick="openSection('policies')">
-            View staff guidance →
-        </button>
-
-    </article>
-
-    <article class="card">
-
-        <div class="icon">✅</div>
-
-        <h3>First Week & FAQs</h3>
-
-        <p>
-            Prepare for your first week with a practical
-            checklist and frequently asked questions.
-        </p>
-
-        <button onclick="openSection('firstweek')">
-            Start your checklist →
-        </button>
-
-    </article>
-
-    <article class="card">
-
-        <div class="icon">📍</div>
-
-        <h3>Living in Baku</h3>
-
-        <p>
-            Explore Azerbaijani culture, transport,
-            shopping, local food and everyday life in Baku.
-        </p>
-
-        <button onclick="openSection('baku')">
-            Discover Baku →
-        </button>
-
-    </article>
-
-</div>
-
-<section class="handbook">
-
-    <h2>📖 Staff & Faculty Handbook</h2>
-
-    <p>
-        Essential guidance for professional life
-        at Baku Oxford School.
+    <p class="journey-description">
+        Explore each section at your own pace and
+        become familiar with life and learning at BOS.
     </p>
 
-    <button onclick="openSection('handbook')">
-        Open staff handbook →
-    </button>
+    <div class="bos-grid orientation-grid">
 
-</section>
+        <!-- SCHOOL HISTORY -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 9L12 3l10 6z"/>
+                    <path d="M5 10v9M10 10v9M14 10v9M19 10v9"/>
+                    <path d="M2 21h20"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 01
+            </div>
+
+            <h3>BOS History &amp; Identity</h3>
+
+            <p>
+                Discover our school's history, mission,
+                vision, values and educational identity.
+            </p>
+
+            <a class="bos-button" href="./history.html">
+                Discover Our Story →
+            </a>
+
+        </article>
+
+        <!-- TEACHING -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 9l10-5 10 5-10 5z"/>
+                    <path d="M6 11v6c4 3 8 3 12 0v-6"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 02
+            </div>
+
+            <h3>Teaching &amp; Learning Foundations</h3>
+
+            <p>
+                Explore effective teaching, higher-order
+                thinking, Bloom's Taxonomy and practical
+                classroom strategies.
+            </p>
+
+            <a class="bos-button" href="./teaching.html">
+                Explore Teaching Practices →
+            </a>
+
+        </article>
+
+        <!-- STAFF TEAM -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="9" cy="7" r="3"/>
+                    <path d="M3 21v-4a6 6 0 0 1 12 0v4"/>
+                    <circle cx="18" cy="8" r="2.5"/>
+                    <path d="M17 14c3-1 5 2 5 5v2"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 03
+            </div>
+
+            <h3>Meet the BOS Team</h3>
+
+            <p>
+                Become familiar with school leadership,
+                academic teams, coordinators and
+                professional support roles.
+            </p>
+
+            <a class="bos-button"
+               href="./meet-the-bos-team.html">
+                Meet Our Team →
+            </a>
+
+        </article>
+
+        <!-- CURRICULUM -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 5c-3-2-7-2-10-1v15c3-1 7-1 10 1"/>
+                    <path d="M12 5c3-2 7-2 10-1v15c-3-1-7-1-10 1"/>
+                    <path d="M12 5v15"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 04
+            </div>
+
+            <h3>Curriculum &amp; Academic Programmes</h3>
+
+            <p>
+                Discover academic pathways, Cambridge
+                programmes and approaches to
+                curriculum and assessment.
+            </p>
+
+            <a class="bos-button"
+               href="./programs-and-curriculum.html">
+                Explore the Curriculum →
+            </a>
+
+        </article>
+
+        <!-- STAFF POLICIES -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="5" y="3" width="14"
+                          height="18" rx="2"/>
+                    <path d="M8 8h8M8 12h8M8 16h5"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 05
+            </div>
+
+            <h3>Staff Policies &amp; Procedures</h3>
+
+            <p>
+                Explore workplace guidance, essential
+                staff information and professional
+                responsibilities.
+            </p>
+
+            <a class="bos-button"
+               href="./work-matters.html">
+                View Staff Guidance →
+            </a>
+
+        </article>
+
+        <!-- FIRST WEEK -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="4" y="4" width="16"
+                          height="17" rx="2"/>
+                    <path d="M8 2v4M16 2v4M4 9h16"/>
+                    <path d="M8 15l3 3 5-6"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 06
+            </div>
+
+            <h3>First Week &amp; FAQs</h3>
+
+            <p>
+                Prepare for your first week through
+                practical checklists and frequently
+                asked questions.
+            </p>
+
+            <div class="coming-soon">
+                Coming Soon
+            </div>
+
+        </article>
+
+        <!-- LIVING IN BAKU -->
+
+        <article class="bos-card">
+
+            <div class="bos-icon">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+            </div>
+
+            <div class="chapter-number">
+                SECTION 07
+            </div>
+
+            <h3>Living in Baku</h3>
+
+            <p>
+                Discover Azerbaijani culture, transport,
+                shopping, local food and everyday life
+                in Baku.
+            </p>
+
+            <div class="coming-soon">
+                Coming Soon
+            </div>
+
+        </article>
+
+    </div>
+
+    <section class="handbook">
+
+        <div class="bos-eyebrow">
+            ESSENTIAL STAFF GUIDANCE
+        </div>
+
+        <h2>Staff &amp; Faculty Handbook</h2>
+
+        <p>
+            A central reference for professional life,
+            school procedures and staff expectations.
+            The full handbook will be added when available.
+        </p>
+
+        <a class="bos-button gold"
+           href="./work-matters.html">
+            Explore Staff Essentials →
+        </a>
+
+    </section>
+
+    <p style="font-size:12px;color:#66758a;margin-top:30px">
+
+        Campus photograph:
+        <a href="https://weproject.media/articles/detail/top-10-mezhdunarodnykh-shkol-v-zakavkaze-esli-ne-znaete-kuda-otdat-rebenka/">
+            WEproject
+        </a>
+
+    </p>
 
 </main>
 
-<dialog id="sectionDialog" aria-labelledby="sectionTitle">
+<footer class="bos-footer">
 
-    <h2 id="sectionTitle"></h2>
+    <div class="bos-footer-inner">
 
-    <div id="sectionContent"></div>
+        <div>
 
-    <button class="close"
-        onclick="document.getElementById('sectionDialog').close()">
-        Close
-    </button>
+            <strong>Baku Oxford School</strong><br>
 
-</dialog>
+            Teaching &amp; Learning Hub
 
-<footer>
-    Baku Oxford School Learning Hub | Demonstration
+            <p style="font-size:11px">
+
+                Logo:
+                <a href="https://commons.wikimedia.org/wiki/File:Baku-oxford-school-Logo.png">
+                    Wikimedia Commons
+                </a>
+
+                · Budrooo ·
+
+                <a href="https://creativecommons.org/licenses/by-sa/4.0/">
+                    CC BY-SA 4.0
+                </a>
+
+                · Unmodified
+
+            </p>
+
+        </div>
+
+        <div>
+            Professional Learning Platform · Prototype
+        </div>
+
+    </div>
+
 </footer>
-
-<script>
-
-const sections = {
-
-    team: {
-        title: "Meet the BOS Team",
-        content: `
-            <p>School leadership and department profiles
-            will be added here.</p>
-        `
-    },
-
-    curriculum: {
-        title: "Curriculum & Academic Programmes",
-        content: `
-            <ul>
-                <li>International Early Years Curriculum</li>
-                <li>Cambridge Primary</li>
-                <li>Cambridge Secondary</li>
-                <li>Cambridge IGCSE</li>
-                <li>Cambridge International AS & A Levels</li>
-            </ul>
-            <p>Based on BOS's published 2023–2024
-            admissions information. Current programmes
-            are subject to school confirmation.</p>
-        `
-    },
-
-    policies: {
-        title: "Staff Policies & Procedures",
-        content: `
-            <p>Approved school policies and procedures
-            will be added after staff access is established.</p>
-        `
-    },
-
-    firstweek: {
-        title: "First Week Checklist",
-        content: `
-            <p>Sample orientation checklist:</p>
-
-            <label><input type="checkbox"> Meet your line manager</label><br>
-            <label><input type="checkbox"> Explore the school campus</label><br>
-            <label><input type="checkbox"> Set up school accounts</label><br>
-            <label><input type="checkbox"> Attend safeguarding induction</label><br>
-            <label><input type="checkbox"> Review curriculum documents</label>
-        `
-    },
-
-    baku: {
-        title: "Living in Baku",
-        content: `
-            <h3>Welcome to Azerbaijan</h3>
-
-            <ul>
-                <li>Getting around Baku</li>
-                <li>Housing and neighbourhoods</li>
-                <li>Azerbaijani food and culture</li>
-                <li>Shopping and leisure</li>
-                <li>Useful Azerbaijani expressions</li>
-                <li>Exploring the city</li>
-            </ul>
-        `
-    },
-
-    handbook: {
-        title: "Staff & Faculty Handbook",
-        content: `
-            <p>The approved staff handbook will be added
-            after access permissions are established.</p>
-        `
-    }
-
-};
-
-function openSection(section) {
-
-    document.getElementById("sectionTitle").textContent =
-        sections[section].title;
-
-    document.getElementById("sectionContent").innerHTML =
-        sections[section].content;
-
-    document.getElementById("sectionDialog").showModal();
-
-}
-
-</script>
 
 </body>
 </html>
