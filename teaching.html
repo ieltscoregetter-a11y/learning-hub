@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOS | Teaching & Learning Foundations</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #f5f7fa;
+    color: #18263b;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    background: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+header a {
+    color: #17365d;
+    text-decoration: none;
+    margin-right: 18px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #142b49, #274e78);
+    padding: 65px 8%;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.eyebrow {
+    color: #e5c477;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 24px;
+}
+
+.panel {
+    background: white;
+    padding: 30px;
+    border: 1px solid #dce2eb;
+    border-radius: 16px;
+    margin-bottom: 28px;
+}
+
+h2 { color: #17365d; }
+h3 { color: #244f81; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 18px;
+}
+
+.card {
+    padding: 23px;
+    background: #f5f7fa;
+    border: 1px solid #dce2eb;
+    border-radius: 12px;
+}
+
+.level {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    margin: 12px 0;
+    border: 1px solid #dce2eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.level strong {
+    background: #17365d;
+    color: white;
+    padding: 20px;
+}
+
+.level div {
+    padding: 16px 22px;
+    background: #edf2f8;
+}
+
+.level.hots strong {
+    background: #22654a;
+}
+
+.level.hots div {
+    background: #eaf5ee;
+}
+
+.example {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.basic, .advanced {
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.basic {
+    background: #f0f3f7;
+    border: 1px solid #cbd5e1;
+}
+
+.advanced {
+    background: #eaf5ee;
+    border: 1px solid #a8d5bd;
+}
+
+.tip {
+    background: #fff6df;
+    border-left: 5px solid #d4af65;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+textarea, select, input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font: inherit;
+    border-radius: 8px;
+    border: 1px solid #bac8d8;
+    margin: 8px 0 16px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button, .button {
+    background: #17365d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover, .button:hover {
+    background: #274e78;
+}
+
+fieldset {
+    border: 1px solid #dce2eb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    cursor: pointer;
+}
+
+.answer {
+    display: block;
+    padding: 7px 0;
+}
+
+#result, #saved, #suggestion {
+    color: #17365d;
+    font-weight: bold;
+    white-space: pre-wrap;
+}
+
+footer {
+    background: #142b49;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+@media (max-width: 650px) {
+    .example, .level {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <strong>BOS Learning Hub</strong>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="orientation.html">Orientation</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">TEACHING & LEARNING FOUNDATIONS</div>
+
+    <h1>Developing Thinking Classrooms</h1>
+
+    <p>
+        Explore practical approaches that encourage
+        critical thinking, curiosity and meaningful learning.
+    </p>
+</section>
+
+<main>
+
+<section class="panel">
+    <h2>Welcome to the Teaching & Learning Guide</h2>
+
+    <p>
+        Effective teaching helps students develop knowledge,
+        understand concepts, apply skills independently and
+        reflect on their learning.
+    </p>
+
+    <p>By completing this module, you will be able to:</p>
+
+    <ul>
+        <li>Identify different levels of cognitive thinking.</li>
+        <li>Explain higher-order thinking skills.</li>
+        <li>Design challenging classroom questions.</li>
+        <li>Apply these strategies in your own subject.</li>
+    </ul>
+
+    <div class="tip">
+        This is a proposed professional learning resource
+        for the BOS Learning Hub demonstration.
+    </div>
+</section>
+
+<section class="panel">
+
+    <h2>Higher-Order Thinking Skills (HOTS)</h2>
+
+    <p>
+        Higher-order thinking involves analysing information,
+        evaluating evidence, solving complex problems and
+        developing original ideas.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Critical Thinking</h3>
+            <p>Examine information and make reasoned judgements.</p>
+        </div>
+
+        <div class="card">
+            <h3>Creative Thinking</h3>
+            <p>Develop original ideas and explore possibilities.</p>
+        </div>
+
+        <div class="card">
+            <h3>Problem Solving</h3>
+            <p>Investigate challenges and develop appropriate solutions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Metacognition</h3>
+            <p>Plan, monitor and reflect on your own thinking and learning.</p>
+        </div>
+
+    </div>
+
+    <h3>Video Introduction</h3>
+
+    <p>
+        Consider how a classroom question can encourage
+        students to explain their reasoning.
+    </p>
+
+    <a class="button"
+       href="https://www.youtube.com/results?search_query=higher+order+thinking+skills+in+education"
+       target="_blank" rel="noopener noreferrer">
+        Explore HOTS videos →
+    </a>
+
+</section>
+
+<section class="panel">
+
+    <h2>Bloom's Revised Taxonomy</h2>
+
+    <p>
+        Six cognitive processes help teachers plan learning
+        objectives and design questions with different demands.
+    </p>
+
+    <div class="level hots">
+        <strong>6. Create</strong>
+        <div>
+            Produce an original idea, product or solution.
+            <br><em>Design, develop, construct, propose.</em>
+        </div>
+    </div>
+
+    <div class="level hots">
+        <strong>5. Evaluate</strong>
+        <div>
+            Make a judgement using evidence and criteria.
+            <br><em>Justify, critique, recommend, assess.</em>
+        </div>
+    </div>
+
+    <div class="level hots">
+        <strong>4. Analyse</strong>
+        <div>
+            Examine parts, patterns and relationships.
+            <br><em>Compare, investigate, differentiate.</em>
+        </div>
+    </div>
+
+    <div class="level">
+        <strong>3. Apply</strong>
+        <div>
+            Use knowledge in a particular situation.
+            <br><em>Demonstrate, calculate, solve, use.</em>
+        </div>
+    </div>
+
+    <div class="level">
+        <strong>2. Understand</strong>
+        <div>
+            Explain meaning and demonstrate comprehension.
+            <br><em>Summarise, describe, explain.</em>
+        </div>
+    </div>
+
+    <div class="level">
+        <strong>1. Remember</strong>
+        <div>
+            Recall facts, concepts and information.
+            <br><em>Identify, define, list, recall.</em>
+        </div>
+    </div>
+
+    <p>
+        All six processes have a place in effective learning.
+        Prior knowledge supports more complex thinking.
+    </p>
+
+    <small>
+        Reference: Anderson, L. W. & Krathwohl, D. R. (2001).
+        A Taxonomy for Learning, Teaching, and Assessing.
+    </small>
+
+</section>
+
+<section class="panel">
+
+    <h2>Question Transformation Lab</h2>
+
+    <p>Explore how changing a question can deepen student thinking.</p>
+
+    <h3>Science</h3>
+
+    <div class="example">
+        <div class="basic">
+            <strong>Remember</strong>
+            <p>What is evaporation?</p>
+        </div>
+
+        <div class="advanced">
+            <strong>Analyse</strong>
+            <p>
+                Compare evaporation at two different temperatures.
+                Explain the relationship using scientific evidence.
+            </p>
+        </div>
+    </div>
+
+    <h3>English Literature</h3>
+
+    <div class="example">
+        <div class="basic">
+            <strong>Remember</strong>
+            <p>Who is the main character?</p>
+        </div>
+
+        <div class="advanced">
+            <strong>Evaluate</strong>
+            <p>
+                Was the character's decision justified?
+                Support your judgement with evidence from the text.
+            </p>
+        </div>
+    </div>
+
+    <h3>Mathematics</h3>
+
+    <div class="example">
+        <div class="basic">
+            <strong>Apply</strong>
+            <p>Calculate the area of this rectangle.</p>
+        </div>
+
+        <div class="advanced">
+            <strong>Create</strong>
+            <p>
+                Design two rectangles with identical areas
+                but different perimeters. Explain your approach.
+            </p>
+        </div>
+    </div>
+
+    <h3>History</h3>
+
+    <div class="example">
+        <div class="basic">
+            <strong>Remember</strong>
+            <p>When did the Industrial Revolution begin?</p>
+        </div>
+
+        <div class="advanced">
+            <strong>Evaluate</strong>
+            <p>
+                Assess the impact of industrialisation on workers'
+                lives using historical evidence.
+            </p>
+        </div>
+    </div>
+
+    <div class="tip">
+        <strong>Useful question stems</strong>
+
+        <ul>
+            <li>What evidence supports your conclusion?</li>
+            <li>How are these ideas connected?</li>
+            <li>Which solution would you recommend and why?</li>
+            <li>What alternative approach could you develop?</li>
+        </ul>
+    </div>
+
+</section>
+
+<section class="panel">
+
+    <h2>Design Your Own Question</h2>
+
+    <label for="original">Your original classroom question</label>
+
+    <textarea id="original"
+        placeholder="Enter your existing question"></textarea>
+
+    <label for="target">Target thinking process</label>
+
+    <select id="target">
+        <option value="analyse">Analyse</option>
+        <option value="evaluate">Evaluate</option>
+        <option value="create">Create</option>
+    </select>
+
+    <button onclick="suggestQuestion()">
+        Show Question Prompts
+    </button>
+
+    <p id="suggestion" role="status"></p>
+
+    <label for="improved">Write your improved question</label>
+
+    <textarea id="improved"></textarea>
+
+    <label for="reflection">
+        How will this question improve your students' learning?
+    </label>
+
+    <textarea id="reflection"></textarea>
+
+    <button onclick="saveReflection()">Save Reflection</button>
+
+    <p id="saved" role="status"></p>
+
+</section>
+
+<section class="panel">
+
+    <h2>Knowledge Check</h2>
+
+    <form id="quiz">
+
+        <fieldset>
+            <legend>1. Which task involves evaluation?</legend>
+
+            <label class="answer">
+                <input type="radio" name="q1" value="0" required>
+                List five facts.
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q1" value="1">
+                Judge two solutions using evidence.
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q1" value="0">
+                Define a term.
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>2. Which cognitive process involves producing something original?</legend>
+
+            <label class="answer">
+                <input type="radio" name="q2" value="0" required>
+                Remember
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q2" value="0">
+                Understand
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q2" value="1">
+                Create
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>3. Which question requires analysis?</legend>
+
+            <label class="answer">
+                <input type="radio" name="q3" value="1" required>
+                Compare the causes of two historical events.
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q3" value="0">
+                Name a historical event.
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q3" value="0">
+                Recall the date of an event.
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>4. Why is prior knowledge important?</legend>
+
+            <label class="answer">
+                <input type="radio" name="q4" value="0" required>
+                Students should only memorise facts.
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q4" value="1">
+                It provides a foundation for more complex thinking.
+            </label>
+
+            <label class="answer">
+                <input type="radio" name="q4" value="0">
+                It removes the need for classroom discussion.
+            </label>
+        </fieldset>
+
+        <button type="submit">Check Answers</button>
+
+        <p id="result" role="status"></p>
+
+    </form>
+
+</section>
+
+<a class="button" href="orientation.html">
+    ← Back to Orientation Hub
+</a>
+
+</main>
+
+<footer>
+    Baku Oxford School Learning Hub | Demonstration
+</footer>
+
+<script>
+function suggestQuestion() {
+    const original = document.getElementById("original").value.trim();
+    const target = document.getElementById("target").value;
+
+    const prompts = {
+        analyse: "Compare two examples. What patterns or relationships can you identify?",
+        evaluate: "Which approach is most effective? Justify your judgement using evidence.",
+        create: "Design an original solution or product using what you have learned."
+    };
+
+    document.getElementById("suggestion").textContent =
+        original ? prompts[target] : "Enter your original question first.";
+}
+
+function saveReflection() {
+    const reflection = document.getElementById("reflection").value;
+    const improved = document.getElementById("improved").value;
+
+    try {
+        localStorage.setItem("bosTeachingReflection", JSON.stringify({
+            reflection,
+            improved
+        }));
+
+        document.getElementById("saved").textContent =
+            "Reflection saved in this browser.";
+
+    } catch {
+        document.getElementById("saved").textContent =
+            "Your browser could not save the reflection.";
+    }
+}
+
+try {
+    const data = JSON.parse(localStorage.getItem("bosTeachingReflection"));
+
+    if (data) {
+        document.getElementById("reflection").value = data.reflection;
+        document.getElementById("improved").value = data.improved;
+    }
+} catch {}
+
+document.getElementById("quiz").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const answers = new FormData(this);
+
+    let score = 0;
+
+    for (let i = 1; i <= 4; i++) {
+        score += Number(answers.get("q" + i));
+    }
+
+    document.getElementById("result").textContent =
+        "Your score: " + score + "/4 (" + score * 25 + "%)."
+        + (score === 4 ? " Excellent work!" : " Review the module and try again.");
+});
+</script>
+
+</body>
+</html>
