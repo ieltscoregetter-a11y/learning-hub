@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOS | Meet the Team</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #18263b;
+    line-height: 1.6;
+}
+
+header {
+    background: white;
+    padding: 24px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid #dce2eb;
+}
+
+header strong {
+    font-size: 23px;
+    color: #17365d;
+}
+
+nav a {
+    color: #17365d;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #142b49, #274e78);
+    color: white;
+    padding: 65px 8%;
+}
+
+.eyebrow {
+    color: #e5c477;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 55px);
+    margin: 15px 0;
+}
+
+.hero p {
+    max-width: 800px;
+    color: #e0e8f1;
+    font-size: 20px;
+}
+
+main {
+    max-width: 1500px;
+    margin: auto;
+    padding: 40px 7%;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    color: #17365d;
+    font-size: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #d4af65;
+}
+
+.description {
+    color: #647083;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dce2eb;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 3px 10px #142b4908;
+}
+
+.card:hover {
+    border-color: #d4af65;
+}
+
+.avatar {
+    width: 65px;
+    height: 65px;
+    background: #eaf0f8;
+    color: #17365d;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 17px;
+    font-size: 27px;
+}
+
+.role {
+    font-size: 18px;
+    font-weight: bold;
+    color: #17365d;
+    margin-bottom: 10px;
+}
+
+.name {
+    color: #647083;
+    min-height: 25px;
+}
+
+.email {
+    color: #647083;
+    min-height: 25px;
+    font-size: 14px;
+}
+
+.search {
+    width: 100%;
+    padding: 14px;
+    font: inherit;
+    border: 1px solid #dce2eb;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    background: #17365d;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 20px;
+    border-radius: 8px;
+}
+
+footer {
+    background: #142b49;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <strong>BOS Learning Hub</strong>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="orientation.html">Orientation</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <div class="eyebrow">OUR SCHOOL COMMUNITY</div>
+    <h1>Meet the BOS Team</h1>
+    <p>
+        Explore the leadership, academic departments
+        and support teams that contribute to our school community.
+    </p>
+</div>
+
+<main>
+
+<p class="description">
+    Draft staff directory. Positions and contact details
+    are subject to school confirmation.
+</p>
+
+<input
+    type="search"
+    class="search"
+    id="search"
+    placeholder="Search for a role or department..."
+    aria-label="Search staff directory">
+
+<div id="directory"></div>
+
+<a class="button" href="orientation.html">
+    ← Back to Orientation Hub
+</a>
+
+</main>
+
+<footer>
+    Baku Oxford School Learning Hub | Demonstration
+</footer>
+
+<script>
+
+const departments = [
+
+    {
+        title: "School Leadership",
+        description: "Strategic leadership and whole-school development.",
+        roles: [
+            "School Director",
+            "Head of School"
+        ]
+    },
+
+    {
+        title: "Principals & Academic Leadership",
+        description: "Leadership of school divisions and academic development.",
+        roles: [
+            "Head of Early Years",
+            "Primary School Principal",
+            "Secondary School Principal",
+            "Primary Assistant Principal",
+            "Secondary Assistant Principal"
+        ]
+    },
+
+    {
+        title: "Curriculum & Academic Coordination",
+        description: "Curriculum planning, assessment and professional learning.",
+        roles: [
+            "Curriculum Coordinator",
+            "Early Years Coordinator",
+            "Cambridge Primary Coordinator",
+            "Cambridge Secondary Coordinator",
+            "IGCSE Coordinator",
+            "AS & A Level Coordinator",
+            "Examinations Officer",
+            "Professional Development Coordinator"
+        ]
+    },
+
+    {
+        title: "Business & Operations",
+        description: "School administration, technology and operational support.",
+        roles: [
+            "Finance Manager",
+            "Operations Manager",
+            "IT Manager",
+            "Facilities Manager",
+            "Transport Coordinator",
+            "Health & Safety Coordinator"
+        ]
+    },
+
+    {
+        title: "Sports & Extracurricular Activities",
+        description: "Student activities, sporting opportunities and enrichment.",
+        roles: [
+            "Head of Physical Education",
+            "Extracurricular Activities Coordinator",
+            "Sports Coordinator"
+        ]
+    },
+
+    {
+        title: "HR & Onboarding Support",
+        description: "Staff recruitment, induction and employment-related support.",
+        roles: [
+            "HR Manager",
+            "HR Officer",
+            "Staff Onboarding Coordinator",
+            "Administrative Assistant",
+            "International Staff Support"
+        ]
+    },
+
+    {
+        title: "Early Years & Primary School",
+        description: "Year-group leadership and primary education.",
+        roles: [
+            "Nursery Leader",
+            "Reception Leader",
+            "Grade 1 Leader",
+            "Grade 2 Leader",
+            "Grade 3 Leader",
+            "Grade 4 Leader",
+            "Grade 5 Leader"
+        ]
+    },
+
+    {
+        title: "Secondary School — Heads of Department",
+        description: "Subject leadership and curriculum development.",
+        roles: [
+            "Head of English",
+            "Head of Mathematics",
+            "Head of Science",
+            "Head of Humanities",
+            "Head of Azerbaijani Language",
+            "Head of Russian Language",
+            "Head of Modern Foreign Languages",
+            "Head of ICT & Computer Science",
+            "Head of Art & Design",
+            "Head of Music",
+            "Head of Physical Education"
+        ]
+    },
+
+    {
+        title: "Inclusion, Wellbeing & Student Support",
+        description: "Supporting students' individual learning and wellbeing needs.",
+        roles: [
+            "Head of Inclusion",
+            "Learning Support Coordinator",
+            "SENCO",
+            "EAL Coordinator",
+            "School Psychologist",
+            "School Counsellor",
+            "Designated Safeguarding Lead",
+            "School Nurse",
+            "University & Careers Counsellor"
+        ]
+    },
+
+    {
+        title: "Library & Learning Resources",
+        description: "Reading, research and information literacy support.",
+        roles: [
+            "Head of Library",
+            "Primary Librarian",
+            "Secondary Librarian",
+            "Library Assistant"
+        ]
+    },
+
+    {
+        title: "Admissions & Communications",
+        description: "Supporting families and communication across the school community.",
+        roles: [
+            "Admissions Manager",
+            "Admissions Officer",
+            "School Secretary",
+            "Communications Coordinator",
+            "Receptionist"
+        ]
+    }
+
+];
+
+const staffDetails = {
+    // Add confirmed staff details here later.
+    // Example:
+    // "School Director": { name: "", email: "" }
+};
+
+function createCard(role) {
+
+    const details = staffDetails[role] || {};
+
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = "👤";
+    avatar.setAttribute("aria-hidden", "true");
+
+    const roleTitle = document.createElement("div");
+    roleTitle.className = "role";
+    roleTitle.textContent = role;
+
+    const name = document.createElement("div");
+    name.className = "name";
+    name.textContent = "Name: " + (details.name || "____________");
+
+    const email = document.createElement("div");
+    email.className = "email";
+    email.textContent = "Email: ";
+
+    if (details.email) {
+        const link = document.createElement("a");
+        link.href = "mailto:" + details.email;
+        link.textContent = details.email;
+        email.appendChild(link);
+    } else {
+        email.append("____________");
+    }
+
+    card.append(avatar, roleTitle, name, email);
+
+    return card;
+}
+
+function renderDirectory(query = "") {
+
+    const directory = document.getElementById("directory");
+
+    directory.replaceChildren();
+
+    query = query.toLowerCase().trim();
+
+    let matches = 0;
+
+    departments.forEach(department => {
+
+        const filtered = department.roles.filter(role =>
+            (
+                department.title + " " +
+                role + " " +
+                (staffDetails[role]?.name || "")
+            ).toLowerCase().includes(query)
+        );
+
+        if (!filtered.length) return;
+
+        matches += filtered.length;
+
+        const section = document.createElement("section");
+
+        const title = document.createElement("h2");
+        title.textContent = department.title;
+
+        const description = document.createElement("p");
+        description.className = "description";
+        description.textContent = department.description;
+
+        const grid = document.createElement("div");
+        grid.className = "grid";
+
+        filtered.forEach(role => {
+            grid.appendChild(createCard(role));
+        });
+
+        section.append(title, description, grid);
+        directory.appendChild(section);
+
+    });
+
+    if (!matches) {
+        directory.textContent = "No matching roles found.";
+    }
+
+}
+
+document.getElementById("search").addEventListener("input", function() {
+    renderDirectory(this.value);
+});
+
+renderDirectory();
+
+</script>
+
+</body>
+</html>
