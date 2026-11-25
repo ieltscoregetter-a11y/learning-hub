@@ -10,6 +10,17 @@
 
 <style>
 
+:root {
+    --navy: #002147;
+    --gold: #c5a059;
+    --green: #16734a;
+    --border: #dce3eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     background: #f7f8fa;
@@ -18,19 +29,15 @@ body {
     line-height: 1.7;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 .course-banner {
     background: linear-gradient(120deg, #002147, #173e68);
     padding: 65px 6%;
     color: white;
-    border-bottom: 4px solid #c5a059;
+    border-bottom: 4px solid var(--gold);
 }
 
 .course-banner h1 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: Georgia, serif;
     font-size: clamp(32px, 4vw, 52px);
     line-height: 1.2;
     max-width: 950px;
@@ -39,6 +46,10 @@ body {
 .course-banner p {
     max-width: 800px;
     color: #dce5ef;
+}
+
+.course-banner a {
+    color: #f2d79b;
 }
 
 .motto {
@@ -51,7 +62,7 @@ body {
 .tag {
     display: inline-block;
     padding: 6px 15px;
-    border: 1px solid #c5a059;
+    border: 1px solid var(--gold);
     border-radius: 20px;
     margin: 5px;
     color: #f5dca5;
@@ -71,7 +82,7 @@ body {
 .lesson,
 .progress-box {
     background: white;
-    border: 1px solid #dce3eb;
+    border: 1px solid var(--border);
     border-radius: 14px;
     padding: 24px;
 }
@@ -79,8 +90,8 @@ body {
 .outline {
     align-self: start;
     position: sticky;
-    top: 120px;
-    max-height: 72vh;
+    top: 100px;
+    max-height: 75vh;
     overflow: auto;
 }
 
@@ -92,7 +103,7 @@ body {
     border: 0;
     border-radius: 6px;
     background: white;
-    color: #002147;
+    color: var(--navy);
     cursor: pointer;
     font: inherit;
     font-size: 14px;
@@ -101,12 +112,12 @@ body {
 
 .outline button.active {
     background: #eaf0f7;
-    border-left: 4px solid #c5a059;
+    border-left: 4px solid var(--gold);
     font-weight: bold;
 }
 
 .outline button.done {
-    color: #16734a;
+    color: var(--green);
 }
 
 .outline button:disabled {
@@ -123,28 +134,83 @@ body {
 }
 
 .lesson h2 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: Georgia, serif;
     font-size: 32px;
-    color: #002147;
+    color: var(--navy);
     line-height: 1.3;
 }
 
 .lesson h3 {
-    color: #002147;
+    color: var(--navy);
+}
+
+.lesson a {
+    color: #173e68;
+}
+
+.workspace-figure {
+    margin: 30px 0;
+}
+
+.workspace-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 25px rgba(0,33,71,.12);
+}
+
+.image-caption {
+    padding: 12px 5px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+    font-style: italic;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+    gap: 16px;
+    margin: 25px 0;
+}
+
+.info-card {
+    background: #edf2f8;
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.info-card h3 {
+    margin-top: 0;
+}
+
+.card-grid .info-card {
+    margin: 0;
 }
 
 .flow {
     display: grid;
-    gap: 12px;
-    margin: 25px 0;
+    gap: 30px;
+    margin: 30px auto;
+    max-width: 650px;
+    padding: 25px;
+    background: #f1f5f9;
+    border: 1px dashed #bdcadb;
+    border-radius: 14px;
 }
 
 .node {
-    border: 1px solid #dce3eb;
-    border-left: 4px solid #c5a059;
-    background: #f8fafc;
-    border-radius: 8px;
+    position: relative;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--gold);
+    background: white;
+    border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 3px 10px #00214708;
 }
 
 .node strong {
@@ -153,27 +219,22 @@ body {
     letter-spacing: 1px;
 }
 
-.node:not(:last-child):after {
+.node:not(:last-child)::after {
     content: "↓";
-    display: block;
-    color: #92702f;
+    position: absolute;
+    bottom: -31px;
+    left: 48%;
+    color: var(--navy);
+    font-size: 25px;
     font-weight: bold;
 }
 
 .note {
     background: #fff7e6;
-    border-left: 4px solid #c5a059;
+    border-left: 4px solid var(--gold);
     padding: 20px;
     margin: 20px 0;
     border-radius: 5px;
-}
-
-.info-card {
-    background: #edf2f8;
-    border: 1px solid #dce3eb;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 15px 0;
 }
 
 .choice {
@@ -191,12 +252,13 @@ body {
 }
 
 .choice:hover {
-    border-color: #c5a059;
+    border-color: var(--gold);
 }
 
 .choice.good {
     background: #e3f6e9;
     border-color: #16804c;
+    font-weight: bold;
 }
 
 .choice.bad {
@@ -211,11 +273,15 @@ body {
     gap: 12px;
     margin: 20px 0;
     flex-wrap: wrap;
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
 }
 
 .navrow button,
 .action {
-    background: #002147;
+    background: var(--navy);
     color: white;
     border: 0;
     border-radius: 8px;
@@ -239,12 +305,12 @@ body {
 
 .fill {
     height: 100%;
-    background: linear-gradient(90deg, #002147, #c5a059);
+    background: linear-gradient(90deg,#002147,#c5a059);
     transition: .3s;
 }
 
 .lesson textarea,
-.lesson input[type="text"] {
+.completion input {
     width: 100%;
     padding: 12px;
     border: 1px solid #bbc8d7;
@@ -268,12 +334,12 @@ table {
 
 td, th {
     padding: 14px;
-    border-bottom: 1px solid #dce3eb;
+    border-bottom: 1px solid var(--border);
     text-align: left;
 }
 
 th {
-    background: #002147;
+    background: var(--navy);
     color: white;
 }
 
@@ -283,42 +349,34 @@ tr:nth-child(even) {
 
 .completion {
     background: #fffdf7;
-    border: 3px double #c5a059;
+    border: 5px double var(--gold);
     border-radius: 12px;
     padding: 40px 25px;
     text-align: center;
-    color: #002147;
+    color: var(--navy);
 }
 
 .completion h1 {
     font-family: Georgia, serif;
+    font-size: 38px;
 }
 
 .completion input {
-    padding: 12px;
-    max-width: 100%;
-    font: inherit;
-    border: 1px solid #bbc8d7;
-    border-radius: 8px;
+    max-width: 400px;
 }
 
 #certName {
     font-family: Georgia, serif;
     font-size: 36px;
     font-style: italic;
-    color: #002147;
+    color: var(--navy);
 }
 
-.course-banner a {
-    color: #f2d79b;
+[hidden] {
+    display: none !important;
 }
 
-.lesson a {
-    color: #173e68;
-}
-
-@media(max-width: 800px) {
-
+@media(max-width:800px) {
     .course-layout {
         grid-template-columns: 1fr;
     }
@@ -330,6 +388,14 @@ tr:nth-child(even) {
 
     .lesson {
         padding: 18px;
+    }
+
+    .lesson h2 {
+        font-size: 26px;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -351,12 +417,13 @@ tr:nth-child(even) {
 
     .course-layout {
         display: block;
+        padding: 0;
     }
 
     .completion:not([hidden]) {
         display: block;
-        border: 5px double #c5a059;
-        padding: 50px;
+        border: 5px double var(--gold);
+        padding: 35px;
     }
 
     @page {
@@ -366,24 +433,20 @@ tr:nth-child(even) {
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header class="bos-header">
-
 <div class="bos-header-inner">
 
     <a class="bos-brand" href="./index.html">
 
-        <img
-            class="bos-logo"
-            src="./Baku-oxford-school-Logo.png"
-            alt="Baku Oxford School logo">
+        <img class="bos-logo"
+             src="./Baku-oxford-school-Logo.png"
+             alt="Baku Oxford School logo">
 
         <div>
-
             <div class="bos-school-name">
                 BAKU OXFORD SCHOOL
             </div>
@@ -391,7 +454,6 @@ tr:nth-child(even) {
             <div class="bos-hub-name">
                 Learning Hub
             </div>
-
         </div>
 
     </a>
@@ -419,7 +481,6 @@ tr:nth-child(even) {
     </nav>
 
 </div>
-
 </header>
 
 <section class="course-banner">
@@ -457,11 +518,8 @@ tr:nth-child(even) {
 <div class="course-layout" id="course">
 
     <aside class="outline">
-
         <strong>COURSE JOURNEY</strong>
-
         <div id="chapters"></div>
-
     </aside>
 
     <main>
@@ -486,30 +544,23 @@ tr:nth-child(even) {
 
             <span id="counter"></span>
 
-            <button id="next">
-                Next Chapter →
-            </button>
+            <button id="next">Next Chapter →</button>
 
         </div>
 
-        <section class="completion"
-                 id="complete"
-                 hidden>
+        <section class="completion" id="complete" hidden>
 
             <img src="./Baku-oxford-school-Logo.png"
                  alt="BOS logo"
                  width="90">
 
+            <p>BAKU OXFORD SCHOOL</p>
+
             <h1>Certificate of Completion</h1>
 
-            <p>
-                BAKU OXFORD SCHOOL<br>
-                PROFESSIONAL DEVELOPMENT
-            </p>
+            <p>PROFESSIONAL DEVELOPMENT</p>
 
-            <label for="name">
-                Enter your full name
-            </label>
+            <label for="name">Enter your full name</label>
 
             <br>
 
@@ -571,11 +622,8 @@ tr:nth-child(even) {
     <div class="bos-footer-inner">
 
         <div>
-
             <strong>Baku Oxford School</strong><br>
-
             Teaching &amp; Learning Hub
-
         </div>
 
         <div>
@@ -592,7 +640,7 @@ function flow(...items) {
 
     return '<div class="flow">' +
 
-        items.map((item, index) =>
+        items.map((item,index) =>
 
             '<div class="node"><strong>' +
 
@@ -615,7 +663,6 @@ function flow(...items) {
 const chapters = [
 
 {
-
 t: "Introduction to Workspace Studio",
 
 h: `
@@ -631,233 +678,217 @@ A flow can begin on a schedule or in response
 to an event, then carry out a sequence of tasks.
 </p>
 
-<div class="info-card">
+<figure class="workspace-figure">
 
-<h3>Flows</h3>
+    <img src="./workspace-home.webp"
+         alt="Google Workspace Studio homepage"
+         class="workspace-image">
 
-<p>
-Reusable sequences of actions that support
-repetitive professional activities.
-</p>
+    <figcaption class="image-caption">
+        Google Workspace Studio — Automate your
+        work with Gemini.
+        Screenshot source:
+        <a href="https://ai.nd.edu/news/powerful-new-gemini-tools-available-now/"
+           target="_blank" rel="noopener">
+           University of Notre Dame
+        </a>
+    </figcaption>
+
+</figure>
+
+<div class="card-grid">
+
+    <div class="info-card">
+        <h3>⚡ Flows</h3>
+        <p>
+            Reusable sequences of actions that support
+            repetitive professional activities.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <h3>📚 Templates</h3>
+        <p>
+            Preconfigured starting patterns that can
+            be adapted to suit particular tasks.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <h3>🧩 Skills</h3>
+        <p>
+            Reusable, on-demand capabilities where
+            supported by your account.
+        </p>
+    </div>
 
 </div>
 
-<div class="info-card">
-
-<h3>Templates</h3>
-
 <p>
-Preconfigured starting patterns that can
-be adapted to suit particular tasks.
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>Skills</h3>
-
-<p>
-Reusable, on-demand capabilities where
-supported by your account.
-</p>
-
-</div>
-
-<p>
-<a href="https://studio.workspace.google.com/"
-target="_blank" rel="noopener">
-
-Open Google Workspace Studio →
-
-</a>
+    <a href="https://studio.workspace.google.com/"
+       target="_blank" rel="noopener">
+        Open Google Workspace Studio →
+    </a>
 </p>
 
 <p>
-<a href="https://support.google.com/workspace-studio">
-
-Official Workspace Studio Help Centre →
-
-</a>
+    <a href="https://support.google.com/workspace-studio"
+       target="_blank" rel="noopener">
+        Official Workspace Studio Help Centre →
+    </a>
 </p>
 
 <div class="note">
 
-Availability depends on your Workspace edition,
-account settings and administrator permissions.
+    Availability depends on your Workspace edition,
+    account settings and administrator permissions.
 
-BOS availability has not yet been confirmed.
-
-This course uses illustrative examples.
+    BOS availability has not yet been confirmed.
+    This course uses illustrative examples.
 
 </div>
 
 `
-
 },
 
 {
-
 t: "Understanding Flow Components",
 
 h: `
 
 <p>
-
 Every workflow has three important components.
-
 </p>
 
-<div class="info-card">
+<div class="card-grid">
 
-<h3>1. Starter</h3>
+    <div class="info-card">
+        <h3>01 · Starter</h3>
+        <p>Determines when the flow begins.</p>
+    </div>
 
-<p>
-Determines when the flow begins.
-</p>
+    <div class="info-card">
+        <h3>02 · Steps</h3>
+        <p>Define the actions performed within the flow.</p>
+    </div>
+
+    <div class="info-card">
+        <h3>03 · Variables</h3>
+        <p>Connect information from one step to another.</p>
+    </div>
 
 </div>
 
-<div class="info-card">
+<figure class="workspace-figure">
 
-<h3>2. Steps</h3>
+    <img src="./workspace-flow.png"
+         alt="Example of a Google Workspace Studio workflow"
+         class="workspace-image">
 
-<p>
-Define the actions performed within the flow.
-</p>
+    <figcaption class="image-caption">
+        A real Workspace Studio workflow showing a starter,
+        actions and Gemini configuration.
+        Source:
+        <a href="https://developers.google.com/workspace/add-ons/studio"
+           target="_blank" rel="noopener">
+           Google for Developers
+        </a>
+    </figcaption>
 
-</div>
-
-<div class="info-card">
-
-<h3>3. Variables</h3>
-
-<p>
-Connect information from one step
-to another.
-</p>
-
-</div>
+</figure>
 
 <h3>Illustrative Workflow</h3>
 
 ` +
 
 flow(
-
-"A scheduled weekly review",
-
-"Read an approved sample document",
-
-"Summarise the main topics",
-
-"Present a draft for review"
-
+    "A scheduled weekly review",
+    "Read an approved sample document",
+    "Summarise the main topics",
+    "Present a draft for review"
 ) +
 
 `
 
 <div class="note">
-
-A starter defines when.
-Steps define what.
-Variables connect the information.
-
+    A starter defines when.
+    Steps define what.
+    Variables connect the information.
 </div>
 
 <h3>Typical Starter Categories</h3>
 
 <ul>
-
-<li>Scheduled events</li>
-<li>Incoming messages</li>
-<li>Changes to documents or spreadsheets</li>
-<li>New items in a folder</li>
-<li>Meeting-related events</li>
-
+    <li>Scheduled events</li>
+    <li>Incoming messages</li>
+    <li>Changes to documents or spreadsheets</li>
+    <li>New items in a folder</li>
+    <li>Meeting-related events</li>
 </ul>
 
 <p>
-
 Check which starters are supported
 in your own account.
-
 </p>
 
 `
-
 },
 
 {
-
 t: "Three Approaches to Building",
 
 h: `
 
-<h3>Approach 1 — Describe the Task</h3>
+<div class="info-card">
+    <h3>1. Describe the Task</h3>
+    <p>
+        Describe a simple professional routine
+        in natural language. Review any suggested
+        steps carefully.
+    </p>
+</div>
 
-<p>
+<div class="info-card">
+    <h3>2. Adapt a Template</h3>
+    <p>
+        Choose an existing template and adapt
+        its settings to your intended purpose.
+    </p>
+</div>
 
-Describe a simple professional routine
-in natural language. Review any suggested
-steps carefully.
-
-</p>
-
-<h3>Approach 2 — Adapt a Template</h3>
-
-<p>
-
-Choose an existing template and adapt
-its settings to your intended purpose.
-
-</p>
-
-<h3>Approach 3 — Build Manually</h3>
-
-<p>
-
-Select a starter and available actions
-to define your workflow.
-
-</p>
+<div class="info-card">
+    <h3>3. Build Manually</h3>
+    <p>
+        Select a starter and available actions
+        to define your workflow.
+    </p>
+</div>
 
 <div class="note">
-
-Use fictional or approved non-sensitive
-practice material.
-
-A test run may perform actual actions,
-so always inspect the configured steps.
-
+    Use fictional or approved non-sensitive practice
+    material. A test run may perform actual actions,
+    so inspect all configured steps.
 </div>
 
 <p>
-
-<a href="https://support.google.com/a/users/answer/16430397">
-
-Official Google guide: Create your first flow →
-
-</a>
-
+    <a href="https://support.google.com/workspace-studio"
+       target="_blank" rel="noopener">
+        Official Google Workspace Studio guide →
+    </a>
 </p>
 
 `
-
 },
 
 {
-
 t: "Example 1 — Daily Briefing",
 
 h: `
 
 <p>
-
 A daily briefing can help educators organise
 routine announcements and professional
 responsibilities.
-
 </p>
 
 <h3>Illustrative Workflow</h3>
@@ -865,15 +896,10 @@ responsibilities.
 ` +
 
 flow(
-
-"Weekday schedule",
-
-"Read a dedicated sample announcement list",
-
-"Group the information by topic and deadline",
-
-"Present a private draft briefing"
-
+    "Weekday schedule",
+    "Read a dedicated sample announcement list",
+    "Group information by topic and deadline",
+    "Present a private draft briefing"
 ) +
 
 `
@@ -881,17 +907,11 @@ flow(
 <h3>Sample Information</h3>
 
 <div class="info-card">
-
-<ul>
-
-<li>Tuesday: Department meeting</li>
-
-<li>Thursday: Resource request deadline</li>
-
-<li>Friday: Classroom display update</li>
-
-</ul>
-
+    <ul>
+        <li>Tuesday: Department meeting</li>
+        <li>Thursday: Resource request deadline</li>
+        <li>Friday: Classroom display update</li>
+    </ul>
 </div>
 
 <h3>Example Output</h3>
@@ -901,13 +921,9 @@ flow(
 <strong>Daily Professional Briefing</strong>
 
 <p>
-
-Tuesday — Department meeting.<br>
-
-Thursday — Submit resource request.<br>
-
-Friday — Update classroom display.
-
+    Tuesday — Department meeting.<br>
+    Thursday — Submit resource request.<br>
+    Friday — Update classroom display.
 </p>
 
 Verify all dates against the original notices.
@@ -915,35 +931,28 @@ Verify all dates against the original notices.
 </div>
 
 `
-
 },
 
 {
-
 t: "Example 2 — Meeting Preparation",
 
 h: `
 
 <p>
-
 A meeting preparation brief can organise
 approved reference material before a
 professional meeting.
-
 </p>
+
+<h3>Meeting Preparation Workflow</h3>
 
 ` +
 
 flow(
-
-"Before a scheduled practice meeting",
-
-"Collect selected fictional agenda documents",
-
-"Identify discussion topics and open questions",
-
-"Prepare a private draft meeting brief"
-
+    "Before a scheduled practice meeting",
+    "Collect selected fictional agenda documents",
+    "Identify discussion topics and open questions",
+    "Prepare a private draft meeting brief"
 ) +
 
 `
@@ -951,50 +960,33 @@ flow(
 <h3>Suggested Meeting Brief Format</h3>
 
 <div class="info-card">
-
-<ul>
-
-<li>Purpose of the meeting</li>
-
-<li>Agenda and discussion topics</li>
-
-<li>Documents to review</li>
-
-<li>Outstanding questions</li>
-
-<li>Decisions required</li>
-
-</ul>
-
+    <ul>
+        <li>Purpose of the meeting</li>
+        <li>Agenda and discussion topics</li>
+        <li>Documents to review</li>
+        <li>Outstanding questions</li>
+        <li>Decisions required</li>
+    </ul>
 </div>
 
 <div class="note">
-
-Always verify the summary against
-the original source documents.
-
+Always verify the summary against the original
+source documents.
 </div>
 
 `
-
 },
 
 {
-
 t: "Knowledge Check 1",
 
 q: "Which component determines when a flow begins?",
 
 o: [
-
-"A variable",
-
-"A starter",
-
-"A document",
-
-"A summary"
-
+    "A variable",
+    "A starter",
+    "A document",
+    "A summary"
 ],
 
 a: 1,
@@ -1004,30 +996,24 @@ e: "The starter defines the event or schedule that initiates the flow."
 },
 
 {
-
 t: "Example 3 — Meeting Action Review",
 
 h: `
 
 <p>
-
 Use fictional meeting notes to identify
 proposed responsibilities and follow-up tasks.
-
 </p>
+
+<h3>Meeting Action Workflow</h3>
 
 ` +
 
 flow(
-
-"A sample meeting note is ready",
-
-"Identify proposed action items",
-
-"Organise responsibilities and deadlines",
-
-"Present the list for staff review"
-
+    "A sample meeting note is ready",
+    "Identify proposed action items",
+    "Organise responsibilities and deadlines",
+    "Present the list for staff review"
 ) +
 
 `
@@ -1039,51 +1025,29 @@ flow(
 <table>
 
 <thead>
-
 <tr>
-
-<th>Proposed Task</th>
-
-<th>Owner</th>
-
-<th>Deadline</th>
-
+    <th>Proposed Task</th>
+    <th>Owner</th>
+    <th>Deadline</th>
 </tr>
-
 </thead>
 
 <tbody>
-
 <tr>
-
-<td>Prepare resource list</td>
-
-<td>Example Teacher A</td>
-
-<td>Friday</td>
-
+    <td>Prepare resource list</td>
+    <td>Example Teacher A</td>
+    <td>Friday</td>
 </tr>
-
 <tr>
-
-<td>Review draft agenda</td>
-
-<td>Example Teacher B</td>
-
-<td>Monday</td>
-
+    <td>Review draft agenda</td>
+    <td>Example Teacher B</td>
+    <td>Monday</td>
 </tr>
-
 <tr>
-
-<td>Prepare discussion questions</td>
-
-<td>Example Teacher C</td>
-
-<td>Tuesday</td>
-
+    <td>Prepare discussion questions</td>
+    <td>Example Teacher C</td>
+    <td>Tuesday</td>
 </tr>
-
 </tbody>
 
 </table>
@@ -1091,41 +1055,30 @@ flow(
 </div>
 
 <div class="note">
-
 A staff member should verify assignments
-and deadlines before sharing any information.
-
+and deadlines before sharing information.
 </div>
 
 `
-
 },
 
 {
-
 t: "Example 4 — Document Tracking",
 
 h: `
 
 <p>
-
-Practise organising fictional document
-receipts using invented reference numbers.
-
+Practise organising fictional document receipts
+using invented reference numbers.
 </p>
 
 ` +
 
 flow(
-
-"A fictional form is received",
-
-"Record its practice reference number",
-
-"Update a sample tracking table",
-
-"Flag missing entries for manual review"
-
+    "A fictional form is received",
+    "Record its practice reference number",
+    "Update a sample tracking table",
+    "Flag missing entries for manual review"
 ) +
 
 `
@@ -1137,51 +1090,29 @@ flow(
 <table>
 
 <thead>
-
 <tr>
-
-<th>Practice ID</th>
-
-<th>Received</th>
-
-<th>Review Status</th>
-
+    <th>Practice ID</th>
+    <th>Received</th>
+    <th>Review Status</th>
 </tr>
-
 </thead>
 
 <tbody>
-
 <tr>
-
-<td>DEMO-01</td>
-
-<td>Yes</td>
-
-<td>Verified</td>
-
+    <td>DEMO-01</td>
+    <td>Yes</td>
+    <td>✔ Verified</td>
 </tr>
-
 <tr>
-
-<td>DEMO-02</td>
-
-<td>No</td>
-
-<td>Check manually</td>
-
+    <td>DEMO-02</td>
+    <td>No</td>
+    <td>Check manually</td>
 </tr>
-
 <tr>
-
-<td>DEMO-03</td>
-
-<td>Yes</td>
-
-<td>Verified</td>
-
+    <td>DEMO-03</td>
+    <td>Yes</td>
+    <td>✔ Verified</td>
 </tr>
-
 </tbody>
 
 </table>
@@ -1189,101 +1120,74 @@ flow(
 </div>
 
 <div class="note">
-
-Real student information must only
-be handled through specifically
-authorised school systems.
-
+Real student information must only be handled
+through specifically authorised school systems.
 </div>
 
 `
-
 },
 
 {
-
 t: "Example 5 — Reusable Skills",
 
 h: `
 
 <p>
-
 When supported by your Workspace account,
 Skills offer reusable capabilities for
 on-demand professional tasks.
-
 </p>
 
 <h3>Example Applications</h3>
 
-<div class="info-card">
+<div class="card-grid">
 
-<h3>Discussion Question Builder</h3>
+    <div class="info-card">
+        <h3>💡 Discussion Builder</h3>
+        <p>
+            Develop generic classroom discussion
+            prompts based on a learning objective.
+        </p>
+    </div>
 
-<p>
+    <div class="info-card">
+        <h3>📋 Rubric Builder</h3>
+        <p>
+            Create a draft assessment rubric from
+            fictional learning objectives.
+        </p>
+    </div>
 
-Develop generic classroom discussion prompts
-based on a learning objective.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>Rubric Builder</h3>
-
-<p>
-
-Create a draft assessment rubric from
-fictional learning objectives.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>Language Support</h3>
-
-<p>
-
-Prepare draft translations of generic
-announcements into Azerbaijani or English
-for human review.
-
-</p>
+    <div class="info-card">
+        <h3>🌐 Language Support</h3>
+        <p>
+            Prepare draft translations of generic
+            announcements into Azerbaijani or English
+            for human review.
+        </p>
+    </div>
 
 </div>
 
 <div class="note">
-
 Check whether your account supports Skills.
-Review permissions and outputs before
-using or sharing a reusable capability.
-
+Review permissions and outputs before using
+or sharing a reusable capability.
 </div>
 
 `
-
 },
 
 {
-
 t: "Knowledge Check 2",
 
 q: "You want to generate a generic rubric only when you request it. Which approach best fits?",
 
 o: [
-
-"An on-demand reusable Skill, if supported",
-
-"A daily scheduled task",
-
-"An automatic reply to every email",
-
-"A permanent change to all documents"
-
+    "An on-demand reusable Skill, if supported",
+    "A daily scheduled task",
+    "An automatic reply to every email",
+    "A permanent change to all documents"
 ],
 
 a: 0,
@@ -1293,94 +1197,66 @@ e: "An on-demand capability is appropriate for tasks that are initiated by the u
 },
 
 {
-
 t: "Responsible Use and Oversight",
 
 h: `
 
 <p>
-
 Professional responsibility remains essential
 when working with AI-supported automation.
-
 </p>
 
-<div class="info-card">
+<div class="card-grid">
 
-<h3>1. Understand the Workflow</h3>
+    <div class="info-card">
+        <h3>01 · Understand the Workflow</h3>
+        <p>
+            Review the starter, actions and expected
+            results before using a flow.
+        </p>
+    </div>
 
-<p>
+    <div class="info-card">
+        <h3>02 · Maintain Human Review</h3>
+        <p>
+            Check draft communications and documents
+            before sharing them with others.
+        </p>
+    </div>
 
-Review the starter, actions and expected
-results before using a flow.
+    <div class="info-card">
+        <h3>03 · Protect Confidential Information</h3>
+        <p>
+            Use specifically authorised systems.
+            Minimise unnecessary access to personal
+            or sensitive information.
+        </p>
+    </div>
 
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>2. Maintain Human Review</h3>
-
-<p>
-
-Check draft communications and documents
-before sharing them with others.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>3. Protect Confidential Information</h3>
-
-<p>
-
-Use specifically authorised systems.
-Minimise unnecessary access to personal
-or sensitive information.
-
-</p>
-
-</div>
-
-<div class="info-card">
-
-<h3>4. Monitor Performance</h3>
-
-<p>
-
-Review run history and disable workflows
-that behave unexpectedly.
-
-</p>
+    <div class="info-card">
+        <h3>04 · Monitor Performance</h3>
+        <p>
+            Review run history and disable workflows
+            that behave unexpectedly.
+        </p>
+    </div>
 
 </div>
 
 <div class="note">
-
-AI-supported work still requires
-professional judgement.
-
+AI-supported work still requires professional judgement.
 </div>
 
 <p>
-
-<a href="./ai-ethics.html">
-
-Review the AI Vision &amp; Ethical Framework →
-
-</a>
-
+    <a href="./ai-ethics.html">
+        Review the AI Vision &amp; Ethical Framework →
+    </a>
 </p>
 
 `
-
 },
 
 {
-
 t: "Quick Reference and Reflection",
 
 h: `
@@ -1392,67 +1268,37 @@ h: `
 <table>
 
 <thead>
-
 <tr>
-
-<th>Concept</th>
-
-<th>Meaning</th>
-
+    <th>Concept</th>
+    <th>Meaning</th>
 </tr>
-
 </thead>
 
 <tbody>
-
 <tr>
-
-<td>Starter</td>
-
-<td>Event or schedule that starts a flow</td>
-
+    <td>Starter</td>
+    <td>Event or schedule that starts a flow</td>
 </tr>
-
 <tr>
-
-<td>Step</td>
-
-<td>An action within a sequence</td>
-
+    <td>Step</td>
+    <td>An action within a sequence</td>
 </tr>
-
 <tr>
-
-<td>Variable</td>
-
-<td>Information passed between steps</td>
-
+    <td>Variable</td>
+    <td>Information passed between steps</td>
 </tr>
-
 <tr>
-
-<td>Template</td>
-
-<td>A reusable starting pattern</td>
-
+    <td>Template</td>
+    <td>A reusable starting pattern</td>
 </tr>
-
 <tr>
-
-<td>Skill</td>
-
-<td>An on-demand capability, where available</td>
-
+    <td>Skill</td>
+    <td>An on-demand capability, where available</td>
 </tr>
-
 <tr>
-
-<td>Run History</td>
-
-<td>A record of workflow executions</td>
-
+    <td>Run History</td>
+    <td>A record of workflow executions</td>
 </tr>
-
 </tbody>
 
 </table>
@@ -1462,56 +1308,44 @@ h: `
 <h3>Further Professional Learning</h3>
 
 <p>
-
-<a href="https://support.google.com/workspace-studio/table/17176961">
-
-Official Starter and Step Guide →
-
-</a>
-
+    <a href="https://support.google.com/workspace-studio"
+       target="_blank" rel="noopener">
+        Official Workspace Studio Help Centre →
+    </a>
 </p>
 
 <h3>Professional Reflection</h3>
 
 <p>
-
-Describe one low-risk routine you would
-like to improve.
-
-What would trigger the workflow?
-What would it produce?
-How would you review the result?
-
+Describe one low-risk routine you would like
+to improve.
 </p>
 
-<label for="reflect">
+<ul>
+    <li>What would trigger the workflow?</li>
+    <li>What would it produce?</li>
+    <li>How would you review the result?</li>
+</ul>
 
-Your Reflection
-
-</label>
+<label for="reflect">Your Reflection</label>
 
 <textarea id="reflect"
-
-placeholder="Use fictional or non-confidential examples.">
-
-</textarea>
+          placeholder="Use fictional or non-confidential examples."></textarea>
 
 <div class="note">
 
-<label>
+    <label>
 
-<input type="checkbox" id="ack">
+        <input type="checkbox" id="ack">
 
-I understand the importance of responsible
-AI use, confidentiality and professional
-review.
+        I understand the importance of responsible
+        AI use, confidentiality and professional review.
 
-</label>
+    </label>
 
 </div>
 
 `
-
 }
 
 ];
@@ -1519,36 +1353,27 @@ review.
 const key = "bosWorkspaceStudio";
 
 let state = {
-
     done: [],
     answers: {},
     current: 0,
     reflection: "",
     ack: false,
     date: ""
-
 };
 
 try {
 
-    const saved = JSON.parse(
-        localStorage.getItem(key)
-    );
+    const saved = JSON.parse(localStorage.getItem(key));
 
     if (saved) {
-
-        state = {
-            ...state,
-            ...saved
-        };
-
+        state = {...state,...saved};
     }
 
 } catch {}
 
 let current = Math.max(
     0,
-    Math.min(11, state.current || 0)
+    Math.min(chapters.length - 1,state.current || 0)
 );
 
 const $ = id => document.getElementById(id);
@@ -1559,10 +1384,7 @@ function save() {
 
     try {
 
-        localStorage.setItem(
-            key,
-            JSON.stringify(state)
-        );
+        localStorage.setItem(key,JSON.stringify(state));
 
         const progress = JSON.parse(
             localStorage.getItem("bosPDProgress")
@@ -1570,7 +1392,7 @@ function save() {
 
         progress["google-workspace"] =
 
-            state.done.length === 12
+            state.done.length === chapters.length
 
             ? "Completed"
 
@@ -1590,16 +1412,12 @@ function allowed() {
     const chapter = chapters[current];
 
     if (chapter.q) {
-
         return state.answers[current] === chapter.a;
-
     }
 
-    if (current === 11) {
-
+    if (current === chapters.length - 1) {
         return state.ack &&
-            state.reflection.trim().length > 0;
-
+               state.reflection.trim().length > 0;
     }
 
     return true;
@@ -1612,7 +1430,7 @@ function render() {
 
     $("chapters").replaceChildren();
 
-    chapters.forEach((item, index) => {
+    chapters.forEach((item,index) => {
 
         const button = document.createElement("button");
 
@@ -1621,24 +1439,23 @@ function render() {
         button.textContent =
 
             (done
-
                 ? "✓ "
-
-                : String(index + 1).padStart(2, "0") + " · "
-
+                : String(index + 1).padStart(2,"0") + " · "
             ) + item.t;
 
         button.className =
 
-            (index === current ? "active " : "")
-
-            + (done ? "done" : "");
+            (index === current ? "active " : "") +
+            (done ? "done" : "");
 
         button.disabled =
 
             index > 0 &&
-
             !state.done.includes(index - 1);
+
+        if (index === current) {
+            button.setAttribute("aria-current","step");
+        }
 
         button.onclick = () => {
 
@@ -1674,9 +1491,9 @@ function render() {
 
         const feedback = document.createElement("p");
 
-        feedback.setAttribute("role", "status");
+        feedback.setAttribute("role","status");
 
-        chapter.o.forEach((option, index) => {
+        chapter.o.forEach((option,index) => {
 
             const button = document.createElement("button");
 
@@ -1706,6 +1523,8 @@ function render() {
 
                         "Not quite. Review the chapter and try again.";
 
+                    feedback.style.color = "#a33b3b";
+
                 }
 
             };
@@ -1715,9 +1534,7 @@ function render() {
                 button.disabled = true;
 
                 if (index === chapter.a) {
-
                     button.classList.add("good");
-
                 }
 
             }
@@ -1728,9 +1545,7 @@ function render() {
 
         if (state.answers[current] === chapter.a) {
 
-            feedback.textContent =
-
-                "Correct! " + chapter.e;
+            feedback.textContent = "Correct! " + chapter.e;
 
             feedback.style.color = "#16734a";
 
@@ -1740,7 +1555,7 @@ function render() {
 
     }
 
-    if (current === 11) {
+    if (current === chapters.length - 1) {
 
         $("reflect").value = state.reflection;
 
@@ -1774,7 +1589,7 @@ function render() {
 
     $("next").textContent =
 
-        current === 11
+        current === chapters.length - 1
 
         ? "Finish Training →"
 
@@ -1782,46 +1597,51 @@ function render() {
 
     $("counter").textContent =
 
-        "Chapter " +
+        "Chapter " + (current + 1) +
 
-        (current + 1) +
-
-        " of 12";
+        " of " + chapters.length;
 
     const percentage = Math.round(
 
-        state.done.length / 12 * 100
+        state.done.length / chapters.length * 100
 
     );
 
-    $("percent").textContent =
+    $("percent").textContent = " · " + percentage + "%";
 
-        " · " + percentage + "%";
-
-    $("fill").style.width =
-
-        percentage + "%";
+    $("fill").style.width = percentage + "%";
 
     $("complete").hidden =
 
-        state.done.length !== 12;
+        state.done.length !== chapters.length;
 
     $("date").textContent =
 
         state.date
 
         ? new Date(state.date).toLocaleDateString(
+
             "en-GB",
+
             {
                 day: "numeric",
                 month: "long",
                 year: "numeric"
             }
+
         )
 
         : "";
 
     save();
+
+}
+
+function scrollToCourse() {
+
+    $("course").scrollIntoView({
+        behavior: "smooth"
+    });
 
 }
 
@@ -1833,11 +1653,7 @@ $("prev").onclick = () => {
 
         render();
 
-        $("course").scrollIntoView({
-
-            behavior: "smooth"
-
-        });
+        scrollToCourse();
 
     }
 
@@ -1853,17 +1669,13 @@ $("next").onclick = () => {
 
     }
 
-    if (current < 11) {
+    if (current < chapters.length - 1) {
 
         current++;
 
         render();
 
-        $("course").scrollIntoView({
-
-            behavior: "smooth"
-
-        });
+        scrollToCourse();
 
     } else {
 
@@ -1874,12 +1686,16 @@ $("next").onclick = () => {
         render();
 
         $("complete").scrollIntoView({
-
             behavior: "smooth"
-
         });
 
     }
+
+};
+
+$("name").oninput = () => {
+
+    $("certName").textContent = $("name").value.trim();
 
 };
 
