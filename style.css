@@ -620,5 +620,10 @@ main.bos-container {
 
     .pd-hero .bos-hero-inner {
         min-height: 350px;
+        .bos-hero.pd-hero {
+    background-image:
+        linear-gradient(90deg, #002147f2, #00214780 50%, transparent),
+        url("./pd.conference.png");
+}
     }
 }
