@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOS | Sustainability</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #f5f7fa;
+    color: #18263b;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    background: white;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-bottom: 1px solid #dce2eb;
+}
+
+header strong {
+    color: #17365d;
+    font-size: 23px;
+}
+
+nav a {
+    color: #17365d;
+    text-decoration: none;
+    margin-right: 18px;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(120deg, #142b49, #274e78);
+    color: white;
+    padding: 50px 8%;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 5vw, 55px);
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.hero p {
+    max-width: 850px;
+    font-size: 19px;
+    color: #e0e8f1;
+}
+
+.eyebrow {
+    color: #e5c477;
+    letter-spacing: 2px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.tag {
+    background: #ffffff16;
+    border: 1px solid #ffffff35;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+main {
+    max-width: 1450px;
+    margin: auto;
+    padding: 35px 5%;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+    gap: 25px;
+    align-items: start;
+}
+
+.sidebar {
+    background: white;
+    padding: 20px;
+    border: 1px solid #dce2eb;
+    border-radius: 15px;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar h3 {
+    color: #17365d;
+    margin: 0 0 18px;
+}
+
+.chapter-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: white;
+    border: none;
+    padding: 14px 10px;
+    border-radius: 9px;
+    text-align: left;
+    gap: 12px;
+    cursor: pointer;
+    color: #536176;
+    font: inherit;
+}
+
+.chapter-link.active {
+    background: #eaf0f8;
+    color: #17365d;
+    font-weight: bold;
+}
+
+.chapter-link:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.number {
+    flex-shrink: 0;
+    background: #eaf0f8;
+    color: #17365d;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    font-weight: bold;
+}
+
+.chapter-link.done .number {
+    background: #20734b;
+    color: white;
+}
+
+.progress-panel {
+    background: white;
+    border: 1px solid #dce2eb;
+    padding: 18px 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #17365d;
+}
+
+.progress-track {
+    background: #e1e7ef;
+    height: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+#progressBar {
+    width: 0;
+    height: 100%;
+    background: #20734b;
+    transition: width 0.3s;
+}
+
+.chapter {
+    background: white;
+    border: 1px solid #dce2eb;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.chapter-heading {
+    padding: 26px 30px;
+    background: #17365d;
+    color: white;
+}
+
+.chapter-heading h2 {
+    margin: 8px 0 0;
+    font-size: 28px;
+}
+
+.chapter-content {
+    padding: 30px;
+}
+
+.chapter-content h3 {
+    color: #17365d;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.card {
+    background: #f0f5f9;
+    border: 1px solid #dce2eb;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.highlight {
+    background: #eaf5ee;
+    border-left: 5px solid #20734b;
+    border-radius: 8px;
+    padding: 22px;
+    margin: 22px 0;
+}
+
+.note {
+    background: #fff7e4;
+    padding: 18px;
+    border-radius: 10px;
+    margin: 20px 0;
+    color: #745623;
+}
+
+.question {
+    border: 1px solid #dce2eb;
+    padding: 24px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.option {
+    display: block;
+    border: 1px solid #dce2eb;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #eef3f9;
+}
+
+.option.correct {
+    background: #e7f8ed;
+    border-color: #75c193;
+}
+
+.option.incorrect {
+    background: #fcecec;
+    border-color: #dc9191;
+}
+
+.feedback {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.feedback.good {
+    color: #20734b;
+}
+
+.feedback.bad {
+    color: #a83939;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    background: white;
+    border: 1px solid #dce2eb;
+    padding: 18px;
+    border-radius: 14px;
+    margin-top: 20px;
+}
+
+button, .button {
+    background: #17365d;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+button:focus-visible, a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #d4af65;
+    outline-offset: 3px;
+}
+
+input[type="text"] {
+    width: 100%;
+    border: 1px solid #b9c6d6;
+    padding: 12px;
+    font: inherit;
+    border-radius: 8px;
+    margin: 10px 0 18px;
+}
+
+#completion {
+    background: #17365d;
+    color: white;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+#completion h2 {
+    font-size: 36px;
+}
+
+#completion button,
+#completion .button {
+    background: #e5c477;
+    color: #17365d;
+    margin: 7px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+footer {
+    background: #142b49;
+    color: white;
+    padding: 24px;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .chapter-content {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <strong>BOS Learning Hub</strong>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="orientation.html">Orientation</a>
+        <a href="pd.html">PD Modules</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <div class="eyebrow">PROFESSIONAL DEVELOPMENT · SUSTAINABILITY</div>
+
+    <h1>Sustainability at BOS</h1>
+
+    <p>
+        A practical professional learning module exploring how
+        staff and students can contribute to a more environmentally
+        responsible school community.
+    </p>
+
+    <div class="tags">
+        <span class="tag">25 minutes</span>
+        <span class="tag">8 chapters</span>
+        <span class="tag">Knowledge checks</span>
+        <span class="tag">Completion certificate</span>
+    </div>
+
+</section>
+
+<main>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h3>Course Chapters</h3>
+        <div id="chapterList"></div>
+    </aside>
+
+    <div>
+
+        <div class="progress-panel">
+
+            <div class="progress-label">
+                <span>Course Progress</span>
+                <span id="percentage">0%</span>
+            </div>
+
+            <div class="progress-track"
+                 role="progressbar"
+                 aria-label="Course progress"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 aria-valuenow="0">
+
+                <div id="progressBar"></div>
+
+            </div>
+
+        </div>
+
+        <article class="chapter" id="chapterPanel">
+
+            <div class="chapter-heading">
+
+                <div class="eyebrow" id="chapterNumber"></div>
+
+                <h2 id="chapterTitle" tabindex="-1"></h2>
+
+            </div>
+
+            <div class="chapter-content" id="chapterContent"></div>
+
+        </article>
+
+        <div class="navigation">
+
+            <button id="previous" onclick="movePrevious()">
+                ← Previous
+            </button>
+
+            <span id="chapterPosition"></span>
+
+            <button id="next" onclick="moveNext()">
+                Next Chapter →
+            </button>
+
+        </div>
+
+        <p id="message" role="status"></p>
+
+        <section id="completion" hidden>
+
+            <h2>🎓 Course Complete!</h2>
+
+            <p>
+                You have completed the Sustainability at BOS
+                professional learning demonstration.
+                Take your learning into your everyday practice.
+            </p>
+
+            <button onclick="downloadCertificate()">
+                Download Sample Certificate
+            </button>
+
+            <a class="button" href="pd.html">
+                Return to PD Modules
+            </a>
+
+        </section>
+
+    </div>
+
+</div>
+
+</main>
+
+<footer>
+    Baku Oxford School Learning Hub | Professional Learning Demonstration
+</footer>
+
+<script>
+
+const chapters = [
+
+    {
+        title: "Sustainability at BOS",
+        content: `
+            <h3>Understanding Sustainability</h3>
+
+            <p>
+                Sustainability involves making responsible choices
+                about the resources we use and considering the
+                environmental needs of future generations.
+            </p>
+
+            <p>
+                Schools can help young people develop knowledge,
+                habits and attitudes that support a healthier planet.
+                Every member of the school community can contribute.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Environmental Responsibility</h3>
+                    <p>Protect natural resources and reduce avoidable waste.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Shared Participation</h3>
+                    <p>Encourage staff and students to contribute through practical actions.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Long-term Habits</h3>
+                    <p>Develop routines that can be maintained throughout the academic year.</p>
+                </div>
+
+            </div>
+
+            <div class="highlight">
+                <strong>Learning objective</strong>
+
+                <p>
+                    Identify practical sustainability actions
+                    that can be introduced in your professional role.
+                </p>
+            </div>
+
+            <div class="note">
+                This demonstration presents proposed initiatives.
+                Official BOS sustainability priorities and committee
+                arrangements will be added following school confirmation.
+            </div>
+        `
+    },
+
+    {
+        title: "Our Sustainability Priorities",
+        content: `
+            <p>
+                The following initiatives could form part of a
+                whole-school sustainability action plan for BOS.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Waste Reduction</h3>
+                    <p>Reduce unnecessary consumption and encourage responsible waste separation.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Reuse & Resource Sharing</h3>
+                    <p>Organise book exchanges and reusable classroom resource collections.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Water Conservation</h3>
+                    <p>Promote responsible water use and report leaking taps.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Energy Efficiency</h3>
+                    <p>Reduce electricity consumption through appropriate classroom routines.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Biodiversity</h3>
+                    <p>Explore planting projects and the natural environment of Azerbaijan.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Student-led Projects</h3>
+                    <p>Support student research, environmental campaigns and creative solutions.</p>
+                </div>
+
+            </div>
+
+            <div class="highlight">
+                <strong>Local Context</strong>
+
+                <p>
+                    Students could investigate urban sustainability
+                    in Baku, the Caspian Sea environment and
+                    resource conservation in Azerbaijan.
+                </p>
+            </div>
+        `
+    },
+
+    {
+        title: "Everyday Sustainable Practices",
+        content: `
+            <h3>Making Sustainable Choices</h3>
+
+            <p>
+                Consistent classroom and workplace routines
+                can contribute to meaningful environmental improvement.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>Print Responsibly</h3>
+                    <p>Use double-sided printing and share materials digitally where appropriate.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Reuse Materials</h3>
+                    <p>Keep suitable materials for future classroom activities.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Save Energy</h3>
+                    <p>Switch off unused classroom lights and equipment when appropriate.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Reduce Disposable Items</h3>
+                    <p>Choose reusable water bottles, cups and containers when possible.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Conserve Water</h3>
+                    <p>Close taps properly and report maintenance problems.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Lead by Example</h3>
+                    <p>Demonstrate responsible environmental choices to students.</p>
+                </div>
+
+            </div>
+
+            <div class="highlight">
+                <strong>Reflection prompt</strong>
+
+                <p>
+                    Which two routines could you improve
+                    in your classroom this week?
+                </p>
+            </div>
+        `
+    },
+
+    {
+        title: "Knowledge Check 1",
+        questions: [
+            {
+                question: "Who can contribute to sustainability in a school?",
+                options: [
+                    "Only science teachers",
+                    "Only senior leaders",
+                    "All members of the school community",
+                    "Only students"
+                ],
+                correct: 2,
+                explanation: "Environmental responsibility can be shared by staff, students and school leaders."
+            },
+            {
+                question: "Which approach is most likely to produce lasting change?",
+                options: [
+                    "A single environmental poster",
+                    "Consistent resource-saving routines throughout the year",
+                    "Buying new materials every month",
+                    "Waiting until the end of the academic year"
+                ],
+                correct: 1,
+                explanation: "Regular, achievable actions create lasting habits and opportunities to monitor improvement."
+            }
+        ]
+    },
+
+    {
+        title: "Classroom Paper Recycling",
+        content: `
+            <h3>A Proposed Classroom Initiative</h3>
+
+            <p>
+                A classroom paper-recycling system can support
+                responsible resource use when it is connected
+                to an approved collection and recycling process.
+            </p>
+
+            <div class="grid">
+
+                <div class="card">
+                    <h3>1. Establish the System</h3>
+                    <p>Confirm collection arrangements and select an accessible, clearly labelled container.</p>
+                </div>
+
+                <div class="card">
+                    <h3>2. Teach the Routine</h3>
+                    <p>Explain which materials can be recycled and demonstrate correct sorting.</p>
+                </div>
+
+                <div class="card">
+                    <h3>3. Review Progress</h3>
+                    <p>Invite students to monitor paper use and suggest improvements.</p>
+                </div>
+
+            </div>
+
+            <div class="highlight">
+
+                <h3>Suitable Materials</h3>
+
+                <ul>
+                    <li>Clean, dry worksheets</li>
+                    <li>Suitable scrap paper</li>
+                    <li>Non-confidential printed materials</li>
+                </ul>
+
+                <h3>Separate Materials</h3>
+
+                <ul>
+                    <li>Food-contaminated paper</li>
+                    <li>Wet materials and used tissues</li>
+                    <li>Confidential student and staff documents</li>
+                </ul>
+
+            </div>
+
+            <p>
+                Follow the school's approved waste collection
+                and confidential document disposal procedures.
+            </p>
+        `
+    },
+
+    {
+        title: "Your Role as a BOS Staff Member",
+        content: `
+            <p>
+                Staff members can contribute to environmental
+                education through their professional practice
+                and everyday decisions.
+            </p>
+
+            <div class="card">
+                <h3>Support Student Learning</h3>
+                <p>Connect environmental questions to relevant curriculum objectives.</p>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <h3>Model Responsible Behaviour</h3>
+                <p>Demonstrate thoughtful resource use, reuse and waste reduction.</p>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <h3>Encourage Student Agency</h3>
+                <p>Help students investigate problems and propose realistic environmental solutions.</p>
+            </div>
+
+            <br>
+
+            <div class="card">
+                <h3>Work Collaboratively</h3>
+                <p>Share successful practices with colleagues and support approved school initiatives.</p>
+            </div>
+
+            <div class="highlight">
+                <strong>Professional application</strong>
+
+                <p>
+                    Choose one sustainability action, identify how
+                    you will implement it and decide what evidence
+                    could demonstrate progress.
+                </p>
+            </div>
+        `
+    },
+
+    {
+        title: "Completion Check",
+        questions: [
+            {
+                question: "A recycling container is introduced in your classroom. What should you do first?",
+                options: [
+                    "Use it for all types of waste",
+                    "Explain its purpose and demonstrate correct sorting",
+                    "Place it somewhere inaccessible",
+                    "Ask students to work out its purpose independently"
+                ],
+                correct: 1,
+                explanation: "Clear explanations and modelling help students understand the routine."
+            },
+            {
+                question: "Your classroom will be empty during lunch. What is an appropriate energy-saving action?",
+                options: [
+                    "Leave all equipment running",
+                    "Wait for students to return",
+                    "Switch off unused lights and equipment where appropriate",
+                    "Turn off essential safety systems"
+                ],
+                correct: 2,
+                explanation: "Switching off ordinary unused equipment, where permitted, reduces unnecessary energy consumption."
+            },
+            {
+                question: "Students propose a book exchange. How could you support their initiative?",
+                options: [
+                    "Help them develop a plan and obtain appropriate school approval",
+                    "Ignore their proposal",
+                    "Discourage student participation",
+                    "Replace all existing books with new purchases"
+                ],
+                correct: 0,
+                explanation: "Supporting student-led projects encourages responsibility, collaboration and resource reuse."
+            }
+        ]
+    },
+
+    {
+        title: "Staff Acknowledgement",
+        content: `
+            <h3>Your Sustainability Commitment</h3>
+
+            <p>
+                Consider the practices introduced throughout
+                this professional learning module:
+            </p>
+
+            <ul>
+                <li>Use school resources responsibly.</li>
+                <li>Reduce unnecessary waste and printing.</li>
+                <li>Support approved environmental initiatives.</li>
+                <li>Encourage student participation.</li>
+                <li>Model sustainable professional practices.</li>
+            </ul>
+
+            <label for="staffName"><strong>Your name</strong></label>
+
+            <input type="text" id="staffName"
+                   placeholder="Enter your name for the sample certificate">
+
+            <label class="option">
+                <input type="checkbox" id="acknowledge">
+                I acknowledge the learning covered in this
+                module and will consider appropriate sustainability
+                practices in my professional role.
+            </label>
+
+            <p>
+                The completion record and name are stored locally
+                in this browser.
+            </p>
+        `
+    }
+
+];
+
+const courseKey = "bosSustainabilityProgress";
+const catalogKey = "bosPDProgress";
+
+let state = {
+    current: 0,
+    completed: [],
+    answers: {},
+    name: "",
+    acknowledgement: false,
+    finishedAt: ""
+};
+
+try {
+    const saved = JSON.parse(localStorage.getItem(courseKey));
+    if (saved) state = { ...state, ...saved };
+} catch {}
+
+function saveProgress() {
+    try {
+        localStorage.setItem(courseKey, JSON.stringify(state));
+
+        const catalog = JSON.parse(
+            localStorage.getItem(catalogKey) || "{}"
+        );
+
+        catalog.sustainability =
+            state.completed.length === chapters.length
+            ? "Completed"
+            : "In progress";
+
+        localStorage.setItem(catalogKey, JSON.stringify(catalog));
+
+    } catch {
+        document.getElementById("message").textContent =
+            "Progress could not be saved in this browser.";
+    }
+}
+
+function allCorrect() {
+
+    const chapter = chapters[state.current];
+
+    if (!chapter.questions) return true;
+
+    return chapter.questions.every((question, index) =>
+        state.answers[state.current + "-" + index] === question.correct
+    );
+}
+
+function updateProgress() {
+
+    const percent = Math.round(
+        state.completed.length / chapters.length * 100
+    );
+
+    document.getElementById("percentage").textContent =
+        percent + "%";
+
+    document.getElementById("progressBar").style.width =
+        percent + "%";
+
+    document.querySelector(".progress-track")
+        .setAttribute("aria-valuenow", percent);
+}
+
+function renderSidebar() {
+
+    const list = document.getElementById("chapterList");
+
+    list.replaceChildren();
+
+    chapters.forEach((chapter, index) => {
+
+        const completed = state.completed.includes(index);
+
+        const unlocked =
+            index === 0 ||
+            state.completed.includes(index - 1);
+
+        const button = document.createElement("button");
+
+        button.className =
+            "chapter-link" +
+            (index === state.current ? " active" : "") +
+            (completed ? " done" : "");
+
+        button.disabled = !unlocked;
+
+        button.innerHTML =
+            '<span class="number">' +
+            (completed ? "✓" : index + 1) +
+            '</span><span>' + chapter.title + '</span>';
+
+        button.onclick = () => {
+            state.current = index;
+            saveProgress();
+            render();
+        };
+
+        list.appendChild(button);
+    });
+}
+
+function renderQuiz(chapter) {
+
+    const body = document.getElementById("chapterContent");
+
+    body.innerHTML =
+        "<p>Select the correct answer to each question to continue.</p>";
+
+    chapter.questions.forEach((question, index) => {
+
+        const key = state.current + "-" + index;
+
+        const field = document.createElement("fieldset");
+
+        field.className = "question";
+
+        const legend = document.createElement("legend");
+
+        legend.textContent =
+            "Question " + (index + 1) +
+            " of " + chapter.questions.length;
+
+        field.appendChild(legend);
+
+        const heading = document.createElement("h3");
+        heading.textContent = question.question;
+        field.appendChild(heading);
+
+        const feedback = document.createElement("p");
+        feedback.className = "feedback";
+        feedback.setAttribute("role", "status");
+
+        question.options.forEach((option, choice) => {
+
+            const label = document.createElement("label");
+            label.className = "option";
+
+            const radio = document.createElement("input");
+
+            radio.type = "radio";
+            radio.name = "question-" + index;
+            radio.value = choice;
+            radio.checked = state.answers[key] === choice;
+
+            if (state.answers[key] === question.correct &&
+                choice === question.correct) {
+                label.classList.add("correct");
+            }
+
+            radio.disabled =
+                state.completed.includes(state.current);
+
+            radio.addEventListener("change", () => {
+
+                state.answers[key] = choice;
+
+                field.querySelectorAll(".option").forEach(item => {
+                    item.classList.remove("correct", "incorrect");
+                });
+
+                const correct = choice === question.correct;
+
+                label.classList.add(correct ? "correct" : "incorrect");
+
+                feedback.className =
+                    "feedback " + (correct ? "good" : "bad");
+
+                feedback.textContent = correct
+                    ? "Correct. " + question.explanation
+                    : "Try again. Review the learning before choosing another answer.";
+
+                saveProgress();
+                updateNavigation();
+
+            });
+
+            label.append(radio, " " + option);
+
+            field.appendChild(label);
+        });
+
+        if (state.answers[key] === question.correct) {
+            feedback.className = "feedback good";
+            feedback.textContent = "Correct. " + question.explanation;
+        }
+
+        field.appendChild(feedback);
+
+        body.appendChild(field);
+    });
+}
+
+function updateNavigation() {
+
+    const last = state.current === chapters.length - 1;
+
+    const next = document.getElementById("next");
+
+    document.getElementById("previous").disabled =
+        state.current === 0;
+
+    document.getElementById("chapterPosition").textContent =
+        "Chapter " + (state.current + 1) +
+        " of " + chapters.length;
+
+    next.textContent =
+        last ? "Finish Training →" : "Next Chapter →";
+
+    next.disabled = last
+        ? !(state.acknowledgement && state.name.trim()) ||
+          state.completed.length === chapters.length
+        : !allCorrect();
+}
+
+function render() {
+
+    const chapter = chapters[state.current];
+
+    document.getElementById("chapterNumber").textContent =
+        "CHAPTER " + (state.current + 1);
+
+    document.getElementById("chapterTitle").textContent =
+        chapter.title;
+
+    if (chapter.questions) {
+
+        renderQuiz(chapter);
+
+    } else {
+
+        document.getElementById("chapterContent").innerHTML =
+            chapter.content;
+
+    }
+
+    if (state.current === chapters.length - 1) {
+
+        const name = document.getElementById("staffName");
+
+        const ack = document.getElementById("acknowledge");
+
+        name.value = state.name;
+        ack.checked = state.acknowledgement;
+
+        if (state.completed.length === chapters.length) {
+            name.disabled = true;
+            ack.disabled = true;
+        }
+
+        name.addEventListener("input", () => {
+            state.name = name.value;
+            saveProgress();
+            updateNavigation();
+        });
+
+        ack.addEventListener("change", () => {
+            state.acknowledgement = ack.checked;
+            saveProgress();
+            updateNavigation();
+        });
+    }
+
+    document.getElementById("completion").hidden =
+        state.completed.length !== chapters.length;
+
+    renderSidebar();
+    updateProgress();
+    updateNavigation();
+
+}
+
+function movePrevious() {
+
+    if (state.current === 0) return;
+
+    state.current--;
+
+    saveProgress();
+    render();
+
+    document.getElementById("chapterPanel")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+
+}
+
+function moveNext() {
+
+    if (!allCorrect()) return;
+
+    const last = state.current === chapters.length - 1;
+
+    if (last && (!state.acknowledgement || !state.name.trim())) {
+        return;
+    }
+
+    if (!state.completed.includes(state.current)) {
+        state.completed.push(state.current);
+    }
+
+    if (last) {
+
+        if (!state.finishedAt) {
+            state.finishedAt = new Date().toISOString();
+        }
+
+        saveProgress();
+        render();
+
+        document.getElementById("completion")
+            .scrollIntoView({ behavior: "smooth" });
+
+    } else {
+
+        state.current++;
+
+        saveProgress();
+        render();
+
+        document.getElementById("chapterPanel")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+
+    }
+}
+
+function escapeHTML(value) {
+
+    const element = document.createElement("div");
+    element.textContent = value;
+    return element.innerHTML;
+
+}
+
+function downloadCertificate() {
+
+    if (state.completed.length !== chapters.length) return;
+
+    const name = escapeHTML(state.name);
+
+    const date = new Date(state.finishedAt)
+        .toLocaleDateString("en-GB");
+
+    const certificate = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Sample Certificate</title>
+        </head>
+        <body style="
+            font-family:Georgia,serif;
+            background:#f5f7fa;
+            text-align:center;
+            padding:30px;
+            color:#17365d;">
+            <div style="
+                max-width:850px;
+                margin:auto;
+                border:8px double #d4af65;
+                background:white;
+                padding:65px 25px;">
+
+                <p>BAKU OXFORD SCHOOL LEARNING HUB</p>
+
+                <h1>Certificate of Completion</h1>
+
+                <p>This sample certificate recognises</p>
+
+                <h2>${name}</h2>
+
+                <p>for completing the professional learning module</p>
+
+                <h2>Sustainability at BOS</h2>
+
+                <p>Completion date: ${date}</p>
+
+                <p>8 chapters · Knowledge checks completed</p>
+
+                <hr>
+
+                <p>Demonstration certificate — not an officially accredited BOS award.</p>
+
+                <button onclick="window.print()">Print / Save as PDF</button>
+
+            </div>
+        </body>
+        </html>
+    `;
+
+    const blob = new Blob(
+        [certificate],
+        { type: "text/html;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "BOS-Sustainability-Certificate.html";
+    link.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>
