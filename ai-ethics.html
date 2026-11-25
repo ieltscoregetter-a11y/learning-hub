@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOS | AI Vision & Ethical Framework</title>
+
+<style>
+:root {
+    --navy: #102b49;
+    --gold: #cba34c;
+    --background: #f4f6f9;
+    --text: #334155;
+    --border: #dce3eb;
+    --green: #16734a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+header {
+    background: white;
+    border-bottom: 3px solid var(--gold);
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.brand {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--navy);
+}
+
+a { color: var(--navy); text-decoration: none; }
+
+.hero {
+    background: linear-gradient(120deg, #102b49, #234c72);
+    color: white;
+    padding: 65px 7%;
+    border-bottom: 5px solid var(--gold);
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.eyebrow {
+    color: #e6c777;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid #ffffff55;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin: 5px 5px 5px 0;
+    font-size: 14px;
+}
+
+.layout {
+    max-width: 1300px;
+    margin: 35px auto;
+    padding: 0 22px;
+    display: grid;
+    grid-template-columns: 275px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.sidebar {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+.sidebar h3 {
+    color: var(--navy);
+    margin-top: 0;
+}
+
+.chapter {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 13px 8px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text);
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.chapter.active {
+    background: #e8eef6;
+    color: var(--navy);
+    font-weight: bold;
+    border-left: 4px solid var(--gold);
+}
+
+.chapter:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.number {
+    border: 1px solid #b7c4d4;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+}
+
+.chapter.active .number {
+    background: var(--navy);
+    color: white;
+}
+
+.chapter.done .number {
+    background: var(--green);
+    color: white;
+    border-color: var(--green);
+}
+
+.progress-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e4e9f0;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--navy), var(--gold));
+    transition: width .3s;
+}
+
+.section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.section-heading {
+    background: var(--navy);
+    color: white;
+    padding: 25px 30px;
+    border-bottom: 4px solid var(--gold);
+}
+
+.section-heading h2 {
+    margin: 5px 0 0;
+    line-height: 1.3;
+}
+
+.section-body { padding: 30px; }
+
+h3, h4 { color: var(--navy); }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.card {
+    background: #f4f7fb;
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.card h3 { margin-top: 0; }
+
+.callout {
+    background: #edf3fa;
+    border-left: 5px solid #345c86;
+    padding: 20px;
+    margin: 22px 0;
+    border-radius: 5px;
+}
+
+.warning {
+    background: #fff8e5;
+    border-left: 5px solid var(--gold);
+    padding: 20px;
+    margin: 22px 0;
+}
+
+.table-wrap { overflow-x: auto; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th, td {
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    padding: 14px;
+}
+
+th {
+    background: var(--navy);
+    color: white;
+}
+
+tr:nth-child(even) { background: #f4f7fb; }
+
+.level {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 13px 0;
+}
+
+.level-number {
+    min-width: 80px;
+    background: var(--navy);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.level-content { padding: 17px; }
+
+.level-content h3 { margin: 0; }
+
+.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 18px;
+    border-radius: 9px;
+    margin: 12px 0;
+    cursor: pointer;
+    font: inherit;
+    color: var(--text);
+}
+
+.option:hover { border-color: var(--gold); }
+
+.option.correct {
+    background: #e6f7ed;
+    border-color: #58ae79;
+    color: #145b39;
+}
+
+.option.incorrect {
+    background: #fff0f0;
+    border-color: #d88b8b;
+}
+
+.feedback {
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.feedback:empty { display: none; }
+
+.success { background: #e6f7ed; color: #145b39; }
+.error { background: #fff0f0; color: #9c3030; }
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.btn {
+    background: var(--navy);
+    color: white;
+    padding: 13px 22px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn.gold {
+    background: var(--gold);
+    color: #102b49;
+}
+
+.btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+textarea, input[type="text"] {
+    width: 100%;
+    border: 1px solid #bbc8d7;
+    border-radius: 8px;
+    padding: 14px;
+    font: inherit;
+    margin: 10px 0 20px;
+}
+
+textarea { min-height: 130px; resize: vertical; }
+
+#completion {
+    display: none;
+    text-align: center;
+    background: var(--navy);
+    color: white;
+    margin-top: 25px;
+    padding: 40px 25px;
+    border-radius: 12px;
+}
+
+#completion h2 { font-size: 32px; }
+
+#completion a { color: white; }
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .grid { grid-template-columns: 1fr; }
+    .section-body { padding: 20px; }
+    .navigation { flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand">BAKU OXFORD SCHOOL | Learning Hub</div>
+    <nav>
+        <a href="index.html">Home</a>
+        &nbsp; | &nbsp;
+        <a href="pd.html">PD Modules</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">PROFESSIONAL DEVELOPMENT</div>
+    <h1>AI Vision &amp; Ethical Framework</h1>
+    <p>Developing a responsible, human-centred and educationally meaningful approach to artificial intelligence.</p>
+
+    <span class="badge">9 Chapters</span>
+    <span class="badge">1 PD Hour</span>
+    <span class="badge">Knowledge Checks</span>
+    <span class="badge">Professional Reflection</span>
+</section>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h3>Course Journey</h3>
+        <div id="chapterList"></div>
+    </aside>
+
+    <main>
+
+        <div class="progress-card">
+            <strong>Course Progress</strong>
+            <span id="percentage" style="float:right">0%</span>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-heading">
+                <div class="eyebrow" id="sectionLabel"></div>
+                <h2 id="chapterTitle"></h2>
+            </div>
+            <div class="section-body" id="content"></div>
+        </div>
+
+        <div class="navigation">
+            <button class="btn" id="previousBtn" onclick="previousChapter()">← Previous</button>
+            <span id="chapterCounter"></span>
+            <button class="btn" id="nextBtn" onclick="nextChapter()">Next Chapter →</button>
+        </div>
+
+        <div id="completion">
+            <div style="font-size:48px;color:#e6c777">★</div>
+            <h2>Congratulations!</h2>
+            <p>You have completed all nine chapters of the AI Vision &amp; Ethical Framework module.</p>
+            <p>Your completion has been recorded on this device.</p>
+
+            <label for="certificateName">Enter your full name</label>
+            <input type="text" id="certificateName" placeholder="Full name">
+
+            <button class="btn gold" onclick="downloadCertificate()">
+                Download Certificate
+            </button>
+
+            <p><a href="pd.html">← Return to PD Modules</a></p>
+        </div>
+
+    </main>
+</div>
+
+<footer>
+    Baku Oxford School | Teaching &amp; Learning Hub<br>
+    Professional learning resource — proposed framework for school review.
+</footer>
+
+<script>
+
+const chapters = [
+
+{
+title: "Why AI Governance Matters",
+html: `
+<p>Artificial intelligence offers significant opportunities to improve teaching, learning, accessibility and professional productivity. However, its educational value depends on how thoughtfully it is used.</p>
+
+<p>A responsible approach balances innovation with academic integrity, privacy, student wellbeing and professional judgement.</p>
+
+<div class="callout">
+<h3>Our Proposed Vision</h3>
+<p>To develop confident, critical and responsible users of artificial intelligence while ensuring that technology strengthens, rather than replaces, human learning.</p>
+</div>
+
+<div class="grid">
+<div class="card">
+<h3>Future-Ready Learners</h3>
+<p>Prepare students to understand, evaluate and use emerging technologies responsibly.</p>
+</div>
+
+<div class="card">
+<h3>Effective Teaching</h3>
+<p>Support planning, differentiation and resource development without replacing teacher expertise.</p>
+</div>
+
+<div class="card">
+<h3>Student Protection</h3>
+<p>Protect confidential information, wellbeing and age-appropriate access.</p>
+</div>
+
+<div class="card">
+<h3>Authentic Learning</h3>
+<p>Ensure that students demonstrate their own knowledge, reasoning and understanding.</p>
+</div>
+</div>
+
+<div class="warning">
+This module presents a proposed professional learning framework. Formal school policies and approved procedures take precedence.
+</div>
+`
+},
+
+{
+title: "Six Principles of Responsible AI",
+html: `
+<p>The following principles provide a foundation for responsible decision-making in an educational environment.</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>01 | Human-Centred Learning</h3>
+<p>AI should strengthen human thinking, creativity and meaningful learning. Teachers remain central to the educational process.</p>
+</div>
+
+<div class="card">
+<h3>02 | Fairness and Inclusion</h3>
+<p>Evaluate AI outputs for bias, stereotypes and accessibility barriers. Consider whether all learners have equitable opportunities.</p>
+</div>
+
+<div class="card">
+<h3>03 | Academic Integrity</h3>
+<p>Students must demonstrate their own understanding and acknowledge permitted AI assistance.</p>
+</div>
+
+<div class="card">
+<h3>04 | Privacy and Confidentiality</h3>
+<p>Protect identifiable student and staff information. Use school-authorised tools for appropriate purposes.</p>
+</div>
+
+<div class="card">
+<h3>05 | Safeguarding</h3>
+<p>Prioritise student wellbeing, appropriate content and responsible supervision when using digital technologies.</p>
+</div>
+
+<div class="card">
+<h3>06 | Professional Accountability</h3>
+<p>Staff remain responsible for the accuracy, quality and consequences of AI-assisted work.</p>
+</div>
+
+</div>
+
+<div class="callout">
+<strong>Remember:</strong> AI can assist decision-making, but professional responsibility remains with the individual.
+</div>
+`
+},
+
+{
+title: "Knowledge Check 1",
+question: "Which approach best reflects responsible AI integration in education?",
+options: [
+"Allow unrestricted AI use in every learning activity.",
+"Prohibit all AI tools regardless of their educational value.",
+"Use AI purposefully while protecting learning, privacy and human judgement.",
+"Allow AI to make all important educational decisions."
+],
+answer: 2,
+explanation: "Responsible integration balances innovation with educational purpose, student protection and professional accountability."
+},
+
+{
+title: "Staff Responsibilities and Data Protection",
+html: `
+<p>Every member of staff should consider the purpose, suitability and potential consequences of AI-assisted work.</p>
+
+<div class="card">
+<h3>Professional Expectations</h3>
+<ol>
+<li>Use school-authorised tools for school-related activities.</li>
+<li>Check AI-generated information before sharing or using it.</li>
+<li>Disclose AI assistance when appropriate.</li>
+<li>Protect confidential student and staff information.</li>
+<li>Participate in relevant professional learning.</li>
+<li>Model responsible AI use for students.</li>
+</ol>
+</div>
+
+<h3>Data Protection Quick Guide</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Information Involved</th>
+<th>Recommended Approach</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>Draft a lesson plan</td>
+<td>No personal information</td>
+<td>Use an authorised tool.</td>
+</tr>
+
+<tr>
+<td>Analyse assessment trends</td>
+<td>Anonymous results</td>
+<td>Use a tool authorised for the purpose.</td>
+</tr>
+
+<tr>
+<td>Prepare a parent email</td>
+<td>Student information</td>
+<td>Use a generic draft without identifiable details. Personalise securely afterwards.</td>
+</tr>
+
+<tr>
+<td>Create differentiated resources</td>
+<td>Generic learner needs</td>
+<td>Use an authorised tool.</td>
+</tr>
+
+<tr>
+<td>Upload student photographs</td>
+<td>Identifiable images</td>
+<td>Do not upload without specific authorisation.</td>
+</tr>
+
+<tr>
+<td>Analyse confidential student records</td>
+<td>Sensitive information</td>
+<td>Use only specifically authorised systems and procedures.</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="warning">
+<strong>Think before uploading.</strong><br>
+Removing a name alone does not necessarily make a record anonymous.
+</div>
+`
+},
+
+{
+title: "Knowledge Check 2",
+question: "A teacher wants to analyse examination results using an AI tool. The spreadsheet contains student names and individual scores. What is the most appropriate response?",
+options: [
+"Upload the spreadsheet to any available AI tool.",
+"Use a personal account because it is more convenient.",
+"Remove identifying information and use a system authorised for assessment data.",
+"Upload the file and ask the AI tool to delete it afterwards."
+],
+answer: 2,
+explanation: "Assessment information should be handled securely, with appropriate de-identification and authorisation for the intended use."
+},
+
+{
+title: "Academic Integrity and AI Scaffolding",
+html: `
+<p>Academic integrity requires students to demonstrate authentic learning. AI assistance must not undermine the knowledge or skills that an assessment is designed to evaluate.</p>
+
+<div class="callout">
+<h3>Assessment Design Strategies</h3>
+<ul>
+<li>Collect evidence of the learning process.</li>
+<li>Use drafts, research journals and portfolios.</li>
+<li>Include oral explanations of student decisions.</li>
+<li>Design meaningful classroom-based assessments.</li>
+<li>Do not rely solely on AI detection software.</li>
+<li>Check applicable Cambridge assessment requirements.</li>
+</ul>
+</div>
+
+<h3>Proposed Five-Level AI Scaffolding Scale</h3>
+
+<p>Teachers can use these levels to communicate expectations before students begin an internal learning task.</p>
+
+<div class="level">
+<div class="level-number" style="background:#a93636">1</div>
+<div class="level-content">
+<h3>Independent Work</h3>
+<p>No AI assistance. Students complete the task independently.</p>
+</div>
+</div>
+
+<div class="level">
+<div class="level-number" style="background:#b96b24">2</div>
+<div class="level-content">
+<h3>Idea Exploration</h3>
+<p>AI may support brainstorming. Students independently produce the final work and acknowledge assistance.</p>
+</div>
+</div>
+
+<div class="level">
+<div class="level-number" style="background:#a17b19">3</div>
+<div class="level-content">
+<h3>Guided Development</h3>
+<p>AI may provide feedback or drafting support where permitted. Students evaluate and substantially develop their own work.</p>
+</div>
+</div>
+
+<div class="level">
+<div class="level-number" style="background:#345c86">4</div>
+<div class="level-content">
+<h3>Collaborative Exploration</h3>
+<p>Selected AI outputs may be incorporated when explicitly permitted, critically evaluated and acknowledged.</p>
+</div>
+</div>
+
+<div class="level">
+<div class="level-number">5</div>
+<div class="level-content">
+<h3>AI-Integrated Project</h3>
+<p>AI is deliberately integrated into the learning task. Students document their decisions and demonstrate independent understanding.</p>
+</div>
+</div>
+
+<div class="warning">
+<strong>Cambridge assessment:</strong> This proposed classroom scale does not override examination, coursework or qualification-specific requirements.
+</div>
+`
+},
+
+{
+title: "AI Tools and Approval Process",
+html: `
+<p>Before introducing an AI tool, consider its educational purpose, privacy arrangements, accessibility and suitability for the intended learners.</p>
+
+<h3>Examples of Tools for Evaluation</h3>
+
+<div class="grid">
+
+<div class="card">
+<h3>Google Gemini</h3>
+<p>Potential applications: planning, brainstorming and resource development.</p>
+<small>Approval status: To be confirmed</small>
+</div>
+
+<div class="card">
+<h3>NotebookLM</h3>
+<p>Potential applications: source-based research and document exploration.</p>
+<small>Approval status: To be confirmed</small>
+</div>
+
+<div class="card">
+<h3>Canva for Education</h3>
+<p>Potential applications: visual learning resources and presentations.</p>
+<small>Approval status: To be confirmed</small>
+</div>
+
+<div class="card">
+<h3>MagicSchool AI</h3>
+<p>Potential applications: teaching resources and differentiation.</p>
+<small>Approval status: To be confirmed</small>
+</div>
+
+<div class="card">
+<h3>Chalkie</h3>
+<p>Potential applications: lesson preparation and classroom materials.</p>
+<small>Approval status: To be confirmed</small>
+</div>
+
+<div class="card">
+<h3>ChatGPT</h3>
+<p>Potential applications: brainstorming, explanations and professional learning.</p>
+<small>Approval status: To be confirmed</small>
+</div>
+
+</div>
+
+<h3>Proposed Tool Review Process</h3>
+
+<ol>
+<li><strong>Request:</strong> Identify the tool and its educational purpose.</li>
+<li><strong>Technical review:</strong> Consider privacy, security and account requirements.</li>
+<li><strong>Educational review:</strong> Evaluate learning value and age suitability.</li>
+<li><strong>Decision:</strong> Record authorised purposes and any conditions of use.</li>
+</ol>
+
+<div class="warning">
+A tool's inclusion in this learning resource does not mean that it has been approved by Baku Oxford School.
+</div>
+`
+},
+
+{
+title: "Knowledge Check 3",
+question: "Students may use AI to explore possible research topics, but they must independently write their final essay and acknowledge any AI assistance. Which level applies?",
+options: [
+"Level 5 — AI-Integrated Project",
+"Level 1 — Independent Work",
+"Level 2 — Idea Exploration",
+"Level 4 — Collaborative Exploration"
+],
+answer: 2,
+explanation: "Level 2 permits brainstorming and idea exploration while preserving independent authorship."
+},
+
+{
+title: "Key Takeaways and Professional Reflection",
+html: `
+<div class="card">
+<h3>Essential Takeaways</h3>
+<ul>
+<li>Use AI to strengthen, not replace, learning.</li>
+<li>Protect confidentiality and student wellbeing.</li>
+<li>Maintain professional judgement and accountability.</li>
+<li>Communicate permitted AI use clearly.</li>
+<li>Check academic integrity and assessment requirements.</li>
+<li>Evaluate information critically before using it.</li>
+</ul>
+</div>
+
+<div class="callout">
+<h3>Professional Reflection</h3>
+
+<p>How could artificial intelligence improve your professional practice without reducing your own critical thinking or that of your students?</p>
+
+<label for="reflection"><strong>Your reflection</strong></label>
+
+<textarea id="reflection" placeholder="Write your professional reflection here..." oninput="saveReflection(this.value)"></textarea>
+
+<p><small>Your reflection is stored locally in this browser. Do not include confidential information.</small></p>
+</div>
+
+<div class="warning">
+<h3>Staff Acknowledgement</h3>
+<label>
+<input type="checkbox" id="acknowledgement" onchange="saveAcknowledgement(this.checked)">
+I have reviewed this professional learning module and understand the importance of responsible AI use, academic integrity and data protection.
+</label>
+</div>
+`
+}
+
+];
+
+const STORAGE_KEY = "bosAiEthicsModule";
+
+function readStorage(key, fallback) {
+    try {
+        return JSON.parse(localStorage.getItem(key)) || fallback;
+    } catch {
+        return fallback;
+    }
+}
+
+let state = readStorage(STORAGE_KEY, {
+    current: 0,
+    completed: [],
+    answers: {},
+    reflection: "",
+    acknowledged: false,
+    completedDate: ""
+});
+
+let current = Math.max(0, Math.min(chapters.length - 1, state.current || 0));
+
+function saveState() {
+    state.current = current;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+    const catalogue = readStorage("bosPDProgress", {});
+
+    catalogue["ai-ethics"] =
+        state.completed.length === chapters.length
+        ? "Completed"
+        : "In progress";
+
+    localStorage.setItem("bosPDProgress", JSON.stringify(catalogue));
+}
+
+function render() {
+
+    const chapter = chapters[current];
+
+    document.getElementById("chapterTitle").textContent = chapter.title;
+
+    document.getElementById("sectionLabel").textContent =
+        chapter.question ? "KNOWLEDGE CHECK" : "PROFESSIONAL LEARNING";
+
+    document.getElementById("chapterCounter").textContent =
+        "Chapter " + (current + 1) + " of " + chapters.length;
+
+    const contentElement = document.getElementById("content");
+
+    if (chapter.question) {
+
+        contentElement.innerHTML = `
+        <h3>${chapter.question}</h3>
+        ${chapter.options.map((option, index) => `
+            <button class="option" onclick="checkAnswer(${index})">
+                <strong>${String.fromCharCode(65 + index)}.</strong>
+                ${option}
+            </button>
+        `).join("")}
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        `;
+
+        if (state.answers[current] === chapter.answer) {
+            showCorrectAnswer();
+        }
+
+    } else {
+
+        contentElement.innerHTML = chapter.html;
+
+        if (current === chapters.length - 1) {
+
+            document.getElementById("reflection").value =
+                state.reflection || "";
+
+            document.getElementById("acknowledgement").checked =
+                state.acknowledged || false;
+        }
+    }
+
+    renderSidebar();
+    updateProgress();
+    updateButtons();
+
+    document.getElementById("completion").style.display =
+        state.completed.length === chapters.length ? "block" : "none";
+
+    saveState();
+}
+
+function renderSidebar() {
+
+    const list = document.getElementById("chapterList");
+
+    list.innerHTML = chapters.map((chapter, index) => {
+
+        const done = state.completed.includes(index);
+        const active = index === current;
+        const unlocked = index === 0 ||
+            state.completed.includes(index - 1);
+
+        return `
+        <button
+            class="chapter ${active ? "active" : ""} ${done ? "done" : ""}"
+            ${unlocked ? "" : "disabled"}
+            onclick="goToChapter(${index})">
+
+            <span class="number">${done ? "✓" : index + 1}</span>
+            <span>${chapter.title}</span>
+
+        </button>`;
+    }).join("");
+}
+
+function updateProgress() {
+
+    const percentage = Math.round(
+        state.completed.length / chapters.length * 100
+    );
+
+    document.getElementById("percentage").textContent =
+        percentage + "%";
+
+    document.getElementById("progress").style.width =
+        percentage + "%";
+}
+
+function updateButtons() {
+
+    const chapter = chapters[current];
+
+    document.getElementById("previousBtn").disabled =
+        current === 0;
+
+    const nextButton = document.getElementById("nextBtn");
+
+    nextButton.textContent =
+        current === chapters.length - 1
+        ? "Finish Training →"
+        : "Next Chapter →";
+
+    let allowed = true;
+
+    if (chapter.question) {
+        allowed = state.answers[current] === chapter.answer;
+    }
+
+    if (current === chapters.length - 1) {
+        allowed = state.acknowledged &&
+            state.reflection.trim().length > 0;
+    }
+
+    nextButton.disabled = !allowed;
+}
+
+function checkAnswer(index) {
+
+    const chapter = chapters[current];
+
+    if (state.answers[current] === chapter.answer) return;
+
+    const options = document.querySelectorAll(".option");
+    const feedback = document.getElementById("feedback");
+
+    if (index === chapter.answer) {
+
+        state.answers[current] = index;
+
+        showCorrectAnswer();
+        saveState();
+        updateButtons();
+
+    } else {
+
+        options[index].classList.add("incorrect");
+
+        feedback.className = "feedback error";
+
+        feedback.textContent =
+            "Not quite. Review the principles and try again.";
+    }
+}
+
+function showCorrectAnswer() {
+
+    const chapter = chapters[current];
+    const options = document.querySelectorAll(".option");
+
+    options[chapter.answer].classList.add("correct");
+
+    options.forEach(option => {
+        option.disabled = true;
+    });
+
+    const feedback = document.getElementById("feedback");
+
+    feedback.className = "feedback success";
+    feedback.textContent = "Correct! " + chapter.explanation;
+}
+
+function nextChapter() {
+
+    if (document.getElementById("nextBtn").disabled) return;
+
+    if (!state.completed.includes(current)) {
+        state.completed.push(current);
+    }
+
+    if (current < chapters.length - 1) {
+
+        current++;
+        render();
+        scrollToContent();
+
+    } else {
+
+        if (!state.completedDate) {
+            state.completedDate = new Date().toISOString();
+        }
+
+        saveState();
+        render();
+
+        document.getElementById("completion")
+            .scrollIntoView({behavior: "smooth"});
+    }
+}
+
+function previousChapter() {
+    if (current > 0) {
+        current--;
+        render();
+        scrollToContent();
+    }
+}
+
+function goToChapter(index) {
+    if (index === 0 || state.completed.includes(index - 1)) {
+        current = index;
+        render();
+        scrollToContent();
+    }
+}
+
+function scrollToContent() {
+    document.querySelector(".layout")
+        .scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+function saveReflection(value) {
+    state.reflection = value;
+    saveState();
+    updateButtons();
+}
+
+function saveAcknowledgement(value) {
+    state.acknowledged = value;
+    saveState();
+    updateButtons();
+}
+
+function escapeHTML(value) {
+    return value.replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[character]);
+}
+
+function downloadCertificate() {
+
+    if (state.completed.length !== chapters.length) return;
+
+    const rawName = document.getElementById("certificateName").value.trim();
+
+    if (!rawName) {
+        alert("Please enter your full name.");
+        return;
+    }
+
+    const name = escapeHTML(rawName);
+
+    const date = new Date(state.completedDate)
+        .toLocaleDateString("en-GB", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+    const certificate = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <title>Certificate of Completion</title>
+    <style>
+
+    body {
+        background: #e8edf3;
+        font-family: Georgia, serif;
+        margin: 0;
+        padding: 30px;
+        color: #102b49;
+    }
+
+    .certificate {
+        max-width: 1000px;
+        margin: auto;
+        background: #fffdf7;
+        border: 8px solid #102b49;
+        padding: 65px 40px;
+        text-align: center;
+        outline: 2px solid #cba34c;
+        outline-offset: -18px;
+    }
+
+    .school {
+        letter-spacing: 5px;
+        font-size: 19px;
+        font-weight: bold;
+        color: #947224;
+    }
+
+    h1 {
+        font-size: 48px;
+        margin: 30px 0 10px;
+    }
+
+    .name {
+        font-size: 42px;
+        font-style: italic;
+        margin: 25px auto;
+        border-bottom: 2px solid #cba34c;
+        padding-bottom: 15px;
+        max-width: 650px;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 1.7;
+    }
+
+    .signature {
+        margin: 70px auto 20px;
+        max-width: 320px;
+        border-top: 1px solid #102b49;
+        padding-top: 12px;
+        font-size: 20px;
+    }
+
+    .sample {
+        font-family: Arial, sans-serif;
+        color: #64748b;
+        font-size: 12px;
+    }
+
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 12px 25px;
+        background: #102b49;
+        color: white;
+        border: 0;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    @media print {
+        body { background: white; padding: 0; }
+        button { display: none; }
+        .certificate { max-width: none; padding: 35px; }
+    }
+
+    </style>
+    </head>
+
+    <body>
+
+    <div class="certificate">
+
+        <div class="school">BAKU OXFORD SCHOOL</div>
+
+        <h1>Certificate of Completion</h1>
+
+        <div style="letter-spacing:4px;color:#947224">
+            PROFESSIONAL DEVELOPMENT
+        </div>
+
+        <p>This certificate is presented to</p>
+
+        <div class="name">${name}</div>
+
+        <p>
+            For completing the professional learning module
+        </p>
+
+        <h2>AI Vision &amp; Ethical Framework</h2>
+
+        <p>
+            Professional Development Hours: 1<br>
+            Completion Date: ${date}
+        </p>
+
+        <div class="signature">
+            <strong>Aygun Mammadoiva</strong><br>
+            General Manager
+        </div>
+
+        <div class="sample">
+            SAMPLE — Pending institutional approval
+        </div>
+
+    </div>
+
+    <button onclick="window.print()">Print / Save as PDF</button>
+
+    </body>
+    </html>
+    `;
+
+    const blob = new Blob([certificate], { type: "text/html" });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "BOS-AI-Ethics-Certificate.html";
+    link.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+render();
+
+</script>
+
+</body>
+</html>
