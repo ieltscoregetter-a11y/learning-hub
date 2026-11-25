@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOS | History & Identity</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #18263b;
+    line-height: 1.7;
+}
+
+header {
+    background: white;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header a {
+    color: #17365d;
+    text-decoration: none;
+    margin-right: 18px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #142b49, #274e78);
+    color: white;
+    padding: 65px 8%;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    margin: 12px 0;
+}
+
+.eyebrow {
+    color: #e5c477;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 40px 24px;
+}
+
+.panel {
+    background: white;
+    border: 1px solid #dce2eb;
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+h2 {
+    color: #17365d;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 24px;
+}
+
+.statement {
+    background: #17365d;
+    color: white;
+    padding: 35px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+}
+
+.statement h2 {
+    color: #e5c477;
+}
+
+.statement p {
+    font-size: 23px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border-bottom: 1px solid #dce2eb;
+    padding: 14px;
+    text-align: left;
+}
+
+th {
+    background: #17365d;
+    color: white;
+}
+
+button, .button {
+    background: #17365d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+footer {
+    background: #142b49;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <strong>BOS Learning Hub</strong>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="orientation.html">Orientation</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">OUR SCHOOL · ORIENTATION</div>
+    <h1>History & Identity</h1>
+    <p>Discover the story, purpose and educational identity of Baku-Oxford School.</p>
+</section>
+
+<main>
+
+<section class="panel">
+    <h2>Our Story</h2>
+
+    <p>
+        Established in 1998, Baku-Oxford School is an
+        independent, co-educational day school in Azerbaijan.
+    </p>
+
+    <p>
+        The school provides education for learners aged
+        3 to 18, combining national educational requirements
+        with international curriculum standards.
+    </p>
+
+    <p>
+        English is the main language of instruction.
+        The school brings together learners from different
+        cultural and international backgrounds.
+    </p>
+</section>
+
+<div class="grid">
+
+    <section class="statement">
+        <h2>Our Vision</h2>
+        <p>Learn, Thrive and be Unique at BOS!</p>
+    </section>
+
+    <section class="statement">
+        <h2>Our Mission</h2>
+        <p>We raise empowered, compassionate and creative thinkers of the global community!</p>
+    </section>
+
+</div>
+
+<section class="panel">
+    <h2>Our Educational Programmes</h2>
+
+    <table>
+        <tr>
+            <th>School Division</th>
+            <th>Programme</th>
+        </tr>
+        <tr>
+            <td>Early Years</td>
+            <td>International Early Years Curriculum</td>
+        </tr>
+        <tr>
+            <td>Grades 1–5</td>
+            <td>Cambridge Primary</td>
+        </tr>
+        <tr>
+            <td>Grades 6–8</td>
+            <td>Cambridge Secondary</td>
+        </tr>
+        <tr>
+            <td>Grades 9–10</td>
+            <td>Cambridge IGCSE</td>
+        </tr>
+        <tr>
+            <td>Grades 11–12</td>
+            <td>Cambridge International AS & A Levels</td>
+        </tr>
+    </table>
+
+    <p>
+        Source: <a href="https://sites.google.com/bakuoxfordschool.net/bakuoxfordschool-admissions/home">
+        BOS Admissions information, 2023–2024</a>.
+        Current programme details are subject to school confirmation.
+    </p>
+</section>
+
+<section class="panel">
+    <h2>Check Your Knowledge</h2>
+
+    <form id="quiz">
+
+        <p><strong>1. When was BOS established?</strong></p>
+
+        <label><input type="radio" name="q1" value="0" required> 1995</label><br>
+        <label><input type="radio" name="q1" value="1"> 1998</label><br>
+        <label><input type="radio" name="q1" value="0"> 2005</label>
+
+        <p><strong>2. What is the main language of instruction?</strong></p>
+
+        <label><input type="radio" name="q2" value="1" required> English</label><br>
+        <label><input type="radio" name="q2" value="0"> French</label><br>
+        <label><input type="radio" name="q2" value="0"> German</label>
+
+        <p><strong>3. Which programme is offered in Grades 9–10?</strong></p>
+
+        <label><input type="radio" name="q3" value="0" required> Cambridge Primary</label><br>
+        <label><input type="radio" name="q3" value="1"> Cambridge IGCSE</label><br>
+        <label><input type="radio" name="q3" value="0"> Early Years</label>
+
+        <p><button type="submit">Check Answers</button></p>
+
+        <h3 id="result" role="status"></h3>
+
+    </form>
+</section>
+
+<a class="button" href="orientation.html">
+    ← Back to Orientation Hub
+</a>
+
+</main>
+
+<footer>
+    Baku Oxford School Learning Hub | Demonstration
+</footer>
+
+<script>
+document.getElementById("quiz").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const answers = new FormData(this);
+
+    const score =
+        Number(answers.get("q1")) +
+        Number(answers.get("q2")) +
+        Number(answers.get("q3"));
+
+    document.getElementById("result").textContent =
+        "Your score: " + score + " / 3";
+});
+</script>
+
+</body>
+</html>
