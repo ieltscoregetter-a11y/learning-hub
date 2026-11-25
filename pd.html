@@ -1,1 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOS | Professional Development</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f6f8fb;color:#26364b;line-height:1.6}
+header{background:white;padding:22px 6%;border-bottom:3px solid #cba34c;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.brand{font-size:22px;font-weight:bold;color:#142b49}
+nav{display:flex;flex-wrap:wrap;gap:20px}
+nav a{color:#142b49;text-decoration:none;font-weight:bold}
+.hero{background:linear-gradient(120deg,#142b49,#284f77);color:white;padding:65px 7%;border-bottom:5px solid #cba34c}
+.hero h1{font-size:clamp(32px,5vw,50px);margin:12px 0}
+.hero p{max-width:750px;color:#dbe5ef;font-size:18px}
+.eyebrow{color:#e6c77c;font-size:12px;letter-spacing:3px;font-weight:bold}
+main{max-width:1450px;margin:auto;padding:35px 6% 60px}
+.progress{background:white;padding:25px;border:1px solid #dce3eb;border-radius:12px;margin-bottom:25px}
+.track{height:12px;background:#e3e9f0;border-radius:10px;overflow:hidden;margin-top:12px}
+.fill{height:100%;background:#cba34c;width:0%}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+input{width:100%;padding:15px;border:1px solid #cad4e1;border-radius:8px;font-size:16px}
+.filter{padding:10px 18px;border:1px solid #cad4e1;background:white;color:#142b49;border-radius:20px;cursor:pointer;font-weight:bold}
+.filter.active{background:#142b49;color:white}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:white;border:1px solid #dce3eb;border-radius:14px;padding:25px;display:flex;flex-direction:column}
+.icon{font-size:30px;background:#edf2f8;width:60px;height:60px;border-radius:12px;display:grid;place-items:center}
+.category{color:#997629;font-size:11px;letter-spacing:1px;font-weight:bold;margin-top:15px}
+h3{color:#142b49;margin:10px 0}
+.card p{color:#64748b;flex-grow:1}
+.status{font-size:12px;font-weight:bold;background:#edf2f8;padding:5px 10px;border-radius:20px;align-self:flex-start;margin:12px 0}
+.completed{border-color:#73c69a}
+.completed .status{background:#e4f7ed;color:#16734a}
+.button{background:#142b49;color:white;text-decoration:none;text-align:center;padding:12px;border-radius:8px;font-weight:bold}
+.unavailable{background:#e4e9ef;color:#788594;text-align:center;padding:12px;border-radius:8px}
+footer{background:#142b49;color:white;text-align:center;padding:25px;border-top:4px solid #cba34c}
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
 
+<header>
+<div class="brand">BOS | Learning Hub</div>
+<nav>
+<a href="./index.html">Home</a>
+<a href="./orientation.html">Orientation</a>
+<a href="./pd.html">PD Modules</a>
+<a href="./teaching.html">Teaching & Learning</a>
+<a href="./work-matters.html">Staff Essentials</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="eyebrow">CONTINUOUS PROFESSIONAL LEARNING</div>
+<h1>Professional Development</h1>
+<p>Develop your expertise, strengthen your professional practice and explore interactive learning opportunities at Baku Oxford School.</p>
+</section>
+
+<main>
+
+<div class="progress">
+<strong>Your Learning Progress</strong>
+<span id="progressText" style="float:right">0 / 14 completed</span>
+<div class="track">
+<div class="fill" id="progressFill"></div>
+</div>
+</div>
+
+<input id="search" type="search" placeholder="Search professional development modules..." oninput="renderModules()">
+
+<div class="controls" id="filters">
+<button class="filter active" onclick="setFilter('All',this)">All Modules</button>
+<button class="filter" onclick="setFilter('AI & Digital',this)">AI & Digital</button>
+<button class="filter" onclick="setFilter('Teaching & Learning',this)">Teaching & Learning</button>
+<button class="filter" onclick="setFilter('Safety & Compliance',this)">Safety & Compliance</button>
+<button class="filter" onclick="setFilter('Staff Essentials',this)">Staff Essentials</button>
+</div>
+
+<p id="moduleCount"></p>
+
+<div class="grid" id="moduleGrid"></div>
+
+<noscript>
+<p>Available professional development modules:</p>
+<a href="./sustainability.html">Sustainability at BOS</a><br>
+<a href="./ai-ethics.html">AI Vision & Ethical Framework</a>
+</noscript>
+
+</main>
+
+<footer>
+Baku Oxford School · Teaching & Learning Hub · Prototype
+</footer>
+
+<script>
+
+const modules = [
+{
+id:"sustainability",
+title:"Sustainability at BOS",
+category:"Staff Essentials",
+icon:"🌱",
+description:"Explore sustainable school practices and everyday environmental responsibilities.",
+file:"sustainability.html",
+available:true
+},
+{
+id:"ai-literacy",
+title:"AI Literacy for Educators",
+category:"AI & Digital",
+icon:"🤖",
+description:"Understand artificial intelligence and its educational applications.",
+available:false
+},
+{
+id:"ai-ethics",
+title:"AI Vision & Ethical Framework",
+category:"AI & Digital",
+icon:"⚖️",
+description:"Explore responsible AI use, academic integrity, professional accountability and data protection.",
+file:"ai-ethics.html",
+available:true
+},
+{
+id:"emergency",
+title:"Emergency Procedures",
+category:"Safety & Compliance",
+icon:"🚨",
+description:"Develop awareness of school emergency and evacuation procedures.",
+available:false
+},
+{
+id:"safeguarding",
+title:"Child Protection & Safeguarding",
+category:"Safety & Compliance",
+icon:"🛡️",
+description:"Understand professional responsibilities for student safety and wellbeing.",
+available:false
+},
+{
+id:"google-workspace",
+title:"Google Workspace for Education",
+category:"AI & Digital",
+icon:"💻",
+description:"Explore digital collaboration and educational productivity.",
+available:false
+},
+{
+id:"notebooklm",
+title:"NotebookLM for Educators",
+category:"AI & Digital",
+icon:"📖",
+description:"Explore source-based learning and research tools.",
+available:false
+},
+{
+id:"chalkie",
+title:"Chalkie for Teachers",
+category:"AI & Digital",
+icon:"✏️",
+description:"Explore technology-supported lesson preparation.",
+available:false
+},
+{
+id:"objectives",
+title:"Effective Learning Objectives",
+category:"Teaching & Learning",
+icon:"🎯",
+description:"Design clear, meaningful and measurable learning objectives.",
+available:false
+},
+{
+id:"assessment",
+title:"AI & Assessment Design",
+category:"Teaching & Learning",
+icon:"📝",
+description:"Develop authentic assessment approaches in an AI-supported learning environment.",
+available:false
+},
+{
+id:"payroll",
+title:"Payroll & Purchase Requisitions",
+category:"Staff Essentials",
+icon:"💳",
+description:"Explore essential administrative and financial procedures.",
+available:false
+},
+{
+id:"employment",
+title:"Employment & Staff Documentation",
+category:"Staff Essentials",
+icon:"📄",
+description:"Explore essential employment-related information.",
+available:false
+},
+{
+id:"campus-safety",
+title:"Campus Layout, Safety & Security",
+category:"Safety & Compliance",
+icon:"🏫",
+description:"Understand campus safety and security responsibilities.",
+available:false
+},
+{
+id:"staff-systems",
+title:"Staff Systems & Workflows",
+category:"Staff Essentials",
+icon:"📁",
+description:"Explore internal administrative systems and professional workflows.",
+available:false
+}
+];
+
+let activeFilter = "All";
+
+let progress = {};
+
+try {
+progress = JSON.parse(localStorage.getItem("bosPDProgress")) || {};
+} catch(error) {
+progress = {};
+}
+
+function setFilter(category,button){
+activeFilter = category;
+document.querySelectorAll(".filter").forEach(item=>{
+item.classList.remove("active");
+});
+button.classList.add("active");
+renderModules();
+}
+
+function renderModules(){
+
+const search = document.getElementById("search").value.toLowerCase();
+
+const filtered = modules.filter(module =>
+(activeFilter === "All" || module.category === activeFilter)
+&&
+(module.title + " " + module.description).toLowerCase().includes(search)
+);
+
+document.getElementById("moduleCount").textContent =
+filtered.length + " of " + modules.length + " modules";
+
+document.getElementById("moduleGrid").innerHTML = filtered.map(module=>{
+
+const status = progress[module.id] || "Not started";
+
+return `
+<article class="card ${status === "Completed" ? "completed" : ""}">
+<div class="icon">${module.icon}</div>
+<div class="category">${module.category.toUpperCase()}</div>
+<h3>${module.title}</h3>
+<p>${module.description}</p>
+<span class="status">${module.available ? status : "Coming Soon"}</span>
+${module.available
+? `<a class="button" href="./${module.file}">${status === "Completed" ? "Review Module" : status === "In progress" ? "Continue Module" : "Start Module"} →</a>`
+: `<div class="unavailable">Coming Soon</div>`
+}
+</article>
+`;
+
+}).join("");
+
+const completed = modules.filter(module =>
+progress[module.id] === "Completed"
+).length;
+
+document.getElementById("progressText").textContent =
+completed + " / " + modules.length + " completed";
+
+document.getElementById("progressFill").style.width =
+(completed / modules.length * 100) + "%";
+
+}
+
+renderModules();
+
+</script>
+
+</body>
+</html>
