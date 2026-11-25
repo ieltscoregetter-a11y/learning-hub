@@ -627,3 +627,22 @@ main.bos-container {
 }
     }
 }
+.bos-hero.pd-hero {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0,33,71,.95),
+            rgba(0,33,71,.3) 55%,
+            transparent
+        ),
+        url("./pd.conference.png");
+
+    background-color: #002147;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pd-hero .bos-hero-inner {
+    min-height: 420px;
+}
