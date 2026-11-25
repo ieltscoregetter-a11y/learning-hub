@@ -533,3 +533,45 @@ main.bos-container {
         padding-bottom: 45px;
     }
 }
+/* TEACHING AND LEARNING HERO */
+
+.teaching-hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,33,71,.95),
+            rgba(0,33,71,.55) 45%,
+            transparent 100%
+        ),
+        url("./teaching-learning.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 470px;
+    border-bottom: 4px solid #c5a059;
+}
+
+.curriculum-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.curriculum-badges span {
+    border: 1px solid #c5a05988;
+    background: #00214770;
+    color: #f0d49b;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .teaching-hero {
+        background-position: 65% center;
+        min-height: 380px;
+    }
+}
