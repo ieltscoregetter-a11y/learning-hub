@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BOS | Teaching & Learning Foundations</title>
 
+<link rel="stylesheet" href="./style.css">
 <style>
 * { box-sizing: border-box; }
 
@@ -12,37 +13,17 @@ body {
     margin: 0;
     background: #f5f7fa;
     color: #18263b;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     line-height: 1.7;
 }
 
-header {
-    background: white;
-    padding: 22px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-}
 
-header a {
-    color: #17365d;
-    text-decoration: none;
-    margin-right: 18px;
-}
 
-.hero {
-    background: linear-gradient(120deg, #142b49, #274e78);
-    padding: 65px 8%;
-    color: white;
-}
 
-.hero h1 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.2;
-    margin: 15px 0;
-}
+
+
+
+
 
 .eyebrow {
     color: #e5c477;
@@ -65,7 +46,7 @@ main {
     margin-bottom: 28px;
 }
 
-h2 { color: #17365d; }
+h2 { color: #002147; }
 h3 { color: #244f81; }
 
 .grid {
@@ -91,7 +72,7 @@ h3 { color: #244f81; }
 }
 
 .level strong {
-    background: #17365d;
+    background: #002147;
     color: white;
     padding: 20px;
 }
@@ -133,7 +114,7 @@ h3 { color: #244f81; }
 
 .tip {
     background: #fff6df;
-    border-left: 5px solid #d4af65;
+    border-left: 5px solid #c5a059;
     padding: 20px;
     border-radius: 8px;
 }
@@ -153,7 +134,7 @@ textarea {
 }
 
 button, .button {
-    background: #17365d;
+    background: #002147;
     color: white;
     border: none;
     border-radius: 8px;
@@ -189,13 +170,13 @@ label {
 }
 
 #result, #saved, #suggestion {
-    color: #17365d;
+    color: #002147;
     font-weight: bold;
     white-space: pre-wrap;
 }
 
 footer {
-    background: #142b49;
+    background: #002147;
     color: white;
     text-align: center;
     padding: 22px;
@@ -210,32 +191,56 @@ footer {
         padding: 20px;
     }
 }
+
+.teaching-hero {
+    background: linear-gradient(90deg,#002147f5 0%,#002147a0 40%,#00214710 100%), url("./teaching-learning.png") center / cover no-repeat;
+    background-color: #002147;
+}
+.teaching-hero .bos-hero-inner { min-height: 470px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start; }
+.teaching-hero h1 { max-width: 680px; }
+.teaching-hero p { max-width: 570px; }
+.teaching-motto { color:#dfbf7d; font:italic 24px 'Playfair Display', Georgia, serif; }
+.curriculum-badges { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0 25px; max-width:650px; }
+.curriculum-badges span { border:1px solid #c5a05999; background:#002147bb; color:#f0d49b; padding:8px 12px; border-radius:6px; font-size:12px; font-weight:600; }
+.panel { box-shadow:var(--shadow); }
+.panel h2 { font-family:'Playfair Display', Georgia, serif; }
+#learning-guide { scroll-margin-top:130px; }
+@media(max-width:600px) { .teaching-hero {background-position:65% center;} .teaching-hero .bos-hero-inner {min-height:380px;} }
 </style>
 </head>
 
 <body>
 
-<header>
-    <strong>BOS Learning Hub</strong>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="orientation.html">Orientation</a>
-    </nav>
+<header class="bos-header">
+<div class="bos-header-inner">
+<a href="./index.html" class="bos-brand">
+<img class="bos-logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Baku-oxford-school-Logo.png" alt="Baku Oxford School logo">
+<div><div class="bos-school-name">BAKU OXFORD SCHOOL</div><div class="bos-hub-name">Learning Hub</div></div>
+</a>
+<nav class="bos-nav">
+<a href="./index.html">Home</a>
+<a href="./orientation.html">Staff Orientation</a>
+<a href="./pd.html">PD Modules</a>
+<a class="active" aria-current="page" href="./teaching.html">Teaching &amp; Learning</a>
+<a href="./work-matters.html">Staff Essentials</a>
+</nav>
+</div>
 </header>
 
-<section class="hero">
-    <div class="eyebrow">TEACHING & LEARNING FOUNDATIONS</div>
-
-    <h1>Developing Thinking Classrooms</h1>
-
-    <p>
-        Explore practical approaches that encourage
-        critical thinking, curiosity and meaningful learning.
-    </p>
+<section class="bos-hero teaching-hero">
+<div class="bos-hero-inner">
+<div class="teaching-motto">Cogito, ergo sum</div>
+<div class="bos-eyebrow">PEDAGOGY &amp; PRACTICE</div>
+<h1>Teaching &amp; Learning</h1>
+<p>Developing thinking classrooms through curiosity, critical thinking and meaningful learning.</p>
+<div class="curriculum-badges">
+<span>Cambridge Primary</span><span>Cambridge Lower Secondary</span><span>Cambridge IGCSE</span><span>Cambridge International AS &amp; A Level</span>
+</div>
+<a class="bos-button gold" href="#learning-guide">Explore Teaching Foundations →</a>
+</div>
 </section>
 
-<main>
+<main id="learning-guide">
 
 <section class="panel">
     <h2>Welcome to the Teaching & Learning Guide</h2>
@@ -601,9 +606,10 @@ footer {
 
 </main>
 
-<footer>
-    Baku Oxford School Learning Hub | Demonstration
-</footer>
+<footer class="bos-footer"><div class="bos-footer-inner">
+<div><strong>Baku Oxford School</strong><br>Teaching &amp; Learning Hub<br><small>Logo: <a href="https://commons.wikimedia.org/wiki/File:Baku-oxford-school-Logo.png">Wikimedia Commons</a> · Budrooo · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · Unmodified</small></div>
+<div>Professional Learning Platform · Prototype</div>
+</div></footer>
 
 <script>
 function suggestQuestion() {
