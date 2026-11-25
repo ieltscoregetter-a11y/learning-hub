@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baku Oxford School | Learning Hub</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #18263b;
+}
+
+header {
+    background: white;
+    padding: 22px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #17365d;
+}
+
+nav a {
+    color: #17365d;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #142b49, #274e78);
+    color: white;
+    padding: 85px 8%;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 50px);
+    margin: 15px 0;
+}
+
+.hero p {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 750px;
+}
+
+.button {
+    display: inline-block;
+    background: #d4af65;
+    color: #142b49;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+main {
+    padding: 45px 8%;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border: 1px solid #dce2eb;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px #00000008;
+}
+
+.card h3 {
+    color: #17365d;
+}
+
+.card p {
+    color: #5b6472;
+    line-height: 1.6;
+}
+
+footer {
+    background: #142b49;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Baku Oxford School · Learning Hub</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#orientation">Orientation</a>
+        <a href="#pd">PD Modules</a>
+        <a href="#resources">Resources</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div>TEACHING & LEARNING HUB · DEMO</div>
+
+    <h1>Welcome to the Learning Hub</h1>
+
+    <p>
+        Your space for professional development,
+        collaboration, teaching resources and
+        continuous learning.
+    </p>
+
+    <a class="button" href="#orientation">
+        Explore the Learning Hub →
+    </a>
+</section>
+
+<main>
+
+    <h2>Explore our learning community</h2>
+
+    <div class="cards">
+
+        <article class="card" id="orientation">
+            <h3>🏫 Orientation Hub</h3>
+            <p>Explore school values, staff guidance
+            and essential information for new teachers.</p>
+        </article>
+
+        <article class="card" id="pd">
+            <h3>🎓 Professional Development</h3>
+            <p>Develop your professional knowledge
+            through interactive learning modules.</p>
+        </article>
+
+        <article class="card">
+            <h3>📚 Teaching & Learning</h3>
+            <p>Explore curriculum, assessment and
+            effective classroom strategies.</p>
+        </article>
+
+        <article class="card">
+            <h3>🤝 Inclusion & SEND</h3>
+            <p>Discover practical strategies to support
+            diverse learners.</p>
+        </article>
+
+        <article class="card">
+            <h3>💻 AI Literacy</h3>
+            <p>Explore responsible and effective uses
+            of artificial intelligence in education.</p>
+        </article>
+
+        <article class="card" id="resources">
+            <h3>🛠️ Tools & Resources</h3>
+            <p>Access teaching templates, guides
+            and professional resources.</p>
+        </article>
+
+    </div>
+
+</main>
+
+<footer>
+    Baku Oxford School Learning Hub | Demonstration
+</footer>
+
+</body>
+</html>
