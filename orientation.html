@@ -17,7 +17,7 @@ body {
 
 header {
     background: white;
-    padding: 24px 7%;
+    padding: 24px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,6 +36,7 @@ nav a {
     text-decoration: none;
     color: #17365d;
     margin-right: 20px;
+    font-weight: bold;
 }
 
 .hero {
@@ -70,7 +71,7 @@ main {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 24px;
     margin-top: 30px;
 }
@@ -79,7 +80,7 @@ main {
     background: white;
     border: 1px solid #dce2eb;
     border-radius: 16px;
-    padding: 28px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     transition: 0.2s;
@@ -88,6 +89,7 @@ main {
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px #142b4915;
+    border-color: #a7b8ce;
 }
 
 .icon {
@@ -109,12 +111,13 @@ main {
     flex-grow: 1;
 }
 
-.card button {
+.card button, .card a {
     background: none;
     color: #244f81;
     border: none;
     font-size: 16px;
     text-align: left;
+    text-decoration: none;
     font-weight: bold;
     cursor: pointer;
     padding: 12px 0;
@@ -167,6 +170,7 @@ footer {
     background: #142b49;
     color: white;
 }
+
 </style>
 </head>
 
@@ -174,6 +178,7 @@ footer {
 
 <header>
     <div class="logo">BOS Learning Hub</div>
+
     <nav>
         <a href="index.html">Home</a>
         <a href="orientation.html">Orientation</a>
@@ -181,37 +186,49 @@ footer {
 </header>
 
 <section class="hero">
-    <div class="eyebrow">STAFF ORIENTATION · DEMO</div>
+    <div class="eyebrow">STAFF ORIENTATION</div>
+
     <h1>Welcome to Baku Oxford School</h1>
+
     <p>
-        Explore our school community, discover our approach
-        to teaching and learning, and prepare for your
-        professional journey in Baku.
+        Discover our school community, explore our educational
+        approach and prepare for your professional journey in Baku.
     </p>
 </section>
 
 <main>
 
 <h2>Your Orientation Journey</h2>
-<p>Explore the sections below at your own pace.</p>
+
+<p>Explore each section at your own pace.</p>
 
 <div class="cards">
 
     <article class="card">
         <div class="icon">🏛️</div>
+
         <h3>BOS History & Identity</h3>
-        <p>Discover our school's history, mission,
-        vision, values and educational philosophy.</p>
-        <button onclick="openSection('history')">
+
+        <p>
+            Discover our school's history, mission,
+            vision and educational philosophy.
+        </p>
+
+        <a href="history.html">
             Discover our story →
-        </button>
+        </a>
     </article>
 
     <article class="card">
         <div class="icon">🎓</div>
+
         <h3>Teaching & Learning Foundations</h3>
-        <p>Explore effective teaching, assessment,
-        differentiation and inclusive classroom practices.</p>
+
+        <p>
+            Explore effective teaching, assessment,
+            differentiation and inclusive classroom practices.
+        </p>
+
         <button onclick="openSection('teaching')">
             Explore teaching practices →
         </button>
@@ -219,9 +236,14 @@ footer {
 
     <article class="card">
         <div class="icon">👥</div>
+
         <h3>Meet the BOS Team</h3>
-        <p>Get to know school leadership, coordinators,
-        departments and support teams.</p>
+
+        <p>
+            Get to know school leadership, coordinators,
+            department leaders and support teams.
+        </p>
+
         <button onclick="openSection('team')">
             Meet our team →
         </button>
@@ -229,9 +251,14 @@ footer {
 
     <article class="card">
         <div class="icon">📚</div>
+
         <h3>Curriculum & Academic Programmes</h3>
-        <p>Discover curriculum pathways, academic
-        expectations and assessment practices.</p>
+
+        <p>
+            Discover curriculum pathways, academic
+            expectations and assessment practices.
+        </p>
+
         <button onclick="openSection('curriculum')">
             Explore the curriculum →
         </button>
@@ -239,9 +266,14 @@ footer {
 
     <article class="card">
         <div class="icon">📋</div>
+
         <h3>Staff Policies & Procedures</h3>
-        <p>Explore essential policies, professional
-        expectations and staff procedures.</p>
+
+        <p>
+            Explore essential policies, professional
+            expectations and staff procedures.
+        </p>
+
         <button onclick="openSection('policies')">
             View staff guidance →
         </button>
@@ -249,9 +281,14 @@ footer {
 
     <article class="card">
         <div class="icon">✅</div>
+
         <h3>First Week & FAQs</h3>
-        <p>Prepare for your first week with a practical
-        checklist and frequently asked questions.</p>
+
+        <p>
+            Prepare for your first week with a practical
+            checklist and frequently asked questions.
+        </p>
+
         <button onclick="openSection('firstweek')">
             Start your checklist →
         </button>
@@ -259,9 +296,14 @@ footer {
 
     <article class="card">
         <div class="icon">📍</div>
+
         <h3>Living in Baku</h3>
-        <p>Discover Azerbaijani culture, transport,
-        shopping, local food and everyday life in Baku.</p>
+
+        <p>
+            Explore Azerbaijani culture, transport,
+            shopping, local food and everyday life in Baku.
+        </p>
+
         <button onclick="openSection('baku')">
             Discover Baku →
         </button>
@@ -270,23 +312,33 @@ footer {
 </div>
 
 <section class="handbook">
+
     <h2>📖 Staff & Faculty Handbook</h2>
-    <p>Essential guidance for professional life
-    at Baku Oxford School.</p>
+
+    <p>
+        Essential guidance for professional life
+        at Baku Oxford School.
+    </p>
+
     <button onclick="openSection('handbook')">
         Open staff handbook →
     </button>
+
 </section>
 
 </main>
 
-<dialog id="sectionDialog">
+<dialog id="sectionDialog" aria-labelledby="sectionTitle">
+
     <h2 id="sectionTitle"></h2>
+
     <div id="sectionContent"></div>
+
     <button class="close"
-            onclick="document.getElementById('sectionDialog').close()">
+        onclick="document.getElementById('sectionDialog').close()">
         Close
     </button>
+
 </dialog>
 
 <footer>
@@ -294,49 +346,97 @@ footer {
 </footer>
 
 <script>
+
 const sections = {
-    history: {
-        title: "BOS History & Identity",
-        content: "<p>School background, history, mission, vision and values will be added here.</p>"
-    },
 
     teaching: {
         title: "Teaching & Learning Foundations",
-        content: "<h3>Professional learning topics</h3><ul><li>Inquiry-based learning</li><li>Differentiation</li><li>Formative assessment</li><li>Effective feedback</li><li>Inclusive teaching</li></ul>"
+        content: `
+            <h3>Professional Learning Topics</h3>
+            <ul>
+                <li>Effective Teaching</li>
+                <li>Bloom's Taxonomy</li>
+                <li>Higher-Order Thinking Skills</li>
+                <li>Differentiation</li>
+                <li>Formative Assessment</li>
+                <li>Effective Feedback</li>
+                <li>Inclusive Teaching</li>
+                <li>Classroom Management</li>
+            </ul>
+        `
     },
 
     team: {
         title: "Meet the BOS Team",
-        content: "<p>School leadership, department leaders and staff profiles will be added here.</p>"
+        content: `
+            <p>School leadership and department profiles
+            will be added here.</p>
+        `
     },
 
     curriculum: {
         title: "Curriculum & Academic Programmes",
-        content: "<p>Confirmed curriculum information and academic programme guides will be added here.</p>"
+        content: `
+            <ul>
+                <li>International Early Years Curriculum</li>
+                <li>Cambridge Primary</li>
+                <li>Cambridge Secondary</li>
+                <li>Cambridge IGCSE</li>
+                <li>Cambridge International AS & A Levels</li>
+            </ul>
+            <p>Based on BOS's published 2023–2024
+            admissions information. Current programmes
+            are subject to school confirmation.</p>
+        `
     },
 
     policies: {
         title: "Staff Policies & Procedures",
-        content: "<p>Approved school policies and procedures will be available in the staff portal.</p>"
+        content: `
+            <p>Approved school policies and procedures
+            will be added after staff access is established.</p>
+        `
     },
 
     firstweek: {
         title: "First Week Checklist",
-        content: "<p>Sample orientation checklist</p><label><input type='checkbox'> Meet your line manager</label><br><label><input type='checkbox'> Explore the school campus</label><br><label><input type='checkbox'> Set up school accounts</label><br><label><input type='checkbox'> Attend safeguarding induction</label><br><label><input type='checkbox'> Review curriculum documents</label>"
+        content: `
+            <p>Sample orientation checklist:</p>
+            <label><input type="checkbox"> Meet your line manager</label><br>
+            <label><input type="checkbox"> Explore the school campus</label><br>
+            <label><input type="checkbox"> Set up school accounts</label><br>
+            <label><input type="checkbox"> Attend safeguarding induction</label><br>
+            <label><input type="checkbox"> Review curriculum documents</label>
+        `
     },
 
     baku: {
         title: "Living in Baku",
-        content: "<h3>Welcome to Azerbaijan</h3><ul><li>Getting around Baku</li><li>Housing and neighbourhoods</li><li>Azerbaijani food and culture</li><li>Shopping and leisure</li><li>Useful Azerbaijani expressions</li></ul>"
+        content: `
+            <h3>Welcome to Azerbaijan</h3>
+            <ul>
+                <li>Getting around Baku</li>
+                <li>Housing and neighbourhoods</li>
+                <li>Azerbaijani food and culture</li>
+                <li>Shopping and leisure</li>
+                <li>Useful Azerbaijani expressions</li>
+                <li>Exploring the city</li>
+            </ul>
+        `
     },
 
     handbook: {
         title: "Staff & Faculty Handbook",
-        content: "<p>The approved staff handbook will be added here after access permissions are established.</p>"
+        content: `
+            <p>The approved staff handbook will be added
+            after access permissions are established.</p>
+        `
     }
+
 };
 
 function openSection(section) {
+
     document.getElementById("sectionTitle").textContent =
         sections[section].title;
 
@@ -344,7 +444,9 @@ function openSection(section) {
         sections[section].content;
 
     document.getElementById("sectionDialog").showModal();
+
 }
+
 </script>
 
 </body>
