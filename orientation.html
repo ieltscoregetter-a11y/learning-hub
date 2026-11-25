@@ -170,7 +170,6 @@ footer {
     background: #142b49;
     color: white;
 }
-
 </style>
 </head>
 
@@ -186,6 +185,7 @@ footer {
 </header>
 
 <section class="hero">
+
     <div class="eyebrow">STAFF ORIENTATION</div>
 
     <h1>Welcome to Baku Oxford School</h1>
@@ -194,6 +194,7 @@ footer {
         Discover our school community, explore our educational
         approach and prepare for your professional journey in Baku.
     </p>
+
 </section>
 
 <main>
@@ -205,6 +206,7 @@ footer {
 <div class="cards">
 
     <article class="card">
+
         <div class="icon">🏛️</div>
 
         <h3>BOS History & Identity</h3>
@@ -217,24 +219,28 @@ footer {
         <a href="history.html">
             Discover our story →
         </a>
+
     </article>
 
     <article class="card">
+
         <div class="icon">🎓</div>
 
         <h3>Teaching & Learning Foundations</h3>
 
         <p>
-            Explore effective teaching, assessment,
-            differentiation and inclusive classroom practices.
+            Explore effective teaching, higher-order thinking,
+            Bloom's Taxonomy and practical classroom strategies.
         </p>
 
-        <button onclick="openSection('teaching')">
+        <a href="teaching.html">
             Explore teaching practices →
-        </button>
+        </a>
+
     </article>
 
     <article class="card">
+
         <div class="icon">👥</div>
 
         <h3>Meet the BOS Team</h3>
@@ -247,9 +253,11 @@ footer {
         <button onclick="openSection('team')">
             Meet our team →
         </button>
+
     </article>
 
     <article class="card">
+
         <div class="icon">📚</div>
 
         <h3>Curriculum & Academic Programmes</h3>
@@ -262,9 +270,11 @@ footer {
         <button onclick="openSection('curriculum')">
             Explore the curriculum →
         </button>
+
     </article>
 
     <article class="card">
+
         <div class="icon">📋</div>
 
         <h3>Staff Policies & Procedures</h3>
@@ -277,9 +287,11 @@ footer {
         <button onclick="openSection('policies')">
             View staff guidance →
         </button>
+
     </article>
 
     <article class="card">
+
         <div class="icon">✅</div>
 
         <h3>First Week & FAQs</h3>
@@ -292,9 +304,11 @@ footer {
         <button onclick="openSection('firstweek')">
             Start your checklist →
         </button>
+
     </article>
 
     <article class="card">
+
         <div class="icon">📍</div>
 
         <h3>Living in Baku</h3>
@@ -307,6 +321,7 @@ footer {
         <button onclick="openSection('baku')">
             Discover Baku →
         </button>
+
     </article>
 
 </div>
@@ -349,23 +364,6 @@ footer {
 
 const sections = {
 
-    teaching: {
-        title: "Teaching & Learning Foundations",
-        content: `
-            <h3>Professional Learning Topics</h3>
-            <ul>
-                <li>Effective Teaching</li>
-                <li>Bloom's Taxonomy</li>
-                <li>Higher-Order Thinking Skills</li>
-                <li>Differentiation</li>
-                <li>Formative Assessment</li>
-                <li>Effective Feedback</li>
-                <li>Inclusive Teaching</li>
-                <li>Classroom Management</li>
-            </ul>
-        `
-    },
-
     team: {
         title: "Meet the BOS Team",
         content: `
@@ -402,6 +400,7 @@ const sections = {
         title: "First Week Checklist",
         content: `
             <p>Sample orientation checklist:</p>
+
             <label><input type="checkbox"> Meet your line manager</label><br>
             <label><input type="checkbox"> Explore the school campus</label><br>
             <label><input type="checkbox"> Set up school accounts</label><br>
@@ -414,6 +413,7 @@ const sections = {
         title: "Living in Baku",
         content: `
             <h3>Welcome to Azerbaijan</h3>
+
             <ul>
                 <li>Getting around Baku</li>
                 <li>Housing and neighbourhoods</li>
