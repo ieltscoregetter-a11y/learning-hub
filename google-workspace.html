@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BOS | Google Workspace Studio</title>
+
+<link rel="stylesheet" href="./style.css">
+
+<style>
+
+body {
+    margin: 0;
+    background: #f7f8fa;
+    color: #243449;
+    font-family: Inter, Arial, sans-serif;
+    line-height: 1.7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.course-banner {
+    background: linear-gradient(120deg, #002147, #173e68);
+    padding: 65px 6%;
+    color: white;
+    border-bottom: 4px solid #c5a059;
+}
+
+.course-banner h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.2;
+    max-width: 950px;
+}
+
+.course-banner p {
+    max-width: 800px;
+    color: #dce5ef;
+}
+
+.motto {
+    color: #dfbf7d;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-style: italic;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 15px;
+    border: 1px solid #c5a059;
+    border-radius: 20px;
+    margin: 5px;
+    color: #f5dca5;
+    font-size: 13px;
+}
+
+.course-layout {
+    max-width: 1450px;
+    margin: auto;
+    padding: 35px 5%;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 25px;
+}
+
+.outline,
+.lesson,
+.progress-box {
+    background: white;
+    border: 1px solid #dce3eb;
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.outline {
+    align-self: start;
+    position: sticky;
+    top: 120px;
+    max-height: 72vh;
+    overflow: auto;
+}
+
+.outline button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 14px 10px;
+    border: 0;
+    border-radius: 6px;
+    background: white;
+    color: #002147;
+    cursor: pointer;
+    font: inherit;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.outline button.active {
+    background: #eaf0f7;
+    border-left: 4px solid #c5a059;
+    font-weight: bold;
+}
+
+.outline button.done {
+    color: #16734a;
+}
+
+.outline button:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.progress-box {
+    margin-bottom: 18px;
+}
+
+.lesson {
+    min-height: 350px;
+}
+
+.lesson h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    color: #002147;
+    line-height: 1.3;
+}
+
+.lesson h3 {
+    color: #002147;
+}
+
+.flow {
+    display: grid;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.node {
+    border: 1px solid #dce3eb;
+    border-left: 4px solid #c5a059;
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.node strong {
+    color: #92702f;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.node:not(:last-child):after {
+    content: "↓";
+    display: block;
+    color: #92702f;
+    font-weight: bold;
+}
+
+.note {
+    background: #fff7e6;
+    border-left: 4px solid #c5a059;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.info-card {
+    background: #edf2f8;
+    border: 1px solid #dce3eb;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.choice {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 17px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font: inherit;
+    color: #243449;
+    cursor: pointer;
+}
+
+.choice:hover {
+    border-color: #c5a059;
+}
+
+.choice.good {
+    background: #e3f6e9;
+    border-color: #16804c;
+}
+
+.choice.bad {
+    background: #fff0f0;
+    border-color: #c56565;
+}
+
+.navrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.navrow button,
+.action {
+    background: #002147;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.navrow button:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.track {
+    height: 12px;
+    background: #e5ebf3;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.fill {
+    height: 100%;
+    background: linear-gradient(90deg, #002147, #c5a059);
+    transition: .3s;
+}
+
+.lesson textarea,
+.lesson input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbc8d7;
+    border-radius: 8px;
+    font: inherit;
+    margin: 12px 0;
+}
+
+.lesson textarea {
+    min-height: 130px;
+}
+
+.tablewrap {
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    padding: 14px;
+    border-bottom: 1px solid #dce3eb;
+    text-align: left;
+}
+
+th {
+    background: #002147;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f4f7fb;
+}
+
+.completion {
+    background: #fffdf7;
+    border: 3px double #c5a059;
+    border-radius: 12px;
+    padding: 40px 25px;
+    text-align: center;
+    color: #002147;
+}
+
+.completion h1 {
+    font-family: Georgia, serif;
+}
+
+.completion input {
+    padding: 12px;
+    max-width: 100%;
+    font: inherit;
+    border: 1px solid #bbc8d7;
+    border-radius: 8px;
+}
+
+#certName {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-style: italic;
+    color: #002147;
+}
+
+.course-banner a {
+    color: #f2d79b;
+}
+
+.lesson a {
+    color: #173e68;
+}
+
+@media(max-width: 800px) {
+
+    .course-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .outline {
+        position: static;
+        max-height: 250px;
+    }
+
+    .lesson {
+        padding: 18px;
+    }
+}
+
+@media print {
+
+    .bos-header,
+    .course-banner,
+    .outline,
+    .progress-box,
+    .lesson,
+    .navrow,
+    .bos-footer,
+    .completion input,
+    .completion label,
+    .completion button,
+    .completion a {
+        display: none !important;
+    }
+
+    .course-layout {
+        display: block;
+    }
+
+    .completion:not([hidden]) {
+        display: block;
+        border: 5px double #c5a059;
+        padding: 50px;
+    }
+
+    @page {
+        size: A4 landscape;
+        margin: 15mm;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="bos-header">
+
+<div class="bos-header-inner">
+
+    <a class="bos-brand" href="./index.html">
+
+        <img
+            class="bos-logo"
+            src="./Baku-oxford-school-Logo.png"
+            alt="Baku Oxford School logo">
+
+        <div>
+
+            <div class="bos-school-name">
+                BAKU OXFORD SCHOOL
+            </div>
+
+            <div class="bos-hub-name">
+                Learning Hub
+            </div>
+
+        </div>
+
+    </a>
+
+    <nav class="bos-nav">
+
+        <a href="./index.html">Home</a>
+
+        <a href="./orientation.html">
+            Staff Orientation
+        </a>
+
+        <a class="active" href="./pd.html">
+            PD Modules
+        </a>
+
+        <a href="./teaching.html">
+            Teaching &amp; Learning
+        </a>
+
+        <a href="./work-matters.html">
+            Staff Essentials
+        </a>
+
+    </nav>
+
+</div>
+
+</header>
+
+<section class="course-banner">
+
+    <div class="motto">Cogito, ergo sum</div>
+
+    <div class="bos-eyebrow">
+        CONTINUOUS PROFESSIONAL LEARNING
+    </div>
+
+    <h1>
+        Google Workspace Studio:
+        Smarter Everyday Workflows
+    </h1>
+
+    <p>
+        Explore how no-code automation can support
+        school administration, collaborative planning
+        and professional productivity.
+    </p>
+
+    <span class="tag">12 Chapters</span>
+    <span class="tag">1 Proposed PD Hour</span>
+    <span class="tag">Practical Simulations</span>
+    <span class="tag">Knowledge Checks</span>
+
+    <p>
+        <a href="./pd.html">
+            ← Back to Professional Development
+        </a>
+    </p>
+
+</section>
+
+<div class="course-layout" id="course">
+
+    <aside class="outline">
+
+        <strong>COURSE JOURNEY</strong>
+
+        <div id="chapters"></div>
+
+    </aside>
+
+    <main>
+
+        <div class="progress-box">
+
+            <strong>Module Progress</strong>
+
+            <span id="percent"></span>
+
+            <div class="track">
+                <div class="fill" id="fill"></div>
+            </div>
+
+        </div>
+
+        <article class="lesson" id="lesson"></article>
+
+        <div class="navrow">
+
+            <button id="prev">← Previous</button>
+
+            <span id="counter"></span>
+
+            <button id="next">
+                Next Chapter →
+            </button>
+
+        </div>
+
+        <section class="completion"
+                 id="complete"
+                 hidden>
+
+            <img src="./Baku-oxford-school-Logo.png"
+                 alt="BOS logo"
+                 width="90">
+
+            <h1>Certificate of Completion</h1>
+
+            <p>
+                BAKU OXFORD SCHOOL<br>
+                PROFESSIONAL DEVELOPMENT
+            </p>
+
+            <label for="name">
+                Enter your full name
+            </label>
+
+            <br>
+
+            <input id="name"
+                   type="text"
+                   placeholder="Full name">
+
+            <h2 id="certName"></h2>
+
+            <p>
+                For completing the professional
+                learning module
+            </p>
+
+            <h3>
+                Google Workspace Studio:
+                Smarter Everyday Workflows
+            </h3>
+
+            <p>
+                Proposed Professional Development Hours: 1
+            </p>
+
+            <p>
+                Completion Date:
+                <span id="date"></span>
+            </p>
+
+            <br>
+
+            <p>
+                <strong>Aygun Mammadoiva</strong><br>
+                General Manager
+            </p>
+
+            <p style="font-size:12px">
+                Sample certificate —
+                pending institutional approval
+            </p>
+
+            <button class="action" id="print">
+                Print / Save as PDF
+            </button>
+
+            <p>
+                <a href="./pd.html">
+                    Return to PD Modules
+                </a>
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<footer class="bos-footer">
+
+    <div class="bos-footer-inner">
+
+        <div>
+
+            <strong>Baku Oxford School</strong><br>
+
+            Teaching &amp; Learning Hub
+
+        </div>
+
+        <div>
+            Professional Learning Platform · Prototype
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+function flow(...items) {
+
+    return '<div class="flow">' +
+
+        items.map((item, index) =>
+
+            '<div class="node"><strong>' +
+
+            (index === 0
+                ? 'STARTER'
+                : 'STEP ' + index) +
+
+            '</strong><br>' +
+
+            item +
+
+            '</div>'
+
+        ).join('') +
+
+        '</div>';
+
+}
+
+const chapters = [
+
+{
+
+t: "Introduction to Workspace Studio",
+
+h: `
+
+<p>
+Google Workspace Studio is a no-code environment
+for combining actions across supported Google
+Workspace services.
+</p>
+
+<p>
+A flow can begin on a schedule or in response
+to an event, then carry out a sequence of tasks.
+</p>
+
+<div class="info-card">
+
+<h3>Flows</h3>
+
+<p>
+Reusable sequences of actions that support
+repetitive professional activities.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Templates</h3>
+
+<p>
+Preconfigured starting patterns that can
+be adapted to suit particular tasks.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Skills</h3>
+
+<p>
+Reusable, on-demand capabilities where
+supported by your account.
+</p>
+
+</div>
+
+<p>
+<a href="https://studio.workspace.google.com/"
+target="_blank" rel="noopener">
+
+Open Google Workspace Studio →
+
+</a>
+</p>
+
+<p>
+<a href="https://support.google.com/workspace-studio">
+
+Official Workspace Studio Help Centre →
+
+</a>
+</p>
+
+<div class="note">
+
+Availability depends on your Workspace edition,
+account settings and administrator permissions.
+
+BOS availability has not yet been confirmed.
+
+This course uses illustrative examples.
+
+</div>
+
+`
+
+},
+
+{
+
+t: "Understanding Flow Components",
+
+h: `
+
+<p>
+
+Every workflow has three important components.
+
+</p>
+
+<div class="info-card">
+
+<h3>1. Starter</h3>
+
+<p>
+Determines when the flow begins.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>2. Steps</h3>
+
+<p>
+Define the actions performed within the flow.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>3. Variables</h3>
+
+<p>
+Connect information from one step
+to another.
+</p>
+
+</div>
+
+<h3>Illustrative Workflow</h3>
+
+` +
+
+flow(
+
+"A scheduled weekly review",
+
+"Read an approved sample document",
+
+"Summarise the main topics",
+
+"Present a draft for review"
+
+) +
+
+`
+
+<div class="note">
+
+A starter defines when.
+Steps define what.
+Variables connect the information.
+
+</div>
+
+<h3>Typical Starter Categories</h3>
+
+<ul>
+
+<li>Scheduled events</li>
+<li>Incoming messages</li>
+<li>Changes to documents or spreadsheets</li>
+<li>New items in a folder</li>
+<li>Meeting-related events</li>
+
+</ul>
+
+<p>
+
+Check which starters are supported
+in your own account.
+
+</p>
+
+`
+
+},
+
+{
+
+t: "Three Approaches to Building",
+
+h: `
+
+<h3>Approach 1 — Describe the Task</h3>
+
+<p>
+
+Describe a simple professional routine
+in natural language. Review any suggested
+steps carefully.
+
+</p>
+
+<h3>Approach 2 — Adapt a Template</h3>
+
+<p>
+
+Choose an existing template and adapt
+its settings to your intended purpose.
+
+</p>
+
+<h3>Approach 3 — Build Manually</h3>
+
+<p>
+
+Select a starter and available actions
+to define your workflow.
+
+</p>
+
+<div class="note">
+
+Use fictional or approved non-sensitive
+practice material.
+
+A test run may perform actual actions,
+so always inspect the configured steps.
+
+</div>
+
+<p>
+
+<a href="https://support.google.com/a/users/answer/16430397">
+
+Official Google guide: Create your first flow →
+
+</a>
+
+</p>
+
+`
+
+},
+
+{
+
+t: "Example 1 — Daily Briefing",
+
+h: `
+
+<p>
+
+A daily briefing can help educators organise
+routine announcements and professional
+responsibilities.
+
+</p>
+
+<h3>Illustrative Workflow</h3>
+
+` +
+
+flow(
+
+"Weekday schedule",
+
+"Read a dedicated sample announcement list",
+
+"Group the information by topic and deadline",
+
+"Present a private draft briefing"
+
+) +
+
+`
+
+<h3>Sample Information</h3>
+
+<div class="info-card">
+
+<ul>
+
+<li>Tuesday: Department meeting</li>
+
+<li>Thursday: Resource request deadline</li>
+
+<li>Friday: Classroom display update</li>
+
+</ul>
+
+</div>
+
+<h3>Example Output</h3>
+
+<div class="note">
+
+<strong>Daily Professional Briefing</strong>
+
+<p>
+
+Tuesday — Department meeting.<br>
+
+Thursday — Submit resource request.<br>
+
+Friday — Update classroom display.
+
+</p>
+
+Verify all dates against the original notices.
+
+</div>
+
+`
+
+},
+
+{
+
+t: "Example 2 — Meeting Preparation",
+
+h: `
+
+<p>
+
+A meeting preparation brief can organise
+approved reference material before a
+professional meeting.
+
+</p>
+
+` +
+
+flow(
+
+"Before a scheduled practice meeting",
+
+"Collect selected fictional agenda documents",
+
+"Identify discussion topics and open questions",
+
+"Prepare a private draft meeting brief"
+
+) +
+
+`
+
+<h3>Suggested Meeting Brief Format</h3>
+
+<div class="info-card">
+
+<ul>
+
+<li>Purpose of the meeting</li>
+
+<li>Agenda and discussion topics</li>
+
+<li>Documents to review</li>
+
+<li>Outstanding questions</li>
+
+<li>Decisions required</li>
+
+</ul>
+
+</div>
+
+<div class="note">
+
+Always verify the summary against
+the original source documents.
+
+</div>
+
+`
+
+},
+
+{
+
+t: "Knowledge Check 1",
+
+q: "Which component determines when a flow begins?",
+
+o: [
+
+"A variable",
+
+"A starter",
+
+"A document",
+
+"A summary"
+
+],
+
+a: 1,
+
+e: "The starter defines the event or schedule that initiates the flow."
+
+},
+
+{
+
+t: "Example 3 — Meeting Action Review",
+
+h: `
+
+<p>
+
+Use fictional meeting notes to identify
+proposed responsibilities and follow-up tasks.
+
+</p>
+
+` +
+
+flow(
+
+"A sample meeting note is ready",
+
+"Identify proposed action items",
+
+"Organise responsibilities and deadlines",
+
+"Present the list for staff review"
+
+) +
+
+`
+
+<h3>Illustrative Action List</h3>
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Proposed Task</th>
+
+<th>Owner</th>
+
+<th>Deadline</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Prepare resource list</td>
+
+<td>Example Teacher A</td>
+
+<td>Friday</td>
+
+</tr>
+
+<tr>
+
+<td>Review draft agenda</td>
+
+<td>Example Teacher B</td>
+
+<td>Monday</td>
+
+</tr>
+
+<tr>
+
+<td>Prepare discussion questions</td>
+
+<td>Example Teacher C</td>
+
+<td>Tuesday</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="note">
+
+A staff member should verify assignments
+and deadlines before sharing any information.
+
+</div>
+
+`
+
+},
+
+{
+
+t: "Example 4 — Document Tracking",
+
+h: `
+
+<p>
+
+Practise organising fictional document
+receipts using invented reference numbers.
+
+</p>
+
+` +
+
+flow(
+
+"A fictional form is received",
+
+"Record its practice reference number",
+
+"Update a sample tracking table",
+
+"Flag missing entries for manual review"
+
+) +
+
+`
+
+<h3>Example Tracking Sheet</h3>
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Practice ID</th>
+
+<th>Received</th>
+
+<th>Review Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>DEMO-01</td>
+
+<td>Yes</td>
+
+<td>Verified</td>
+
+</tr>
+
+<tr>
+
+<td>DEMO-02</td>
+
+<td>No</td>
+
+<td>Check manually</td>
+
+</tr>
+
+<tr>
+
+<td>DEMO-03</td>
+
+<td>Yes</td>
+
+<td>Verified</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<div class="note">
+
+Real student information must only
+be handled through specifically
+authorised school systems.
+
+</div>
+
+`
+
+},
+
+{
+
+t: "Example 5 — Reusable Skills",
+
+h: `
+
+<p>
+
+When supported by your Workspace account,
+Skills offer reusable capabilities for
+on-demand professional tasks.
+
+</p>
+
+<h3>Example Applications</h3>
+
+<div class="info-card">
+
+<h3>Discussion Question Builder</h3>
+
+<p>
+
+Develop generic classroom discussion prompts
+based on a learning objective.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Rubric Builder</h3>
+
+<p>
+
+Create a draft assessment rubric from
+fictional learning objectives.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Language Support</h3>
+
+<p>
+
+Prepare draft translations of generic
+announcements into Azerbaijani or English
+for human review.
+
+</p>
+
+</div>
+
+<div class="note">
+
+Check whether your account supports Skills.
+Review permissions and outputs before
+using or sharing a reusable capability.
+
+</div>
+
+`
+
+},
+
+{
+
+t: "Knowledge Check 2",
+
+q: "You want to generate a generic rubric only when you request it. Which approach best fits?",
+
+o: [
+
+"An on-demand reusable Skill, if supported",
+
+"A daily scheduled task",
+
+"An automatic reply to every email",
+
+"A permanent change to all documents"
+
+],
+
+a: 0,
+
+e: "An on-demand capability is appropriate for tasks that are initiated by the user."
+
+},
+
+{
+
+t: "Responsible Use and Oversight",
+
+h: `
+
+<p>
+
+Professional responsibility remains essential
+when working with AI-supported automation.
+
+</p>
+
+<div class="info-card">
+
+<h3>1. Understand the Workflow</h3>
+
+<p>
+
+Review the starter, actions and expected
+results before using a flow.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>2. Maintain Human Review</h3>
+
+<p>
+
+Check draft communications and documents
+before sharing them with others.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>3. Protect Confidential Information</h3>
+
+<p>
+
+Use specifically authorised systems.
+Minimise unnecessary access to personal
+or sensitive information.
+
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>4. Monitor Performance</h3>
+
+<p>
+
+Review run history and disable workflows
+that behave unexpectedly.
+
+</p>
+
+</div>
+
+<div class="note">
+
+AI-supported work still requires
+professional judgement.
+
+</div>
+
+<p>
+
+<a href="./ai-ethics.html">
+
+Review the AI Vision &amp; Ethical Framework →
+
+</a>
+
+</p>
+
+`
+
+},
+
+{
+
+t: "Quick Reference and Reflection",
+
+h: `
+
+<h3>Workspace Studio Glossary</h3>
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Concept</th>
+
+<th>Meaning</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Starter</td>
+
+<td>Event or schedule that starts a flow</td>
+
+</tr>
+
+<tr>
+
+<td>Step</td>
+
+<td>An action within a sequence</td>
+
+</tr>
+
+<tr>
+
+<td>Variable</td>
+
+<td>Information passed between steps</td>
+
+</tr>
+
+<tr>
+
+<td>Template</td>
+
+<td>A reusable starting pattern</td>
+
+</tr>
+
+<tr>
+
+<td>Skill</td>
+
+<td>An on-demand capability, where available</td>
+
+</tr>
+
+<tr>
+
+<td>Run History</td>
+
+<td>A record of workflow executions</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<h3>Further Professional Learning</h3>
+
+<p>
+
+<a href="https://support.google.com/workspace-studio/table/17176961">
+
+Official Starter and Step Guide →
+
+</a>
+
+</p>
+
+<h3>Professional Reflection</h3>
+
+<p>
+
+Describe one low-risk routine you would
+like to improve.
+
+What would trigger the workflow?
+What would it produce?
+How would you review the result?
+
+</p>
+
+<label for="reflect">
+
+Your Reflection
+
+</label>
+
+<textarea id="reflect"
+
+placeholder="Use fictional or non-confidential examples.">
+
+</textarea>
+
+<div class="note">
+
+<label>
+
+<input type="checkbox" id="ack">
+
+I understand the importance of responsible
+AI use, confidentiality and professional
+review.
+
+</label>
+
+</div>
+
+`
+
+}
+
+];
+
+const key = "bosWorkspaceStudio";
+
+let state = {
+
+    done: [],
+    answers: {},
+    current: 0,
+    reflection: "",
+    ack: false,
+    date: ""
+
+};
+
+try {
+
+    const saved = JSON.parse(
+        localStorage.getItem(key)
+    );
+
+    if (saved) {
+
+        state = {
+            ...state,
+            ...saved
+        };
+
+    }
+
+} catch {}
+
+let current = Math.max(
+    0,
+    Math.min(11, state.current || 0)
+);
+
+const $ = id => document.getElementById(id);
+
+function save() {
+
+    state.current = current;
+
+    try {
+
+        localStorage.setItem(
+            key,
+            JSON.stringify(state)
+        );
+
+        const progress = JSON.parse(
+            localStorage.getItem("bosPDProgress")
+        ) || {};
+
+        progress["google-workspace"] =
+
+            state.done.length === 12
+
+            ? "Completed"
+
+            : "In progress";
+
+        localStorage.setItem(
+            "bosPDProgress",
+            JSON.stringify(progress)
+        );
+
+    } catch {}
+
+}
+
+function allowed() {
+
+    const chapter = chapters[current];
+
+    if (chapter.q) {
+
+        return state.answers[current] === chapter.a;
+
+    }
+
+    if (current === 11) {
+
+        return state.ack &&
+            state.reflection.trim().length > 0;
+
+    }
+
+    return true;
+
+}
+
+function render() {
+
+    const chapter = chapters[current];
+
+    $("chapters").replaceChildren();
+
+    chapters.forEach((item, index) => {
+
+        const button = document.createElement("button");
+
+        const done = state.done.includes(index);
+
+        button.textContent =
+
+            (done
+
+                ? "✓ "
+
+                : String(index + 1).padStart(2, "0") + " · "
+
+            ) + item.t;
+
+        button.className =
+
+            (index === current ? "active " : "")
+
+            + (done ? "done" : "");
+
+        button.disabled =
+
+            index > 0 &&
+
+            !state.done.includes(index - 1);
+
+        button.onclick = () => {
+
+            current = index;
+
+            render();
+
+        };
+
+        $("chapters").append(button);
+
+    });
+
+    $("lesson").innerHTML =
+
+        '<div class="bos-section-label">' +
+
+        'CHAPTER ' + (current + 1) +
+
+        '</div>' +
+
+        '<h2>' + chapter.t + '</h2>' +
+
+        (chapter.h || "");
+
+    if (chapter.q) {
+
+        const question = document.createElement("h3");
+
+        question.textContent = chapter.q;
+
+        $("lesson").append(question);
+
+        const feedback = document.createElement("p");
+
+        feedback.setAttribute("role", "status");
+
+        chapter.o.forEach((option, index) => {
+
+            const button = document.createElement("button");
+
+            button.className = "choice";
+
+            button.textContent =
+
+                String.fromCharCode(65 + index) +
+
+                ". " + option;
+
+            button.onclick = () => {
+
+                if (index === chapter.a) {
+
+                    state.answers[current] = index;
+
+                    save();
+
+                    render();
+
+                } else {
+
+                    button.classList.add("bad");
+
+                    feedback.textContent =
+
+                        "Not quite. Review the chapter and try again.";
+
+                }
+
+            };
+
+            if (state.answers[current] === chapter.a) {
+
+                button.disabled = true;
+
+                if (index === chapter.a) {
+
+                    button.classList.add("good");
+
+                }
+
+            }
+
+            $("lesson").append(button);
+
+        });
+
+        if (state.answers[current] === chapter.a) {
+
+            feedback.textContent =
+
+                "Correct! " + chapter.e;
+
+            feedback.style.color = "#16734a";
+
+        }
+
+        $("lesson").append(feedback);
+
+    }
+
+    if (current === 11) {
+
+        $("reflect").value = state.reflection;
+
+        $("ack").checked = state.ack;
+
+        $("reflect").oninput = event => {
+
+            state.reflection = event.target.value;
+
+            save();
+
+            $("next").disabled = !allowed();
+
+        };
+
+        $("ack").onchange = event => {
+
+            state.ack = event.target.checked;
+
+            save();
+
+            $("next").disabled = !allowed();
+
+        };
+
+    }
+
+    $("prev").disabled = current === 0;
+
+    $("next").disabled = !allowed();
+
+    $("next").textContent =
+
+        current === 11
+
+        ? "Finish Training →"
+
+        : "Next Chapter →";
+
+    $("counter").textContent =
+
+        "Chapter " +
+
+        (current + 1) +
+
+        " of 12";
+
+    const percentage = Math.round(
+
+        state.done.length / 12 * 100
+
+    );
+
+    $("percent").textContent =
+
+        " · " + percentage + "%";
+
+    $("fill").style.width =
+
+        percentage + "%";
+
+    $("complete").hidden =
+
+        state.done.length !== 12;
+
+    $("date").textContent =
+
+        state.date
+
+        ? new Date(state.date).toLocaleDateString(
+            "en-GB",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        )
+
+        : "";
+
+    save();
+
+}
+
+$("prev").onclick = () => {
+
+    if (current > 0) {
+
+        current--;
+
+        render();
+
+        $("course").scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+};
+
+$("next").onclick = () => {
+
+    if (!allowed()) return;
+
+    if (!state.done.includes(current)) {
+
+        state.done.push(current);
+
+    }
+
+    if (current < 11) {
+
+        current++;
+
+        render();
+
+        $("course").scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
+    } else {
+
+        state.date =
+
+            state.date || new Date().toISOString();
+
+        render();
+
+        $("complete").scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+};
+
+$("print").onclick = () => {
+
+    const name = $("name").value.trim();
+
+    if (!name) {
+
+        alert("Please enter your full name.");
+
+        return;
+
+    }
+
+    $("certName").textContent = name;
+
+    window.print();
+
+};
+
+render();
+
+</script>
+
+</body>
+</html>
