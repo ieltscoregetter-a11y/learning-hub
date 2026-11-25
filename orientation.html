@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOS | Orientation Hub</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #18263b;
+}
+
+header {
+    background: white;
+    padding: 24px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 1px solid #e0e5ed;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #17365d;
+}
+
+nav a {
+    text-decoration: none;
+    color: #17365d;
+    margin-right: 20px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #142b49, #274e78);
+    color: white;
+    padding: 65px 8%;
+}
+
+.hero h1 {
+    font-size: clamp(32px, 5vw, 55px);
+    margin: 20px 0;
+}
+
+.hero p {
+    max-width: 780px;
+    font-size: 20px;
+    line-height: 1.7;
+    color: #e0e8f1;
+}
+
+.eyebrow {
+    color: #e5c477;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+main {
+    padding: 45px 8%;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #dce2eb;
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px #142b4915;
+}
+
+.icon {
+    background: #edf1f8;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 26px;
+    width: fit-content;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin: 20px 0 8px;
+}
+
+.card p {
+    color: #647083;
+    line-height: 1.7;
+    flex-grow: 1;
+}
+
+.card button {
+    background: none;
+    color: #244f81;
+    border: none;
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 12px 0;
+}
+
+.handbook {
+    background: #17365d;
+    color: white;
+    border-radius: 18px;
+    padding: 35px;
+    margin-top: 40px;
+}
+
+.handbook button {
+    background: #d4af65;
+    color: #142b49;
+    border: 0;
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+dialog {
+    max-width: 700px;
+    width: 90%;
+    border: 1px solid #dce2eb;
+    border-radius: 18px;
+    padding: 30px;
+    color: #18263b;
+    line-height: 1.7;
+}
+
+dialog::backdrop {
+    background: #142b4980;
+}
+
+.close {
+    background: #17365d;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #142b49;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">BOS Learning Hub</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="orientation.html">Orientation</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="eyebrow">STAFF ORIENTATION · DEMO</div>
+    <h1>Welcome to Baku Oxford School</h1>
+    <p>
+        Explore our school community, discover our approach
+        to teaching and learning, and prepare for your
+        professional journey in Baku.
+    </p>
+</section>
+
+<main>
+
+<h2>Your Orientation Journey</h2>
+<p>Explore the sections below at your own pace.</p>
+
+<div class="cards">
+
+    <article class="card">
+        <div class="icon">🏛️</div>
+        <h3>BOS History & Identity</h3>
+        <p>Discover our school's history, mission,
+        vision, values and educational philosophy.</p>
+        <button onclick="openSection('history')">
+            Discover our story →
+        </button>
+    </article>
+
+    <article class="card">
+        <div class="icon">🎓</div>
+        <h3>Teaching & Learning Foundations</h3>
+        <p>Explore effective teaching, assessment,
+        differentiation and inclusive classroom practices.</p>
+        <button onclick="openSection('teaching')">
+            Explore teaching practices →
+        </button>
+    </article>
+
+    <article class="card">
+        <div class="icon">👥</div>
+        <h3>Meet the BOS Team</h3>
+        <p>Get to know school leadership, coordinators,
+        departments and support teams.</p>
+        <button onclick="openSection('team')">
+            Meet our team →
+        </button>
+    </article>
+
+    <article class="card">
+        <div class="icon">📚</div>
+        <h3>Curriculum & Academic Programmes</h3>
+        <p>Discover curriculum pathways, academic
+        expectations and assessment practices.</p>
+        <button onclick="openSection('curriculum')">
+            Explore the curriculum →
+        </button>
+    </article>
+
+    <article class="card">
+        <div class="icon">📋</div>
+        <h3>Staff Policies & Procedures</h3>
+        <p>Explore essential policies, professional
+        expectations and staff procedures.</p>
+        <button onclick="openSection('policies')">
+            View staff guidance →
+        </button>
+    </article>
+
+    <article class="card">
+        <div class="icon">✅</div>
+        <h3>First Week & FAQs</h3>
+        <p>Prepare for your first week with a practical
+        checklist and frequently asked questions.</p>
+        <button onclick="openSection('firstweek')">
+            Start your checklist →
+        </button>
+    </article>
+
+    <article class="card">
+        <div class="icon">📍</div>
+        <h3>Living in Baku</h3>
+        <p>Discover Azerbaijani culture, transport,
+        shopping, local food and everyday life in Baku.</p>
+        <button onclick="openSection('baku')">
+            Discover Baku →
+        </button>
+    </article>
+
+</div>
+
+<section class="handbook">
+    <h2>📖 Staff & Faculty Handbook</h2>
+    <p>Essential guidance for professional life
+    at Baku Oxford School.</p>
+    <button onclick="openSection('handbook')">
+        Open staff handbook →
+    </button>
+</section>
+
+</main>
+
+<dialog id="sectionDialog">
+    <h2 id="sectionTitle"></h2>
+    <div id="sectionContent"></div>
+    <button class="close"
+            onclick="document.getElementById('sectionDialog').close()">
+        Close
+    </button>
+</dialog>
+
+<footer>
+    Baku Oxford School Learning Hub | Demonstration
+</footer>
+
+<script>
+const sections = {
+    history: {
+        title: "BOS History & Identity",
+        content: "<p>School background, history, mission, vision and values will be added here.</p>"
+    },
+
+    teaching: {
+        title: "Teaching & Learning Foundations",
+        content: "<h3>Professional learning topics</h3><ul><li>Inquiry-based learning</li><li>Differentiation</li><li>Formative assessment</li><li>Effective feedback</li><li>Inclusive teaching</li></ul>"
+    },
+
+    team: {
+        title: "Meet the BOS Team",
+        content: "<p>School leadership, department leaders and staff profiles will be added here.</p>"
+    },
+
+    curriculum: {
+        title: "Curriculum & Academic Programmes",
+        content: "<p>Confirmed curriculum information and academic programme guides will be added here.</p>"
+    },
+
+    policies: {
+        title: "Staff Policies & Procedures",
+        content: "<p>Approved school policies and procedures will be available in the staff portal.</p>"
+    },
+
+    firstweek: {
+        title: "First Week Checklist",
+        content: "<p>Sample orientation checklist</p><label><input type='checkbox'> Meet your line manager</label><br><label><input type='checkbox'> Explore the school campus</label><br><label><input type='checkbox'> Set up school accounts</label><br><label><input type='checkbox'> Attend safeguarding induction</label><br><label><input type='checkbox'> Review curriculum documents</label>"
+    },
+
+    baku: {
+        title: "Living in Baku",
+        content: "<h3>Welcome to Azerbaijan</h3><ul><li>Getting around Baku</li><li>Housing and neighbourhoods</li><li>Azerbaijani food and culture</li><li>Shopping and leisure</li><li>Useful Azerbaijani expressions</li></ul>"
+    },
+
+    handbook: {
+        title: "Staff & Faculty Handbook",
+        content: "<p>The approved staff handbook will be added here after access permissions are established.</p>"
+    }
+};
+
+function openSection(section) {
+    document.getElementById("sectionTitle").textContent =
+        sections[section].title;
+
+    document.getElementById("sectionContent").innerHTML =
+        sections[section].content;
+
+    document.getElementById("sectionDialog").showModal();
+}
+</script>
+
+</body>
+</html>
