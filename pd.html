@@ -8,7 +8,231 @@
 
 <link rel="stylesheet" href="./style.css">
 
-<style>
+<style>/* PREMIUM PD MODULE DESIGN */
+
+#moduleGrid {
+    gap: 26px;
+}
+
+#moduleGrid .module-card {
+    --accent: #1764a0;
+    --dark: #002147;
+    --light: #eaf4ff;
+
+    position: relative;
+    overflow: hidden;
+    padding: 25px;
+    padding-top: 155px;
+    border-radius: 18px;
+    border: 1px solid #dce3eb;
+    background: linear-gradient(
+        160deg, white 45%, var(--light) 100%
+    );
+    box-shadow: 0 8px 25px rgba(0,33,71,.07);
+    transition: transform .25s, box-shadow .25s;
+}
+
+#moduleGrid .module-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 35px rgba(0,33,71,.15);
+}
+
+/* Decorative module covers */
+
+#moduleGrid .module-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 130px;
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(255,255,255,.30),
+            transparent 45%
+        ),
+        linear-gradient(
+            120deg, var(--dark), var(--accent)
+        );
+}
+
+#moduleGrid .module-card::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 20px rgba(255,255,255,.08),
+        0 0 0 40px rgba(255,255,255,.04);
+    pointer-events: none;
+}
+
+/* Sustainability */
+
+#moduleGrid .module-card:nth-child(1) {
+    --accent: #37a77a;
+    --dark: #064e3b;
+    --light: #e9f8ef;
+}
+
+/* AI Ethics */
+
+#moduleGrid .module-card:nth-child(2) {
+    --accent: #8959ce;
+    --dark: #39216b;
+    --light: #f4edff;
+}
+
+/* Google Workspace */
+
+#moduleGrid .module-card:nth-child(3) {
+    --accent: #1689cb;
+    --dark: #114799;
+    --light: #e9f5ff;
+}
+
+/* AI Literacy */
+
+#moduleGrid .module-card:nth-child(4) {
+    --accent: #0891b2;
+    --dark: #164e63;
+    --light: #ecfeff;
+}
+
+/* NotebookLM */
+
+#moduleGrid .module-card:nth-child(5) {
+    --accent: #6366f1;
+    --dark: #312e81;
+    --light: #eef2ff;
+}
+
+/* Chalkie */
+
+#moduleGrid .module-card:nth-child(6) {
+    --accent: #db9c35;
+    --dark: #92400e;
+    --light: #fffbeb;
+}
+
+/* Teaching and Learning */
+
+#moduleGrid .module-card:nth-child(7),
+#moduleGrid .module-card:nth-child(8) {
+    --accent: #3984bd;
+    --dark: #163d65;
+    --light: #edf6ff;
+}
+
+/* Safety and Compliance */
+
+#moduleGrid .module-card:nth-child(9),
+#moduleGrid .module-card:nth-child(10),
+#moduleGrid .module-card:nth-child(11) {
+    --accent: #be496c;
+    --dark: #701d3d;
+    --light: #fff0f4;
+}
+
+/* Staff Essentials */
+
+#moduleGrid .module-card:nth-child(12),
+#moduleGrid .module-card:nth-child(13),
+#moduleGrid .module-card:nth-child(14) {
+    --accent: #c5a059;
+    --dark: #55421e;
+    --light: #fff8eb;
+}
+
+/* Module icons */
+
+#moduleGrid .bos-icon {
+    position: absolute;
+    top: 27px;
+    left: 25px;
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.18);
+    color: white;
+    border: 1px solid rgba(255,255,255,.35);
+    z-index: 1;
+}
+
+#moduleGrid .bos-icon svg {
+    width: 37px;
+    height: 37px;
+    stroke: white;
+}
+
+/* Workspace cover image */
+
+#moduleGrid .module-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+    z-index: 1;
+}
+
+/* Category labels */
+
+#moduleGrid .module-category {
+    background: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--accent);
+    padding: 6px 12px;
+    border-radius: 20px;
+    width: fit-content;
+    font-size: 11px;
+    margin-top: 0;
+}
+
+#moduleGrid .module-card h3 {
+    color: var(--dark);
+    font-size: 23px;
+    line-height: 1.35;
+}
+
+#moduleGrid .module-card p {
+    line-height: 1.7;
+    color: #526174;
+}
+
+#moduleGrid .module-status {
+    background: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--accent);
+}
+
+#moduleGrid .bos-button {
+    background: linear-gradient(
+        120deg, var(--dark), var(--accent)
+    );
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+#moduleGrid .unavailable {
+    border: 1px dashed #b6c3d3;
+    background: rgba(255,255,255,.65);
+}
+
+#moduleGrid .completed .module-status {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #86cda0;
+}
 
 .pd-progress {
     margin-bottom: 30px;
