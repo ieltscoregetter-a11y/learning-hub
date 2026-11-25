@@ -575,3 +575,50 @@ main.bos-container {
         min-height: 380px;
     }
 }
+/* PROFESSIONAL DEVELOPMENT HERO */
+
+.bos-hero.pd-hero {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,33,71,.95) 0%,
+            rgba(0,33,71,.5) 50%,
+            transparent 100%
+        ),
+        url("./pd-conference.png");
+
+    background-color: #002147;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 4px solid #c5a059;
+}
+
+.pd-hero .bos-hero-inner {
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.pd-motto {
+    color: #dfbf7d;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    font-style: italic;
+}
+
+.pd-hero p {
+    max-width: 570px;
+}
+
+@media (max-width: 600px) {
+    .bos-hero.pd-hero {
+        background-position: 65% center;
+    }
+
+    .pd-hero .bos-hero-inner {
+        min-height: 350px;
+    }
+}
