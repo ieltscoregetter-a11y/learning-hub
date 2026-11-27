@@ -506,5 +506,40 @@
     render();
    </script>
   <script src="./bos-certificate.js"></script>
+  <script>
+  const restartButton = document.createElement("button");
+  restartButton.type = "button";
+  restartButton.className = "deck-button";
+  restartButton.textContent = "Restart Module";
+  document.querySelector(".deck-actions").append(restartButton);
+
+  restartButton.addEventListener("click", () => {
+    const confirmed = window.confirm(
+      "Restart NotebookLM? This will clear your progress and saved prompt for this module."
+    );
+    if (!confirmed) return;
+
+    Object.assign(state, {
+      current: 0,
+      done: [],
+      fields: {},
+      prompt: "",
+      date: ""
+    });
+
+    byId("deck-name").value = "";
+    byId("deck-print-name").textContent = "";
+    byId("deck-status").textContent = "";
+
+    try {
+      const progress = JSON.parse(localStorage.getItem("bosPDProgress")) || {};
+      progress.notebooklm = "In progress";
+      localStorage.setItem("bosPDProgress", JSON.stringify(progress));
+    } catch {}
+
+    render(true);
+    save();
+  });
+</script>
 </body>
 </html>
