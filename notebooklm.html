@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOS | NotebookLM for Educators</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      background: #f1f5f8;
+      color: #19344a;
+      font: 1rem/1.6 Inter, Arial, sans-serif;
+    }
+    .deck-hero {
+      color: white;
+      background: linear-gradient(115deg, #002147, #173e66 58%, #006e71);
+      border-bottom: 5px solid #c5a059;
+      padding: clamp(32px, 6vw, 72px) 6%;
+    }
+    .deck-hero h1 {
+      margin: 12px 0;
+      color: white;
+      font: bold clamp(2.2rem, 5vw, 4rem)/1.1 Georgia, serif;
+    }
+    .deck-hero p { max-width: 680px; }
+    .deck-hero a { color: #ffe0a1; }
+    .deck-kicker { color: #ffe0a1; font-weight: 700; letter-spacing: .12em; font-size: .8rem; }
+    .deck-layout {
+      max-width: 1260px;
+      margin: auto;
+      padding: 28px 5% 60px;
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .deck-panel {
+      background: white;
+      border: 1px solid #d5e1ea;
+      border-radius: 15px;
+      padding: clamp(16px, 3vw, 30px);
+    }
+    .deck-panel h2, .deck-panel h3 { color: #002147; line-height: 1.25; }
+    .deck-panel h2 { margin-top: 0; font: bold clamp(1.65rem, 4vw, 2.35rem)/1.2 Georgia, serif; }
+    .deck-nav { padding: 16px; }
+    #deck-tabs button {
+      display: block;
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #d5e1ea;
+      border-radius: 8px;
+      color: #002147;
+      background: #f6fafb;
+      font: inherit;
+      cursor: pointer;
+    }
+    #deck-tabs button[aria-current="step"] { background: #002147; color: white; }
+    .deck-progress { margin-bottom: 14px; font-weight: 700; }
+    .deck-progress progress { display: block; width: 100%; accent-color: #006e71; }
+    .deck-video { margin: 18px 0; }
+    .deck-video iframe, .deck-video video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 12px;
+      background: #002147;
+    }
+    .deck-video p { margin: 8px 0; }
+    .deck-steps li { margin-bottom: 8px; }
+    .deck-example {
+      padding: 14px 18px;
+      background: #fff6e2;
+      border-left: 4px solid #ad7927;
+      border-radius: 8px;
+    }
+    .deck-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 18px; }
+    .deck-button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 16px;
+      color: white;
+      background: #006469;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .deck-button:disabled { opacity: .5; cursor: default; }
+    .deck-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .deck-panel label { display: block; font-weight: 700; }
+    .deck-panel input, .deck-panel textarea {
+      display: block;
+      width: 100%;
+      margin: 4px 0 12px;
+      padding: 9px 11px;
+      border: 1px solid #879bab;
+      border-radius: 7px;
+      background: white;
+      color: #19344a;
+      font: inherit;
+    }
+    .deck-panel textarea { min-height: 175px; resize: vertical; }
+    .deck-certificate { margin-top: 20px; text-align: center; border: 5px double #c5a059; }
+    .deck-certificate input { max-width: 24rem; margin: 6px auto 12px; }
+    @media (max-width: 760px) {
+      .deck-layout, .deck-fields { grid-template-columns: 1fr; }
+    }
+    @media print {
+      .bos-header, .deck-hero, .deck-nav, .deck-progress, #deck-lesson,
+      .deck-actions, #deck-status, .deck-print-hide { display: none !important; }
+      body { background: white; }
+      .deck-layout { display: block; padding: 0; }
+      .deck-certificate { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="bos-header">
+    <div class="bos-header-inner">
+      <a class="bos-brand" href="./index.html">
+        <img class="bos-logo" src="./Baku-oxford-school-Logo.png" alt="Baku Oxford School logo">
+        <div>
+          <div class="bos-school-name">BAKU OXFORD SCHOOL</div>
+          <div class="bos-hub-name">Learning Hub</div>
+        </div>
+      </a>
+      <nav class="bos-nav" aria-label="Learning Hub">
+        <a href="./index.html">Home</a>
+        <a href="./orientation.html">Staff Orientation</a>
+        <a class="active" href="./pd.html">PD Modules</a>
+        <a href="./teaching.html">Teaching &amp; Learning</a>
+        <a href="./work-matters.html">Staff Essentials</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="deck-hero">
+    <div class="deck-kicker">PROFESSIONAL DEVELOPMENT · AI &amp; DIGITAL</div>
+    <h1>NotebookLM for Educators</h1>
+    <p>Turn teaching materials into a slide deck, check the content against your sources and adapt it for your classroom.</p>
+    <a href="./pd.html">← Back to PD Modules</a>
+  </section>
+
+  <div class="deck-layout">
+    <aside class="deck-panel deck-nav">
+      <strong>Chapters</strong>
+      <nav id="deck-tabs" aria-label="Module chapters"></nav>
+    </aside>
+
+    <main>
+      <div class="deck-panel deck-progress">
+        <label for="deck-progress" id="deck-count">Module progress</label>
+        <progress id="deck-progress" max="4" value="0"></progress>
+      </div>
+
+      <article class="deck-panel" id="deck-lesson"></article>
+
+      <div class="deck-actions">
+        <button class="deck-button" id="deck-prev" type="button">← Previous</button>
+        <button class="deck-button" id="deck-next" type="button">Complete chapter →</button>
+      </div>
+      <p id="deck-status" role="status"></p>
+
+      <section class="deck-panel deck-certificate" id="deck-certificate" hidden>
+        <img src="./Baku-oxford-school-Logo.png" width="80" alt="Baku Oxford School logo">
+        <h2 tabindex="-1" id="deck-certificate-title">Certificate of Completion</h2>
+        <p>Baku Oxford School · Professional Development</p>
+        <div class="deck-print-hide">
+          <label for="deck-name">Full name for the certificate</label>
+          <input id="deck-name" autocomplete="name">
+        </div>
+        <h3 id="deck-print-name"></h3>
+        <p>Completed <strong>NotebookLM for Educators</strong></p>
+        <p id="deck-date"></p>
+        <p><strong>Aygun Mammadoiva</strong><br>General Manager</p>
+        <p>Sample certificate pending institutional approval.</p>
+        <button class="deck-button deck-print-hide" type="button" id="deck-print">Print / Save as PDF</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Add one YouTube URL or one relative MP4 path per chapter.
+     const videos = [
+  { youtube: "https://www.youtube.com/watch?v=9xeFK6nyleE", mp4: "" }, // Chapter 1
+  { youtube: "https://www.youtube.com/watch?v=kLAlBduxzhU", mp4: "" }, // Chapter 2
+  { youtube: "https://www.youtube.com/watch?v=RhAOqY9taJE", mp4: "" }  // Chapter 3
+];
+
+    const chapters = [
+      {
+        title: "Create a Deck from Your Materials",
+        body: `
+          <p>Bring a lesson outline and one or two sources you already use with your class.</p>
+          <ol class="deck-steps">
+            <li>Create a notebook and add your selected materials.</li>
+            <li>In Studio, open the customisation options for <strong>Slide Deck</strong>.</li>
+            <li>Choose presenter slides for a live lesson or detailed slides for independent reading.</li>
+            <li>Specify the learner group, objective and structure in your prompt. Generate the deck and check the draft.</li>
+          </ol>
+          <p class="deck-example"><strong>Example prompt</strong><br>
+            Prepare a short Year 8 Geography presentation on urban transport using the selected sources.
+            Open with a question, explain two contrasting viewpoints and end with a decision students must justify.
+            Use a Baku example if the sources support it.</p>
+          <p><a href="https://notebooklm.google.com/" target="_blank" rel="noopener">Open NotebookLM</a></p>`
+      },
+      {
+        title: "Build a Deck from a Learning Objective",
+        body: `
+          <p>Start with what students should be able to explain, compare or demonstrate by the end of the lesson.</p>
+          <ol class="deck-steps">
+            <li>Turn the objective into a focused source-search query. Include the subject and learner level.</li>
+            <li>Inspect suggested resources for authorship, relevance and reading level before importing them.</li>
+            <li>Select a small set of useful sources and ask for a deck with an explanation, a worked example and a check for understanding.</li>
+          </ol>
+          <p class="deck-example"><strong>Example search query</strong><br>
+            Find introductory classroom resources for Year 7 learners who need to interpret a distance–time graph.
+            Look for a labelled example and a practice question with an explanation.</p>
+          <details><summary>What would make a source useful?</summary>
+            <p>It should explain the skill accurately, use a graph learners can read and show why the answer follows from the evidence.</p>
+          </details>`
+      },
+      {
+        title: "Revise and Export Your Slides",
+        body: `
+          <p>Review the draft as a teacher before using it in class. Check facts, examples, diagrams and reading level.</p>
+          <ol class="deck-steps">
+            <li>Open the deck in Studio and choose the revision option.</li>
+            <li>Give a specific instruction for each slide you want to change.</li>
+            <li>Generate the revised deck, then compare changed claims and visuals with the original sources.</li>
+            <li>Use the deck menu to download PDF or PowerPoint if available. Open the exported file and check how it displays.</li>
+          </ol>
+          <p class="deck-example"><strong>Example revision request</strong><br>
+            On slide 3, shorten the definition to one sentence. Keep the units and values in the example.
+            Add a question asking students to explain how they chose the answer.</p>
+          <p><a href="https://support.google.com/gemininotebook/answer/16757456" target="_blank" rel="noopener">Google Help · Slide Decks</a></p>`
+      },
+      {
+        title: "Lesson Prompt Builder",
+        body: `
+          <p>Fill in the fields to build a prompt. Paste the result into the Slide Deck customisation box in NotebookLM.</p>
+          <form id="deck-builder">
+            <div class="deck-fields">
+              <label>Your role <input name="role" required maxlength="100" placeholder="Geography teacher"></label>
+              <label>Learner group <input name="audience" required maxlength="100" placeholder="Year 10"></label>
+              <label>Lesson topic <input name="topic" required maxlength="160" placeholder="Managing urban traffic"></label>
+              <label>Curriculum <input name="curriculum" maxlength="100" placeholder="Cambridge IGCSE Geography"></label>
+            </div>
+            <label>Learning objective
+              <input name="objective" required maxlength="240" placeholder="Compare two approaches and justify a recommendation">
+            </label>
+            <label>Teaching context or preferences
+              <input name="context" maxlength="240" placeholder="Short slides, paired discussion, examples from Baku">
+            </label>
+            <button class="deck-button" type="submit">Build prompt</button>
+          </form>
+          <div id="deck-result" hidden>
+            <label for="deck-output">Your prompt</label>
+            <textarea id="deck-output" readonly></textarea>
+            <button class="deck-button" id="deck-copy" type="button">Copy prompt</button>
+          </div>`
+      }
+    ];
+
+    const byId = id => document.getElementById(id);
+    const stateKey = "bosNotebookLMSlideDecks";
+    const state = { current: 0, done: [], fields: {}, prompt: "", date: "" };
+
+    try {
+      Object.assign(state, JSON.parse(localStorage.getItem(stateKey)) || {});
+    } catch {}
+
+    function isComplete() {
+      return chapters.every((chapter, index) => state.done.includes(index));
+    }
+
+    function save() {
+      try {
+        localStorage.setItem(stateKey, JSON.stringify(state));
+        const progress = JSON.parse(localStorage.getItem("bosPDProgress")) || {};
+        if (isComplete()) {
+          progress.notebooklm = "Completed";
+        } else if (progress.notebooklm !== "Completed") {
+          progress.notebooklm = "In progress";
+        }
+        localStorage.setItem("bosPDProgress", JSON.stringify(progress));
+      } catch {
+        byId("deck-status").textContent = "Your browser could not save progress.";
+      }
+    }
+
+    function youtubeId(value) {
+      try {
+        const url = new URL(value);
+        if (url.protocol !== "https:") return "";
+        const parts = url.pathname.split("/").filter(Boolean);
+        let id = "";
+
+        if (url.hostname === "youtu.be") {
+          id = parts[0] || "";
+        } else if (["youtube.com", "www.youtube.com", "m.youtube.com"].includes(url.hostname)) {
+          id = url.searchParams.get("v") || parts[1] || "";
+        }
+
+        return /^[A-Za-z0-9_-]{11}$/.test(id) ? id : "";
+      } catch {
+        return "";
+      }
+    }
+
+    function addVideo(lesson, chapter) {
+      const config = videos[state.current];
+      if (!config) return;
+
+      const id = youtubeId(config.youtube);
+      if (!id && !config.mp4) return;
+
+      const section = document.createElement("section");
+      section.className = "deck-video";
+      const heading = document.createElement("h3");
+      heading.textContent = "Video walkthrough";
+      section.append(heading);
+
+      if (id) {
+        const player = document.createElement("iframe");
+        player.src = `https://www.youtube-nocookie.com/embed/${id}`;
+        player.title = `${chapter.title} video walkthrough`;
+        player.loading = "lazy";
+        player.allowFullscreen = true;
+        player.allow = "encrypted-media; picture-in-picture";
+
+        const link = document.createElement("a");
+        link.href = `https://www.youtube.com/watch?v=${id}`;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "Watch on YouTube";
+        const fallback = document.createElement("p");
+        fallback.append(link);
+        section.append(player, fallback);
+      } else {
+        const player = document.createElement("video");
+        player.controls = true;
+        player.preload = "metadata";
+        player.playsInline = true;
+        player.src = config.mp4;
+        player.setAttribute("aria-label", `${chapter.title} video walkthrough`);
+        section.append(player);
+      }
+
+      lesson.querySelector("h2").after(section);
+    }
+
+    function showPrompt() {
+      byId("deck-result").hidden = !state.prompt;
+      byId("deck-output").value = state.prompt;
+      byId("deck-next").disabled = !state.prompt;
+    }
+
+    function setupBuilder() {
+      const form = byId("deck-builder");
+      for (const input of form.querySelectorAll("input")) {
+        input.value = state.fields[input.name] || "";
+        input.addEventListener("input", () => {
+          state.fields[input.name] = input.value;
+          state.prompt = "";
+          showPrompt();
+          save();
+        });
+      }
+
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        const fields = Object.fromEntries(
+          [...new FormData(form)].map(([name, value]) => [name, value.trim()])
+        );
+
+        if (!fields.role || !fields.audience || !fields.topic || !fields.objective) {
+          byId("deck-status").textContent = "Fill in the role, learner group, topic and objective.";
+          return;
+        }
+
+        state.fields = fields;
+        state.prompt = [
+          `I am a ${fields.role} preparing a lesson for ${fields.audience}.`,
+          `Create a classroom slide deck on ${fields.topic}.`,
+          `Learning objective: ${fields.objective}.`,
+          fields.curriculum ? `Curriculum context: ${fields.curriculum}.` : "",
+          fields.context ? `Teaching preferences: ${fields.context}.` : "",
+          "Use the selected sources for factual claims. Flag gaps instead of inventing details.",
+          "Start with a question. Explain the key ideas with a worked example. Close with a short check for understanding and a suggested answer.",
+          "Use readable language and short headings. Identify the source behind each main claim."
+        ].filter(Boolean).join("\n");
+
+        showPrompt();
+        byId("deck-output").focus();
+        byId("deck-status").textContent = "Prompt ready to copy.";
+        save();
+      });
+
+      byId("deck-copy").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(state.prompt);
+          byId("deck-status").textContent = "Prompt copied.";
+        } catch {
+          const output = byId("deck-output");
+          output.focus();
+          output.select();
+          byId("deck-status").textContent = "Press Command + C or Ctrl + C to copy the selected prompt.";
+        }
+      });
+
+      showPrompt();
+    }
+
+    function render(focus = false) {
+      const chapter = chapters[state.current];
+      const lesson = byId("deck-lesson");
+      const tabs = byId("deck-tabs");
+      tabs.replaceChildren();
+
+      chapters.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = `${state.done.includes(index) ? "✓" : index + 1} · ${item.title}`;
+
+        if (index === state.current) {
+          button.setAttribute("aria-current", "step");
+        }
+
+        button.addEventListener("click", () => goTo(index));
+        tabs.append(button);
+      });
+
+      lesson.innerHTML = `<h2 id="deck-title" tabindex="-1">${chapter.title}</h2>${chapter.body}`;
+      addVideo(lesson, chapter);
+
+      const finalChapter = state.current === chapters.length - 1;
+      byId("deck-prev").disabled = state.current === 0;
+      byId("deck-next").disabled = finalChapter && !state.prompt;
+      byId("deck-next").textContent = finalChapter ? "Finish training" : "Complete chapter →";
+      byId("deck-progress").value = state.done.length;
+      byId("deck-count").textContent = `Module progress · ${state.done.length} / ${chapters.length}`;
+      byId("deck-certificate").hidden = !isComplete();
+      byId("deck-date").textContent = state.date
+        ? new Date(state.date).toLocaleDateString("en-GB")
+        : "";
+
+      if (finalChapter) setupBuilder();
+      if (focus) byId("deck-title").focus();
+    }
+
+    function goTo(index) {
+      state.current = index;
+      byId("deck-status").textContent = "";
+      render(true);
+      save();
+    }
+
+    byId("deck-prev").addEventListener("click", () => {
+      if (state.current > 0) goTo(state.current - 1);
+    });
+
+    byId("deck-next").addEventListener("click", () => {
+      const finalChapter = state.current === chapters.length - 1;
+      if (finalChapter && !state.prompt) return;
+
+      if (!state.done.includes(state.current)) {
+        state.done.push(state.current);
+      }
+
+      if (isComplete()) {
+        state.date = state.date || new Date().toISOString();
+        render();
+        byId("deck-status").textContent = "Module completed.";
+        byId("deck-certificate-title").focus();
+        save();
+      } else if (!finalChapter) {
+        goTo(state.current + 1);
+      } else {
+        render();
+        byId("deck-status").textContent = "Complete the other chapters to unlock the certificate.";
+        save();
+      }
+    });
+
+    byId("deck-print").addEventListener("click", () => {
+      const input = byId("deck-name");
+      const name = input.value.trim();
+
+      if (!name) {
+        input.focus();
+        input.reportValidity();
+        return;
+      }
+
+      byId("deck-print-name").textContent = name;
+      window.print();
+    });
+
+    byId("deck-name").required = true;
+    render();
+  </script>
+</body>
+</html>
